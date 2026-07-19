@@ -1,10 +1,36 @@
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+.marquee {
+  position: relative;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    #000 48px,
+    #000 calc(100% - 48px),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    #000 48px,
+    #000 calc(100% - 48px),
+    transparent 100%
+  );
+}
+
+.track {
+  display: flex;
+  width: max-content;
   gap: 24px;
+  animation: marquee-scroll 36s linear infinite;
+}
+
+.marquee:hover .track {
+  animation-play-state: paused;
 }
 
 .card {
+  flex: 0 0 340px;
+  width: 340px;
   padding: var(--space-4);
   display: flex;
   flex-direction: column;
@@ -25,8 +51,28 @@
   font-size: 12px;
 }
 
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @media (max-width: 900px) {
-  .grid {
-    grid-template-columns: 1fr;
+  .card {
+    flex-basis: 280px;
+    width: 280px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+
+  .marquee {
+    overflow-x: auto;
   }
 }

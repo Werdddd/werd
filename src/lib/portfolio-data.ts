@@ -197,6 +197,24 @@ const portfolioData: PortfolioData = {
       name: "Dana Iyer",
       role: "Design Director, Basecamp Studio",
     },
+    {
+      quote:
+        "He's the person who notices the edge case nobody else thought to test, then quietly fixes it before it becomes an incident.",
+      name: "Theo Marsh",
+      role: "Engineering Manager, Haven Systems",
+    },
+    {
+      quote:
+        "Andrew moves between design and code faster than anyone I've worked with — mockups turn into working UI in the same afternoon.",
+      name: "Renee Okafor",
+      role: "Founder, Loop & Co.",
+    },
+    {
+      quote:
+        "Calm under deadline pressure, and his instincts for what to cut versus keep are consistently right.",
+      name: "Sam Whitfield",
+      role: "CTO, Anchor Point",
+    },
   ],
   hackathons: [
     {
