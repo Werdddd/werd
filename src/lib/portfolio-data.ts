@@ -11,9 +11,8 @@ export interface Project {
   platform: "Web" | "Mobile";
 }
 
-export interface SkillGroup {
+export interface Skill {
   name: string;
-  items: string;
 }
 
 export interface ExperienceItem {
@@ -43,7 +42,7 @@ export interface PortfolioData {
   bio: string;
   facts: Fact[];
   projects: Project[];
-  skills: SkillGroup[];
+  skills: Skill[];
   experience: ExperienceItem[];
   testimonials: Testimonial[];
   posts: Post[];
@@ -108,20 +107,29 @@ const portfolioData: PortfolioData = {
     },
   ],
   skills: [
-    {
-      name: "Frontend",
-      items: "React, TypeScript, Next.js, CSS/Layout, D3, Accessibility",
-    },
-    {
-      name: "Backend",
-      items: "Node.js, Go, PostgreSQL, REST/GraphQL, WebSockets",
-    },
-    {
-      name: "Design",
-      items:
-        "Figma, Design systems, Prototyping, Motion/interaction, User research",
-    },
-    { name: "Tooling", items: "Git, CI/CD, Storybook, Testing, Docker" },
+    { name: "TypeScript" },
+    { name: "JavaScript" },
+    { name: "Python" },
+    { name: "Java" },
+    { name: "React" },
+    { name: "React Native" },
+    { name: "Vue" },
+    { name: "Angular" },
+    { name: "Next JS" },
+    { name: "Node.js" },
+    { name: "HTML/CSS" },
+    { name: "Claude Code" },
+    { name: "Cursor" },
+    { name: "MySQL" },
+    { name: "Firebase" },
+    { name: "Supabase" },
+    { name: "Kotlin" },
+    { name: "Flutter" },
+    { name: "Figma" },
+    { name: "Canva" },
+    { name: "Adobe Illustrator" },
+    { name: "Adobe Premiere Pro" },
+    { name: "CapCut" },
   ],
   experience: [
     {
