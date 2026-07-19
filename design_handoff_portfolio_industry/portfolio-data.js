@@ -1,8 +1,9 @@
 export default {
   name: "Andrew Emmanuel Robles",
   role: "Software Engineer & UI/UX Designer",
-  tagline: "I build considered, precise interfaces — and the systems underneath them.",
-  bio: "I'm a full-stack engineer and product designer working at the seam between code and interface. Six years building web and mobile products end to end: architecture, component systems, and the pixel-level decisions that make software feel inevitable rather than assembled.",
+  tagline: "I build creative interfaces and the systems underneath them.",
+  subhead: "I build creative interfaces and the systems underneath them.",
+  bio: "I'm a full-stack engineer and UI/UX designer who moves fluidly between code and interface. I design and build modern websites and mobile apps end to end. I'm driven by solving real problems and building things that push a little past the obvious.",
   facts: [
     { k: "Based in", v: "Seattle, WA" },
     { k: "Focus", v: "Design systems, frontend architecture, product design" },

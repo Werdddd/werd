@@ -38,6 +38,7 @@ export interface PortfolioData {
   name: string;
   role: string;
   tagline: string;
+  subhead: string;
   bio: string;
   facts: Fact[];
   projects: Project[];
@@ -50,17 +51,18 @@ export interface PortfolioData {
 const portfolioData: PortfolioData = {
   name: "Andrew Emmanuel Robles",
   role: "Software Engineer & UI/UX Designer",
-  tagline:
-    "I build considered, precise interfaces — and the systems underneath them.",
-  bio: "I'm a full-stack engineer and product designer working at the seam between code and interface. Six years building web and mobile products end to end: architecture, component systems, and the pixel-level decisions that make software feel inevitable rather than assembled.",
+  tagline: "Andrew Robles",
+  subhead:
+    "I build creative interfaces and the systems underneath them.",
+  bio: "I care about the details most people skip past — the interaction that feels obvious only in hindsight, the API that still reads cleanly a year later. I work across the full stack, from interface down to infrastructure, treating design and engineering as one continuous craft rather than two separate jobs.",
   facts: [
-    { k: "Based in", v: "Seattle, WA" },
+    { k: "Based in", v: "Navotas City, Metro Manila, Philippines" },
     {
       k: "Focus",
-      v: "Design systems, frontend architecture, product design",
+      v: "Full-stack web and mobile systems, design interfaces",
     },
-    { k: "Currently", v: "Senior Software Engineer at Northwind Labs" },
-    { k: "Stack", v: "TypeScript, React, Swift, Figma" },
+    { k: "Currently", v: "Open to full-time roles and freelance work" },
+    { k: "Stack", v: "TypeScript, React, NextJS, React Native, Figma" },
   ],
   projects: [
     {

@@ -9,6 +9,7 @@ export function Hero() {
       <div>
         <h6 className={shared.eyebrow}>{portfolio.role}</h6>
         <h1 className={styles.tagline}>{portfolio.tagline}</h1>
+        <p className={styles.subhead}>{portfolio.subhead}</p>
         <p className={styles.bio}>{portfolio.bio}</p>
         <div className={styles.actions}>
           <a className="btn btn-primary" href="#work">
