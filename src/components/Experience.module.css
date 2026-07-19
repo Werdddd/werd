@@ -12,6 +12,28 @@
   gap: 24px;
 }
 
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.content {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.logo {
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-surface);
+  color: color-mix(in srgb, var(--color-text) 45%, transparent);
+}
+
 .role {
   margin-bottom: 2px;
 }
@@ -24,6 +46,10 @@
 @media (max-width: 600px) {
   .row {
     grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+
+  .content {
     gap: var(--space-2);
   }
 }

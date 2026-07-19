@@ -3,7 +3,8 @@
     "allow": [
       "Bash(npx --yes create-next-app@latest ../werd-next-tmp --typescript --eslint --app --src-dir --import-alias \"@/*\" --use-npm --no-tailwind)",
       "Bash(npm view *)",
-      "Bash(npm install *)"
+      "Bash(npm install *)",
+      "Bash(npx --yes --package=playwright -- node screenshot-experience.js)"
     ]
   }
 }

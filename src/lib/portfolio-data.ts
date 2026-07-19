@@ -18,6 +18,7 @@ export interface Skill {
 export interface ExperienceItem {
   role: string;
   org: string;
+  location: string;
   period: string;
   blurb: string;
 }
@@ -67,43 +68,43 @@ const portfolioData: PortfolioData = {
   projects: [
     {
       num: "01",
-      title: "Ledger",
+      title: "Simoy",
       blurb:
-        "A financial reporting dashboard rebuilt for scale — from a 40s load time to under 2s, with a component library that outlived the rewrite.",
-      tags: ["React", "TypeScript", "D3"],
+        "A community-powered air quality monitoring platform with a live AQI dashboard, interactive air quality maps, and crowdsourced reporting for real-time conditions nationwide.",
+      tags: ["NextJS", "Supabase", "Vercel"],
       platform: "Web",
     },
     {
       num: "02",
-      title: "Pulse",
+      title: "Beep",
       blurb:
-        "Real-time infrastructure monitoring for on-call engineers: live topology, alert triage, and a WebSocket layer handling 50k events/sec.",
-      tags: ["Next.js", "WebSockets", "Go"],
+        "A crowdsourced fuel tracker that helps drivers find the cheapest nearby stations, with a live fuel map, trip cost estimator, and a gamified community system.",
+      tags: ["NextJS", "Supabase", "Vercel"],
       platform: "Web",
     },
     {
       num: "03",
-      title: "Formwork",
+      title: "33rd Asia-Pacific Regional Scout Jamboree App",
       blurb:
-        "A component library and design system adopted across four product teams, cutting new-screen build time by half.",
-      tags: ["React", "Storybook", "Design tokens"],
-      platform: "Web",
+        "The official companion app for an international Scout jamboree with 25,000+ participants — QR-linked digital IDs, live event maps, announcements, and emergency access.",
+      tags: ["React Native", "Supabase", "App Store"],
+      platform: "Mobile",
     },
     {
       num: "04",
-      title: "Transit",
+      title: "UE Connect",
       blurb:
-        "A trip-planning app redesign focused on one-handed use and transit-delay recovery, prototyped and shipped in six weeks.",
-      tags: ["Swift", "Figma", "iOS"],
+        "A centralized, algorithm-driven social and organization-management app for university student life, built to boost engagement across student orgs.",
+      tags: ["React Native", "Firebase", "Mobile"],
       platform: "Mobile",
     },
     {
       num: "05",
-      title: "Signal",
+      title: "GabAI",
       blurb:
-        "An admin console for an internal API gateway — access control, request replay, and rate-limit tuning for platform teams.",
-      tags: ["Vue", "Node", "PostgreSQL"],
-      platform: "Web",
+        "An AI-assisted study companion that generates personalized study guides adapted to each student's learning style, language, and dialect preferences.",
+      tags: ["React Native", "Firebase", "Gemini AI"],
+      platform: "Mobile",
     },
   ],
   skills: [
@@ -133,32 +134,44 @@ const portfolioData: PortfolioData = {
   ],
   experience: [
     {
-      role: "Senior Software Engineer",
-      org: "Northwind Labs",
-      period: "2023 — Present",
+      role: "Junior Developer",
+      org: "Impulse 101 IT Solutions OPC — Bebe Live",
+      location: "Quezon City, Philippines",
+      period: "Dec 2025 — Jun 2026",
       blurb:
-        "Leading frontend architecture for the platform team; built the internal design system now used by four product groups.",
+        "Built interactive in-app games for Bebe Live, a livestreaming platform with 35,000+ users, including Bato Bato Pick and Minesweeper under Zenith Gaming.",
     },
     {
-      role: "Product Designer",
-      org: "Fieldstone",
-      period: "2021 — 2023",
+      role: "Full-Stack Developer",
+      org: "Boy Scouts of the Philippines",
+      location: "Manila, Philippines",
+      period: "Sep 2025 — Dec 2025",
       blurb:
-        "Owned end-to-end design for the core booking flow, from research through shipped UI; partnered directly with engineering on implementation.",
+        "Designed and built the official mobile app and web-admin portal for the 33rd Asia-Pacific Regional Scout Jamboree, an event with 25,000+ participants — registration, role-based access, maps, and QR-based ID.",
     },
     {
-      role: "Frontend Engineer",
-      org: "Basecamp Studio",
-      period: "2019 — 2021",
+      role: "Software Developer Intern",
+      org: "Exakt IT Services",
+      location: "Pasig, Philippines",
+      period: "Jun 2025 — Jul 2025",
       blurb:
-        "Built and maintained the client-facing dashboard; introduced component testing and cut regression bugs by 60%.",
+        "Supported feature development and testing on the Frontline Services and Transactions System (FSTS) for the DENR, improving an internal system used to manage frontline transactions.",
     },
     {
-      role: "UI Designer, Freelance",
-      org: "Independent",
-      period: "2017 — 2019",
+      role: "UI/UX Designer",
+      org: "PB Visions LLC — TRAK",
+      location: "Pittsburg, California",
+      period: "Apr 2025 — Sep 2025",
       blurb:
-        "Designed interfaces for eight early-stage startups, spanning fintech, healthcare, and developer tools.",
+        "Led end-to-end UI/UX for TRAK, a fitness-focused social startup app, from wireframes through interactive prototypes to final visual design.",
+    },
+    {
+      role: "Junior Frontend Developer",
+      org: "Leaving Cert Plus",
+      location: "Dublin, Ireland",
+      period: "Jan 2024 — Dec 2025",
+      blurb:
+        "Built and refined user-facing features for an education platform, focused on responsiveness, performance, and accessible content delivery.",
     },
   ],
   testimonials: [
