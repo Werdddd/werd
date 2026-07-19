@@ -1,0 +1,43 @@
+.contact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.form {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.copy {
+  opacity: 0.85;
+  max-width: 44ch;
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.status {
+  font-size: 13px;
+  margin: 0;
+}
+
+.statusSuccess {
+  color: var(--color-accent-700);
+}
+
+.statusError {
+  color: #b3261e;
+}
+
+@media (max-width: 800px) {
+  .contact {
+    grid-template-columns: 1fr;
+  }
+}

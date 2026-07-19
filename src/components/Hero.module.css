@@ -1,0 +1,42 @@
+.hero {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-6);
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.tagline {
+  font-size: 56px;
+  max-width: 11ch;
+}
+
+.bio {
+  max-width: 52ch;
+  opacity: 0.85;
+  font-size: 16px;
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.portrait {
+  aspect-ratio: 4 / 5;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+  .tagline {
+    font-size: 40px;
+  }
+  .portrait {
+    max-width: 420px;
+  }
+}

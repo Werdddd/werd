@@ -1,0 +1,17 @@
+.nav {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-6);
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+@media (max-width: 700px) {
+  .links {
+    display: none;
+  }
+}

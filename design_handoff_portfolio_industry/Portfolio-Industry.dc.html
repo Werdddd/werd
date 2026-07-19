@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="stylesheet" href="./styles/industry.css">
+<x-import component-from-global-scope="image-slot" from="./image-slot.js" hint-size="1,1"></x-import>
+<style>a{text-decoration:none}</style>
+</helmet>
+<div style="background:var(--color-bg);color:var(--color-text);min-height:100vh">
+
+<nav class="nav" style="max-width:1180px;margin:0 auto;padding:var(--space-4) var(--space-6)">
+  <span class="nav-brand">Andrew Robles</span>
+  <a href="#work">Work</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#writing">Writing</a>
+  <a class="btn btn-primary" href="#contact">Contact</a>
+</nav>
+
+<header style="max-width:1180px;margin:0 auto;padding:var(--space-8) var(--space-6);display:grid;grid-template-columns:1.15fr 0.85fr;gap:48px;align-items:center">
+  <div>
+    <h6 style="color:var(--color-accent-700)">Software Engineer &amp; UI/UX Designer</h6>
+    <h1 style="font-size:56px;max-width:11ch">{{ tagline }}</h1>
+    <p style="max-width:52ch;opacity:.85;font-size:16px">{{ bio }}</p>
+    <div style="display:flex;gap:var(--space-3);margin-top:var(--space-4)">
+      <a class="btn btn-primary" href="#work">View work</a>
+      <a class="btn btn-secondary" href="#contact">Get in touch</a>
+    </div>
+  </div>
+  <div class="blueprint duotone" style="aspect-ratio:4/5">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    <image-slot id="ind-hero" shape="rect" placeholder="Portrait or workspace photo"></image-slot>
+  </div>
+</header>
+
+<section id="about" style="max-width:1180px;margin:0 auto;padding:var(--space-8) var(--space-6);display:grid;grid-template-columns:1fr 1fr;gap:40px">
+  <div>
+    <h6 style="color:var(--color-accent-700)">About</h6>
+    <h2>Precision as a working method</h2>
+    <p style="opacity:.85;font-size:15px;max-width:56ch">{{ bio }}</p>
+  </div>
+  <div class="blueprint" style="padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-3)">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    <sc-for list="{{ facts }}" as="f" hint-placeholder-count="4">
+      <div style="display:flex;justify-content:space-between;gap:16px;font-size:14px;border-bottom:1px solid var(--color-divider);padding-bottom:var(--space-2)">
+        <span class="text-muted">{{ f.k }}</span><span style="font-weight:600;text-align:right">{{ f.v }}</span>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section id="work" style="max-width:1180px;margin:0 auto;padding:var(--space-8) var(--space-6)">
+  <h6 style="color:var(--color-accent-700)">Selected work</h6>
+  <h2 style="margin-bottom:var(--space-6)">Five projects, end to end</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px">
+    <sc-for list="{{ projects }}" as="p" hint-placeholder-count="5">
+      <div class="blueprint" style="padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-2)">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <div class="duotone blueprint" style="aspect-ratio:16/10;margin-bottom:var(--space-2)">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <image-slot id="ind-proj-{{ $index }}" shape="rect" placeholder="Project screenshot"></image-slot>
+        </div>
+        <span class="card-kicker">{{ p.num }} — case study</span>
+        <h3 class="card-title">{{ p.title }}</h3>
+        <p class="card-body">{{ p.blurb }}</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <span class="tag tag-outline">{{ p.tags.0 }}</span><span class="tag tag-outline">{{ p.tags.1 }}</span><span class="tag tag-outline">{{ p.tags.2 }}</span>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section id="skills" style="max-width:1180px;margin:0 auto;padding:var(--space-8) var(--space-6)">
+  <h6 style="color:var(--color-accent-700)">Skills &amp; tools</h6>
+  <h2 style="margin-bottom:var(--space-6)">What I work with</h2>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px">
+    <sc-for list="{{ skillGroups }}" as="g" hint-placeholder-count="4">
+      <div class="blueprint" style="padding:var(--space-3)">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <h5>{{ g.name }}</h5>
+        <p class="card-body" style="margin-top:var(--space-2)">{{ g.items }}</p>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section id="experience" style="max-width:1180px;margin:0 auto;padding:var(--space-8) var(--space-6)">
+  <h6 style="color:var(--color-accent-700)">Experience</h6>
+  <h2 style="margin-bottom:var(--space-6)">Where I've worked</h2>
+  <div style="display:flex;flex-direction:column;gap:0">
+    <sc-for list="{{ experience }}" as="e" hint-placeholder-count="4">
+      <div class="blueprint" style="padding:var(--space-4);margin-bottom:var(--space-3);display:grid;grid-template-columns:180px 1fr;gap:24px">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <span class="text-muted" style="font-size:13px">{{ e.period }}</span>
+        <div>
+          <h4 style="margin-bottom:2px">{{ e.role }}</h4>
+          <p class="card-body" style="opacity:.6;margin-bottom:var(--space-1)">{{ e.org }}</p>
+          <p class="card-body">{{ e.blurb }}</p>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section style="max-width:1180px;margin:0 auto;padding:var(--space-8) var(--space-6)">
+  <h6 style="color:var(--color-accent-700)">Testimonials</h6>
+  <h2 style="margin-bottom:var(--space-6)">What people say</h2>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+    <sc-for list="{{ testimonials }}" as="t" hint-placeholder-count="3">
+      <div class="blueprint" style="padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-3)">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <p style="font-size:14px;flex:1">"{{ t.quote }}"</p>
+        <div>
+          <div style="font-weight:600;font-size:13px">{{ t.name }}</div>
+          <div class="text-muted" style="font-size:12px">{{ t.role }}</div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section id="writing" style="max-width:1180px;margin:0 auto;padding:var(--space-8) var(--space-6)">
+  <h6 style="color:var(--color-accent-700)">Writing</h6>
+  <h2 style="margin-bottom:var(--space-6)">Notes from the work</h2>
+  <div style="display:flex;flex-direction:column">
+    <sc-for list="{{ posts }}" as="p" hint-placeholder-count="3">
+      <a href="#" style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:var(--space-4) 0;border-top:1px solid var(--color-divider);color:inherit">
+        <span class="text-muted" style="font-size:13px">{{ p.date }}</span>
+        <div><h4 style="margin-bottom:4px">{{ p.title }}</h4><p class="card-body">{{ p.excerpt }}</p></div>
+      </a>
+    </sc-for>
+  </div>
+</section>
+
+<section id="contact" style="max-width:1180px;margin:0 auto;padding:var(--space-8) var(--space-6);display:grid;grid-template-columns:1fr 1fr;gap:40px">
+  <div class="blueprint" style="padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-3)">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    <h3>Send a message</h3>
+    <div class="field"><label>Name</label><input class="input" type="text" placeholder="Your name"></div>
+    <div class="field"><label>Email</label><input class="input" type="email" placeholder="you@company.com"></div>
+    <div class="field"><label>Message</label><textarea class="input" rows="4" placeholder="What are you building?"></textarea></div>
+    <button class="btn btn-primary btn-block">Send message</button>
+  </div>
+  <div>
+    <h6 style="color:var(--color-accent-700)">Get in touch</h6>
+    <h2>Open to full-time and freelance work</h2>
+    <p style="opacity:.85;max-width:44ch">Reach out directly, or use the form — I read every message and reply within a day or two.</p>
+    <div style="display:flex;gap:var(--space-2);margin-top:var(--space-3)">
+      <a class="btn btn-secondary" href="mailto:andrew@robles.dev">Email</a>
+      <a class="btn btn-secondary" href="#">LinkedIn</a>
+      <a class="btn btn-secondary" href="#">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer class="nav" style="max-width:1180px;margin:0 auto;padding:var(--space-6);border-top:1px solid var(--color-divider)">
+  <span class="text-muted" style="font-size:13px">© {{ year }} Andrew Emmanuel Robles</span>
+  <span class="text-muted" style="font-size:13px;margin-left:auto">Built with an Industry design system</span>
+</footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { data: null };
+  componentDidMount() {
+    import('./portfolio-data.js').then(m => this.setState({ data: m.default }));
+  }
+  renderVals() {
+    const d = this.state.data;
+    return {
+      tagline: d ? d.tagline : undefined,
+      bio: d ? d.bio : undefined,
+      facts: d ? d.facts : undefined,
+      projects: d ? d.projects : undefined,
+      skillGroups: d ? d.skills : undefined,
+      experience: d ? d.experience : undefined,
+      testimonials: d ? d.testimonials : undefined,
+      posts: d ? d.posts : undefined,
+      year: new Date().getFullYear()
+    };
+  }
+}
+</script>
+</body>
+</html>

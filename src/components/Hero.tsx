@@ -1,0 +1,29 @@
+import portfolio from "@/lib/portfolio-data";
+import { ImagePlaceholder } from "./ImagePlaceholder";
+import styles from "./Hero.module.css";
+import shared from "@/styles/shared.module.css";
+
+export function Hero() {
+  return (
+    <header className={styles.hero}>
+      <div>
+        <h6 className={shared.eyebrow}>{portfolio.role}</h6>
+        <h1 className={styles.tagline}>{portfolio.tagline}</h1>
+        <p className={styles.bio}>{portfolio.bio}</p>
+        <div className={styles.actions}>
+          <a className="btn btn-primary" href="#work">
+            View work
+          </a>
+          <a className="btn btn-secondary" href="#contact">
+            Get in touch
+          </a>
+        </div>
+      </div>
+      <ImagePlaceholder
+        label="Portrait or workspace photo"
+        aspect="4 / 5"
+        className={styles.portrait}
+      />
+    </header>
+  );
+}
