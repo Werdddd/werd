@@ -8,6 +8,7 @@ export interface Project {
   title: string;
   blurb: string;
   tags: [string, string, string];
+  platform: "Web" | "Mobile";
 }
 
 export interface SkillGroup {
@@ -71,6 +72,7 @@ const portfolioData: PortfolioData = {
       blurb:
         "A financial reporting dashboard rebuilt for scale — from a 40s load time to under 2s, with a component library that outlived the rewrite.",
       tags: ["React", "TypeScript", "D3"],
+      platform: "Web",
     },
     {
       num: "02",
@@ -78,6 +80,7 @@ const portfolioData: PortfolioData = {
       blurb:
         "Real-time infrastructure monitoring for on-call engineers: live topology, alert triage, and a WebSocket layer handling 50k events/sec.",
       tags: ["Next.js", "WebSockets", "Go"],
+      platform: "Web",
     },
     {
       num: "03",
@@ -85,6 +88,7 @@ const portfolioData: PortfolioData = {
       blurb:
         "A component library and design system adopted across four product teams, cutting new-screen build time by half.",
       tags: ["React", "Storybook", "Design tokens"],
+      platform: "Web",
     },
     {
       num: "04",
@@ -92,6 +96,7 @@ const portfolioData: PortfolioData = {
       blurb:
         "A trip-planning app redesign focused on one-handed use and transit-delay recovery, prototyped and shipped in six weeks.",
       tags: ["Swift", "Figma", "iOS"],
+      platform: "Mobile",
     },
     {
       num: "05",
@@ -99,6 +104,7 @@ const portfolioData: PortfolioData = {
       blurb:
         "An admin console for an internal API gateway — access control, request replay, and rate-limit tuning for platform teams.",
       tags: ["Vue", "Node", "PostgreSQL"],
+      platform: "Web",
     },
   ],
   skills: [
