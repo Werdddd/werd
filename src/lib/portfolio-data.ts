@@ -29,10 +29,14 @@ export interface Testimonial {
   role: string;
 }
 
-export interface Post {
-  title: string;
+export interface Hackathon {
+  rank: 1 | 2;
+  place: string;
+  project: string;
+  event: string;
+  organizer: string;
   date: string;
-  excerpt: string;
+  description: string;
 }
 
 export interface PortfolioData {
@@ -46,7 +50,7 @@ export interface PortfolioData {
   skills: Skill[];
   experience: ExperienceItem[];
   testimonials: Testimonial[];
-  posts: Post[];
+  hackathons: Hackathon[];
 }
 
 const portfolioData: PortfolioData = {
@@ -194,24 +198,36 @@ const portfolioData: PortfolioData = {
       role: "Design Director, Basecamp Studio",
     },
   ],
-  posts: [
+  hackathons: [
     {
-      title: "Why design tokens fail without a review process",
-      date: "May 2026",
-      excerpt:
-        "Tokens don't stay in sync by themselves. Notes on the review loop that kept ours honest across four teams.",
+      rank: 2,
+      place: "1st Runner-Up",
+      project: "SynseAI",
+      event: "BPI DATA Wave Hackathon 2025 — Track 5",
+      organizer: "Asian Institute of Management, Makati",
+      date: "Jul – Oct 2025",
+      description:
+        "An AI-powered platform that helps BPI discover compatible partners and improve operational efficiency through AI-driven synergy scoring and automated document processing.",
     },
     {
-      title: "Rebuilding a dashboard without a rewrite",
-      date: "Feb 2026",
-      excerpt:
-        "Strangler-fig patterns for the frontend: how we replaced a legacy dashboard one route at a time.",
+      rank: 1,
+      place: "Champion",
+      project: "GabAI",
+      event: "InnOlympics 2025 — GDSC PLM Hackathon",
+      organizer: "ING Hubs, Ayala, Makati",
+      date: "Jan 2025",
+      description:
+        "An AI-assisted study companion built with React Native, Firebase, and Gemini AI, generating personalized study guides adapted to each student's learning style — champion out of 30 teams and 120 participants.",
     },
     {
-      title: "The interface is the API",
-      date: "Nov 2025",
-      excerpt:
-        "What happens when you design your component props and your UI copy in the same sitting.",
+      rank: 2,
+      place: "1st Runner-Up",
+      project: "GaBank",
+      event: "Hack-It: The New Era of Banking",
+      organizer: "Springboard Labs PH, Pasig",
+      date: "Apr 2025",
+      description:
+        "A centralized, AI-powered fintech app that helps users manage multiple bank accounts, track their finances, and achieve their financial goals — all in one place.",
     },
   ],
 };

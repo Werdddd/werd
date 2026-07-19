@@ -5,7 +5,7 @@ import { Work } from "@/components/Work";
 import { Skills } from "@/components/Skills";
 import { Experience } from "@/components/Experience";
 import { Testimonials } from "@/components/Testimonials";
-import { Writing } from "@/components/Writing";
+import { Hackathons } from "@/components/Hackathons";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 
@@ -19,7 +19,7 @@ export default function Home() {
       <Skills />
       <Experience />
       <Testimonials />
-      <Writing />
+      <Hackathons />
       <Contact />
       <Footer />
     </>
