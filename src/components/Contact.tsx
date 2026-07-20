@@ -47,6 +47,35 @@ export function Contact() {
 
   return (
     <section id="contact" className={`${shared.container} ${styles.contact}`} data-reveal>
+      <div>
+        <h6 className={shared.eyebrow}>Get in touch</h6>
+        <h2>Open to full-time and freelance work</h2>
+        <p className={styles.copy}>
+          Reach out directly, or use the form — I read every message and reply within a
+          day or two.
+        </p>
+        <div className={styles.actions}>
+          <a className="btn btn-secondary" href="mailto:roblesandrewemmanuel@gmail.com">
+            Email
+          </a>
+          <a
+            className="btn btn-secondary"
+            href="https://www.linkedin.com/in/andrew-emmanuel-robles/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
+          <a
+            className="btn btn-secondary"
+            href="https://github.com/Werdddd"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+        </div>
+      </div>
       <form className={`blueprint ${styles.form}`} onSubmit={handleSubmit}>
         <Corners />
         <h3>Send a message</h3>
@@ -95,35 +124,6 @@ export function Contact() {
           <p className={`${styles.status} ${styles.statusError}`}>{errorMessage}</p>
         )}
       </form>
-      <div>
-        <h6 className={shared.eyebrow}>Get in touch</h6>
-        <h2>Open to full-time and freelance work</h2>
-        <p className={styles.copy}>
-          Reach out directly, or use the form — I read every message and reply within a
-          day or two.
-        </p>
-        <div className={styles.actions}>
-          <a className="btn btn-secondary" href="mailto:andrew@robles.dev">
-            Email
-          </a>
-          <a
-            className="btn btn-secondary"
-            href="https://www.linkedin.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            LinkedIn
-          </a>
-          <a
-            className="btn btn-secondary"
-            href="https://github.com/Werdddd"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub
-          </a>
-        </div>
-      </div>
     </section>
   );
 }
