@@ -5,7 +5,7 @@ import shared from "@/styles/shared.module.css";
 
 export function Hero() {
   return (
-    <header className={styles.hero}>
+    <header className={styles.hero} data-reveal>
       <div>
         <h6 className={shared.eyebrow}>{portfolio.role}</h6>
         <h1 className={styles.tagline}>{portfolio.tagline}</h1>

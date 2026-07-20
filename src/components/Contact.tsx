@@ -46,7 +46,7 @@ export function Contact() {
   const submitting = status === "submitting";
 
   return (
-    <section id="contact" className={`${shared.container} ${styles.contact}`}>
+    <section id="contact" className={`${shared.container} ${styles.contact}`} data-reveal>
       <form className={`blueprint ${styles.form}`} onSubmit={handleSubmit}>
         <Corners />
         <h3>Send a message</h3>

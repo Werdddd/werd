@@ -92,7 +92,7 @@ function SkillMark({ name }: { name: string }) {
 
 export function Skills() {
   return (
-    <section id="skills" className={shared.container}>
+    <section id="skills" className={shared.container} data-reveal>
       <h6 className={shared.eyebrow}>Skills &amp; tools</h6>
       <h2 className={shared.sectionHeading}>What I work with</h2>
       <div className={styles.grid}>

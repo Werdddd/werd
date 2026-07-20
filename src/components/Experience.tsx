@@ -32,7 +32,7 @@ function LogoPlaceholder() {
 
 export function Experience() {
   return (
-    <section id="experience" className={shared.container}>
+    <section id="experience" className={shared.container} data-reveal>
       <h6 className={shared.eyebrow}>Experience</h6>
       <h2 className={shared.sectionHeading}>Where I&apos;ve worked</h2>
       <div className={styles.list}>

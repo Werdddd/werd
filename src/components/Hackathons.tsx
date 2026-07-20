@@ -11,7 +11,7 @@ export function Hackathons() {
   const [expanded, setExpanded] = useState<string | null>(null);
 
   return (
-    <section id="hackathons" className={shared.container}>
+    <section id="hackathons" className={shared.container} data-reveal>
       <h6 className={shared.eyebrow}>Hackathons</h6>
       <h2 className={shared.sectionHeading}>Podium finishes</h2>
       <div className={styles.podium}>

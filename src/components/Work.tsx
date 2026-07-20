@@ -102,7 +102,7 @@ export function Work() {
   }, [n]);
 
   return (
-    <section id="work" className={shared.container}>
+    <section id="work" className={shared.container} data-reveal>
       <div className={styles.header}>
         <div>
           <h6 className={shared.eyebrow}>Selected work</h6>

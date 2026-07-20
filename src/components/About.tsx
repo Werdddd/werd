@@ -5,7 +5,7 @@ import shared from "@/styles/shared.module.css";
 
 export function About() {
   return (
-    <section id="about" className={shared.container}>
+    <section id="about" className={shared.container} data-reveal>
       <h6 className={shared.eyebrow}>About</h6>
       <h2 className={shared.sectionHeading}>Precision as a working method</h2>
       <div className={styles.grid}>

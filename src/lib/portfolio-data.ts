@@ -55,11 +55,11 @@ export interface PortfolioData {
 
 const portfolioData: PortfolioData = {
   name: "Andrew Emmanuel Robles",
-  role: "Software Engineer & UI/UX Designer",
+  role: "Full-Stack Engineer & UI/UX Designer",
   tagline: "Andrew Robles",
   subhead:
     "I build creative interfaces and the systems underneath them.",
-  bio: "I care about the details most people skip past — the interaction that feels obvious only in hindsight, the API that still reads cleanly a year later. I work across the full stack, from interface down to infrastructure, treating design and engineering as one continuous craft rather than two separate jobs.",
+  bio: "I'm a full-stack engineer and UI/UX designer who moves fluidly between code and interface. I design and build modern websites and mobile apps end to end. I'm driven by solving real problems and building things that push a little past the obvious.",
   facts: [
     { k: "Based in", v: "Navotas City, Metro Manila, Philippines" },
     {

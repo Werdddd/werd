@@ -7,7 +7,7 @@ export function Testimonials() {
   const testimonials = portfolio.testimonials;
 
   return (
-    <section id="testimonials" className={shared.container}>
+    <section id="testimonials" className={shared.container} data-reveal>
       <h6 className={shared.eyebrow}>Testimonials</h6>
       <h2 className={shared.sectionHeading}>What people say</h2>
       <div className={styles.marquee}>
