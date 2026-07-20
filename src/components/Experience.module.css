@@ -32,14 +32,17 @@
 }
 
 .logo {
+  position: relative;
   flex: 0 0 44px;
   width: 44px;
   height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background: var(--color-surface);
-  color: color-mix(in srgb, var(--color-text) 45%, transparent);
+  overflow: hidden;
+}
+
+.logoImg {
+  object-fit: contain;
+  padding: 6px;
 }
 
 .role {

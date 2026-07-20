@@ -21,6 +21,7 @@ export interface ExperienceItem {
   location: string;
   period: string;
   blurb: string;
+  logo: string;
 }
 
 export interface Testimonial {
@@ -143,39 +144,44 @@ const portfolioData: PortfolioData = {
       role: "Junior Developer",
       org: "Impulse 101 IT Solutions OPC — Bebe Live",
       location: "Quezon City, Philippines",
-      period: "Dec 2025 — Jun 2026",
+      period: "2025 — 2026",
       blurb:
         "Built interactive in-app games for Bebe Live, a livestreaming platform with 35,000+ users, including Bato Bato Pick and Minesweeper under Zenith Gaming.",
+      logo: "/impulse.png",
     },
     {
       role: "Full-Stack Developer",
       org: "Boy Scouts of the Philippines",
       location: "Manila, Philippines",
-      period: "Sep 2025 — Dec 2025",
+      period: "2025",
       blurb:
         "Designed and built the official mobile app and web-admin portal for the 33rd Asia-Pacific Regional Scout Jamboree, an event with 25,000+ participants — registration, role-based access, maps, and QR-based ID.",
+      logo: "/bsp.png",
     },
     {
       role: "Software Developer Intern",
       org: "Exakt IT Services",
       location: "Pasig, Philippines",
-      period: "Jun 2025 — Jul 2025",
+      period: "2025",
       blurb:
         "Supported feature development and testing on the Frontline Services and Transactions System (FSTS) for the DENR, improving an internal system used to manage frontline transactions.",
+      logo: "/exakt.png",
     },
     {
       role: "UI/UX Designer",
       org: "PB Visions LLC — TRAK",
       location: "Pittsburg, California",
-      period: "Apr 2025 — Sep 2025",
+      period: "2025",
       blurb:
         "Led end-to-end UI/UX for TRAK, a fitness-focused social startup app, from wireframes through interactive prototypes to final visual design.",
+      logo: "/pbvision.png",
     },
     {
       role: "Junior Frontend Developer",
       org: "Leaving Cert Plus",
       location: "Dublin, Ireland",
-      period: "Jan 2024 — Dec 2025",
+      period: "2024 — 2025",
+      logo: "/leavingcertplus.png",
       blurb:
         "Built and refined user-facing features for an education platform, focused on responsiveness, performance, and accessible content delivery.",
     },
