@@ -78,6 +78,29 @@ export function Hackathons() {
           );
         })}
       </div>
+      <div className={styles.githubHeader}>
+        <div>
+          <h6 className={shared.eyebrow}>GitHub Activity</h6>
+          <h2 className={shared.sectionHeading}>Commit history</h2>
+        </div>
+        <a
+          className={styles.githubLink}
+          href="https://github.com/Werdddd"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          @Werdddd on GitHub →
+        </a>
+      </div>
+      <div className={styles.githubChartWrap}>
+        {/* eslint-disable-next-line @next/next/no-img-element -- dynamically generated SVG chart */}
+        <img
+          src="/api/github-chart"
+          alt="Werdddd's GitHub contribution graph"
+          className={styles.githubChart}
+          loading="lazy"
+        />
+      </div>
     </section>
   );
 }

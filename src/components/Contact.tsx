@@ -116,7 +116,7 @@ export function Contact() {
           </a>
           <a
             className="btn btn-secondary"
-            href="https://github.com"
+            href="https://github.com/Werdddd"
             target="_blank"
             rel="noopener noreferrer"
           >
