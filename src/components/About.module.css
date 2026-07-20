@@ -1,15 +1,16 @@
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
 
 .fact {
-  padding: var(--space-3);
+  padding: var(--space-4);
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
   font-size: 14px;
+  background: var(--color-surface);
   transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
 }
 
@@ -23,13 +24,429 @@
   font-weight: 600;
 }
 
-@media (max-width: 900px) {
-  .grid {
-    grid-template-columns: 1fr 1fr;
+/* — Based in: coordinate / map card — */
+.mapVisual {
+  position: relative;
+  height: 84px;
+  margin: 2px 0;
+  border: 1px solid var(--color-divider);
+  overflow: hidden;
+  background:
+    repeating-linear-gradient(
+      color-mix(in srgb, var(--color-text) 8%, transparent) 0 1px,
+      transparent 1px 12px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--color-text) 8%, transparent) 0 1px,
+      transparent 1px 12px
+    );
+}
+
+.mapPin {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  animation: pin-travel 3.6s ease-in-out infinite;
+}
+
+.mapPin::before,
+.mapPin::after {
+  content: "";
+  position: absolute;
+  background: color-mix(in srgb, var(--color-accent) 55%, transparent);
+}
+
+.mapPin::before {
+  left: 50%;
+  top: -9px;
+  bottom: -9px;
+  width: 1px;
+  transform: translateX(-50%);
+}
+
+.mapPin::after {
+  top: 50%;
+  left: -9px;
+  right: -9px;
+  height: 1px;
+  transform: translateY(-50%);
+}
+
+.mapPinDot {
+  width: 5px;
+  height: 5px;
+  background: var(--color-accent);
+  z-index: 1;
+}
+
+.mapPinPing {
+  position: absolute;
+  inset: -1px;
+  border: 1px solid var(--color-accent);
+  opacity: 0.5;
+  animation: map-ping 2.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes map-ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  75%,
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
   }
 }
 
-@media (max-width: 520px) {
+@keyframes pin-travel {
+  0% {
+    top: 18%;
+    left: 16%;
+  }
+  25% {
+    top: 14%;
+    left: 82%;
+  }
+  50% {
+    top: 78%;
+    left: 86%;
+  }
+  75% {
+    top: 82%;
+    left: 20%;
+  }
+  100% {
+    top: 18%;
+    left: 16%;
+  }
+}
+
+.coords {
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  font-variant-numeric: tabular-nums;
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
+
+/* — Focus: system diagram card — */
+.diagram {
+  position: relative;
+  height: 88px;
+  margin: var(--space-1) 0;
+}
+
+.diagram::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--color-divider);
+  transform: translateX(-50%);
+}
+
+.diagram::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--color-divider);
+  transform: translateY(-50%);
+}
+
+.diagramTraveler {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 20%, transparent);
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  animation: diagram-travel 8s ease-in-out infinite;
+}
+
+@keyframes diagram-travel {
+  0%,
+  4% {
+    top: 50%;
+    left: 50%;
+  }
+  12.5% {
+    top: 26%;
+    left: 50%;
+  }
+  21%,
+  25%,
+  29% {
+    top: 50%;
+    left: 50%;
+  }
+  37.5% {
+    top: 50%;
+    left: 74%;
+  }
+  46%,
+  50%,
+  54% {
+    top: 50%;
+    left: 50%;
+  }
+  62.5% {
+    top: 74%;
+    left: 50%;
+  }
+  71%,
+  75%,
+  79% {
+    top: 50%;
+    left: 50%;
+  }
+  87.5% {
+    top: 50%;
+    left: 26%;
+  }
+  96%,
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+
+.diagramBeam {
+  position: absolute;
+  background: var(--color-accent);
+  z-index: 1;
+}
+
+.diagramBeamN {
+  left: 50%;
+  top: 0;
+  width: 1px;
+  height: 50%;
+  transform-origin: bottom center;
+  transform: translateX(-50%) scaleY(0);
+  animation: beam-n 8s ease-in-out infinite;
+}
+
+.diagramBeamE {
+  left: 50%;
+  top: 50%;
+  width: 50%;
+  height: 1px;
+  transform-origin: left center;
+  transform: translateY(-50%) scaleX(0);
+  animation: beam-e 8s ease-in-out infinite;
+}
+
+.diagramBeamS {
+  left: 50%;
+  top: 50%;
+  width: 1px;
+  height: 50%;
+  transform-origin: top center;
+  transform: translateX(-50%) scaleY(0);
+  animation: beam-s 8s ease-in-out infinite;
+}
+
+.diagramBeamW {
+  right: 50%;
+  top: 50%;
+  width: 50%;
+  height: 1px;
+  transform-origin: right center;
+  transform: translateY(-50%) scaleX(0);
+  animation: beam-w 8s ease-in-out infinite;
+}
+
+@keyframes beam-n {
+  0%,
+  4% {
+    transform: translateX(-50%) scaleY(0);
+  }
+  12.5% {
+    transform: translateX(-50%) scaleY(0.48);
+  }
+  21%,
+  100% {
+    transform: translateX(-50%) scaleY(0);
+  }
+}
+
+@keyframes beam-e {
+  0%,
+  25%,
+  29% {
+    transform: translateY(-50%) scaleX(0);
+  }
+  37.5% {
+    transform: translateY(-50%) scaleX(0.48);
+  }
+  46%,
+  100% {
+    transform: translateY(-50%) scaleX(0);
+  }
+}
+
+@keyframes beam-s {
+  0%,
+  50%,
+  54% {
+    transform: translateX(-50%) scaleY(0);
+  }
+  62.5% {
+    transform: translateX(-50%) scaleY(0.48);
+  }
+  71%,
+  100% {
+    transform: translateX(-50%) scaleY(0);
+  }
+}
+
+@keyframes beam-w {
+  0%,
+  75%,
+  79% {
+    transform: translateY(-50%) scaleX(0);
+  }
+  87.5% {
+    transform: translateY(-50%) scaleX(0.48);
+  }
+  96%,
+  100% {
+    transform: translateY(-50%) scaleX(0);
+  }
+}
+
+.diagramLabel {
+  position: absolute;
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-weight: var(--font-heading-weight);
+  font-size: 9px;
+  letter-spacing: 0.07em;
+  background: var(--color-surface);
+  padding: 2px 4px;
+  color: color-mix(in srgb, var(--color-text) 65%, transparent);
+}
+
+.diagramN {
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.diagramS {
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.diagramW {
+  left: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+  padding-left: 0;
+}
+
+.diagramE {
+  right: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+  padding-right: 0;
+}
+
+/* — Currently: status indicator card — */
+.statusRow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 2px;
+}
+
+.statusDot {
+  position: relative;
+  display: inline-flex;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #2f9e52;
+}
+
+.statusDotPing {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #2f9e52;
+  opacity: 0.55;
+  animation: status-ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes status-ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  75%,
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .statusDotPing,
+  .mapPinPing {
+    animation: none;
+    display: none;
+  }
+
+  .mapPin {
+    animation: none;
+    top: 42%;
+    left: 46%;
+  }
+
+  .diagramTraveler {
+    animation: none;
+    top: 50%;
+    left: 50%;
+  }
+
+  .diagramBeam {
+    animation: none;
+    transform: none;
+    display: none;
+  }
+}
+
+.statusLabel {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-weight: var(--font-heading-weight);
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.statusCopy {
+  margin: 0;
+  font-size: 13px;
+  opacity: 0.8;
+  line-height: 1.5;
+}
+
+@media (max-width: 760px) {
   .grid {
     grid-template-columns: 1fr;
   }

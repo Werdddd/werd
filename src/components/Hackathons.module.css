@@ -17,6 +17,7 @@
   display: flex;
   flex-direction: column;
   cursor: pointer;
+  background: var(--color-surface);
   transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 

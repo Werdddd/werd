@@ -66,8 +66,10 @@ const portfolioData: PortfolioData = {
       k: "Focus",
       v: "Full-stack web and mobile systems, design interfaces",
     },
-    { k: "Currently", v: "Open to full-time roles and freelance work" },
-    { k: "Stack", v: "TypeScript, React, NextJS, React Native, Figma" },
+    {
+      k: "Currently",
+      v: "Open to full-time roles, freelance projects, and meaningful collaborations.",
+    },
   ],
   projects: [
     {

@@ -1,7 +1,15 @@
 .nav {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: var(--space-4) var(--space-6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  padding-block: var(--space-3);
+  padding-inline: max(var(--space-6), calc((100% - 1180px) / 2));
+  background: color-mix(in srgb, var(--color-bg) 80%, transparent);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border-bottom: 1px solid var(--color-divider);
 }
 
 .links {
@@ -10,8 +18,106 @@
   gap: var(--space-4);
 }
 
+.menuToggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid var(--color-divider);
+  background: transparent;
+  cursor: pointer;
+}
+
+.menuIcon {
+  position: relative;
+  display: block;
+  width: 16px;
+  height: 1px;
+  background: var(--color-text);
+}
+
+.menuIcon::before,
+.menuIcon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 16px;
+  height: 1px;
+  background: var(--color-text);
+  transition: transform 0.2s ease, top 0.2s ease, opacity 0.2s ease;
+}
+
+.menuIcon::before {
+  top: -5px;
+}
+
+.menuIcon::after {
+  top: 5px;
+}
+
+.menuIcon[data-open]::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.menuIcon[data-open]::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+.mobileMenu {
+  display: none;
+}
+
 @media (max-width: 700px) {
   .links {
     display: none;
+  }
+
+  .contact {
+    display: none;
+  }
+
+  .menuToggle {
+    display: inline-flex;
+  }
+
+  .mobileMenu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 58px;
+    left: 0;
+    width: 100%;
+    background: color-mix(in srgb, var(--color-bg) 92%, transparent);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border-bottom: 1px solid var(--color-divider);
+    padding: 0 var(--space-6);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: max-height 0.25s ease, opacity 0.2s ease, padding-block 0.25s ease;
+  }
+
+  .mobileMenu a {
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid var(--color-divider);
+    font-size: 15px;
+  }
+
+  .mobileMenu a:last-child {
+    border-bottom: none;
+    margin: var(--space-2) 0;
+  }
+
+  .mobileMenu[data-open] {
+    max-height: 420px;
+    opacity: 1;
+    pointer-events: auto;
+    padding-block: var(--space-2);
   }
 }
