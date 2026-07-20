@@ -38,6 +38,7 @@ export interface Hackathon {
   organizer: string;
   date: string;
   description: string;
+  photos: string[];
 }
 
 export interface PortfolioData {
@@ -234,6 +235,15 @@ const portfolioData: PortfolioData = {
       date: "Jul – Oct 2025",
       description:
         "An AI-powered platform that helps BPI discover compatible partners and improve operational efficiency through AI-driven synergy scoring and automated document processing.",
+      photos: [
+        "/hackathons/datawave1.jpg",
+        "/hackathons/datawave6.jpg",
+        "/hackathons/datawave2.jpg",
+        "/hackathons/datawave3.JPG",
+        "/hackathons/datawave4.jpg",
+        "/hackathons/datawave5.jpg",
+        
+      ],
     },
     {
       rank: 1,
@@ -244,6 +254,15 @@ const portfolioData: PortfolioData = {
       date: "Jan 2025",
       description:
         "An AI-assisted study companion built with React Native, Firebase, and Gemini AI, generating personalized study guides adapted to each student's learning style — champion out of 30 teams and 120 participants.",
+      photos: [
+        "/hackathons/innolympics1.jpg",
+        "/hackathons/innolympics2.jpg",
+        "/hackathons/innolympics3.jpg",
+        "/hackathons/innolympics4.jpg",
+        "/hackathons/innolympics5.JPG",
+        "/hackathons/innolympics6.JPG",
+        
+      ],
     },
     {
       rank: 2,
@@ -254,6 +273,14 @@ const portfolioData: PortfolioData = {
       date: "Apr 2025",
       description:
         "A centralized, AI-powered fintech app that helps users manage multiple bank accounts, track their finances, and achieve their financial goals — all in one place.",
+      photos: [
+        "/hackathons/hackit1.jpg",
+        "/hackathons/hackit2.jpg",
+        "/hackathons/hackit3.jpg",
+        "/hackathons/hackit4.jpg",
+        "/hackathons/hackit5.JPG",
+        "/hackathons/hackit6.JPG",
+      ],
     },
   ],
 };

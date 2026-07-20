@@ -1,0 +1,9 @@
+.carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+.photo {
+  object-fit: cover;
+  transition: opacity 0.9s ease;
+}

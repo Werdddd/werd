@@ -1,14 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import portfolio from "@/lib/portfolio-data";
 import { Corners } from "./Blueprint";
-import { ImagePlaceholder } from "./ImagePlaceholder";
+import { PhotoCarousel } from "./PhotoCarousel";
 import styles from "./Hackathons.module.css";
 import shared from "@/styles/shared.module.css";
 
 export function Hackathons() {
   const [expanded, setExpanded] = useState<string | null>(null);
+  const [frame, setFrame] = useState(0);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const id = setInterval(() => setFrame((f) => f + 1), 2600);
+    return () => clearInterval(id);
+  }, []);
 
   return (
     <section id="hackathons" className={shared.container} data-reveal>
@@ -38,8 +45,10 @@ export function Hackathons() {
                 }}
               >
                 <Corners />
-                <ImagePlaceholder
-                  label={`${h.event} photo`}
+                <PhotoCarousel
+                  photos={h.photos}
+                  activeIndex={frame % h.photos.length}
+                  label={h.event}
                   aspect="4 / 3"
                   className={styles.thumb}
                 />
