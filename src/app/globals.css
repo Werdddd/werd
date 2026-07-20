@@ -6,7 +6,7 @@
   --color-bg: #ffffff;
   --color-surface: #ffffff;
   --color-text: #1d1f20;
-  --color-accent: #5980a6;
+  --color-accent: #023e8a;
   --color-accent-2: #728fab;
   --color-divider: color-mix(in srgb, #1d1f20 16%, transparent);
 
@@ -22,15 +22,15 @@
   --color-neutral-800: #424244;
   --color-neutral-900: #2b2b2d;
 
-  --color-accent-100: #eef6ff;
-  --color-accent-200: #d6ebff;
-  --color-accent-300: #b5d9fd;
-  --color-accent-400: #94bce3;
-  --color-accent-500: #749dc4;
-  --color-accent-600: #597ea3;
-  --color-accent-700: #416180;
-  --color-accent-800: #2c455d;
-  --color-accent-900: #1d2d3d;
+  --color-accent-100: #eff6ff;
+  --color-accent-200: #dbe9ff;
+  --color-accent-300: #bcd7fe;
+  --color-accent-400: #8ab9ff;
+  --color-accent-500: #5197fe;
+  --color-accent-600: #2175e9;
+  --color-accent-700: #0d59bb;
+  --color-accent-800: #023e8a;
+  --color-accent-900: #05295b;
 
   --color-accent-2-100: #eef6ff;
   --color-accent-2-200: #d6ebff;
@@ -80,15 +80,15 @@
   --color-neutral-800: #e7e7ea;
   --color-neutral-900: #f5f5f8;
 
-  --color-accent-100: #1d2d3d;
-  --color-accent-200: #2c455d;
-  --color-accent-300: #416180;
-  --color-accent-400: #597ea3;
-  --color-accent-500: #749dc4;
-  --color-accent-600: #94bce3;
-  --color-accent-700: #b5d9fd;
-  --color-accent-800: #d6ebff;
-  --color-accent-900: #eef6ff;
+  --color-accent-100: #05295b;
+  --color-accent-200: #023e8a;
+  --color-accent-300: #0d59bb;
+  --color-accent-400: #2175e9;
+  --color-accent-500: #5197fe;
+  --color-accent-600: #8ab9ff;
+  --color-accent-700: #bcd7fe;
+  --color-accent-800: #dbe9ff;
+  --color-accent-900: #eff6ff;
   --color-accent: var(--color-accent-600);
 
   --color-accent-2-100: #1f2d3a;
@@ -109,7 +109,17 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { height: 100%; max-width: 100vw; overflow-x: hidden; }
+html {
+  height: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
 
 body {
   min-height: 100%;

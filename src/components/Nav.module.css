@@ -18,6 +18,10 @@
   gap: var(--space-4);
 }
 
+a.contact {
+  color: #fff;
+}
+
 .menuToggle {
   display: none;
   align-items: center;
@@ -107,6 +111,10 @@
     padding: var(--space-3) 0;
     border-bottom: 1px solid var(--color-divider);
     font-size: 15px;
+  }
+
+  .mobileMenu a:global(.btn-primary) {
+    color: #fff;
   }
 
   .mobileMenu a:last-child {

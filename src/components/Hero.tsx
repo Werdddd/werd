@@ -1,5 +1,5 @@
 import portfolio from "@/lib/portfolio-data";
-import { ImagePlaceholder } from "./ImagePlaceholder";
+import { HeroSlideshow } from "./HeroSlideshow";
 import styles from "./Hero.module.css";
 import shared from "@/styles/shared.module.css";
 
@@ -20,11 +20,7 @@ export function Hero() {
           </a>
         </div>
       </div>
-      <ImagePlaceholder
-        label="Portrait or workspace photo"
-        aspect="4 / 5"
-        className={styles.portrait}
-      />
+      <HeroSlideshow className={styles.portrait} />
     </header>
   );
 }
