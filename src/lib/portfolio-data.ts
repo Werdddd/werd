@@ -9,6 +9,7 @@ export interface Project {
   blurb: string;
   tags: [string, string, string];
   platform: "Web" | "Mobile";
+  image?: string;
 }
 
 export interface Skill {
@@ -81,6 +82,7 @@ const portfolioData: PortfolioData = {
         "A community-powered air quality monitoring platform with a live AQI dashboard, interactive air quality maps, and crowdsourced reporting for real-time conditions nationwide.",
       tags: ["NextJS", "Supabase", "Vercel"],
       platform: "Web",
+      image: "/projects/simoytestbanner.png",
     },
     {
       num: "02",

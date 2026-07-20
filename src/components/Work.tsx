@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import portfolio from "@/lib/portfolio-data";
 import { Corners } from "./Blueprint";
 import { ImagePlaceholder } from "./ImagePlaceholder";
@@ -24,82 +25,89 @@ function PlatformIcon({ platform }: { platform: "Web" | "Mobile" }) {
   );
 }
 
+const SWIPE_THRESHOLD = 40;
+
 export function Work() {
-  const trackRef = useRef<HTMLDivElement>(null);
+  const viewportRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [activeExtended, setActiveExtended] = useState(1);
-  const [ready, setReady] = useState(false);
+  const [offset, setOffset] = useState(0);
+  const [instant, setInstant] = useState(true);
+  const dragStartX = useRef<number | null>(null);
 
   const projects = portfolio.projects;
   const n = projects.length;
   // Clone the last project before the first, and the first after the last,
-  // so the track can be scrolled one step past either end and silently
-  // snapped back to the matching real card — giving the illusion of a loop.
+  // so the track can slide one step past either end and silently reset to
+  // the matching real card — giving the illusion of an infinite loop.
   const extended = [projects[n - 1], ...projects, projects[0]];
   const activeReal = ((activeExtended - 1) % n + n) % n;
 
-  function jumpTo(extIndex: number, behavior: ScrollBehavior) {
-    const track = trackRef.current;
+  function centerOffset(extIndex: number) {
+    const viewport = viewportRef.current;
     const card = cardRefs.current[extIndex];
-    if (!track || !card) return;
-    track.scrollTo({
-      left: card.offsetLeft + card.offsetWidth / 2 - track.clientWidth / 2,
-      behavior,
-    });
-    setActiveExtended(extIndex);
+    if (!viewport || !card) return 0;
+    return card.offsetLeft + card.offsetWidth / 2 - viewport.clientWidth / 2;
   }
 
-  useEffect(() => {
-    jumpTo(1, "auto");
-    const frame = requestAnimationFrame(() => setReady(true));
-    return () => cancelAnimationFrame(frame);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  function goTo(extIndex: number) {
+    setActiveExtended(extIndex);
+    setOffset(centerOffset(extIndex));
+  }
+
+  // Center the first card before paint so there's no load-in slide. Reading
+  // layout (offsetLeft/offsetWidth) and syncing it to state is exactly what
+  // useLayoutEffect is for — see https://react.dev/reference/react/useLayoutEffect.
+  useLayoutEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setOffset(centerOffset(1));
   }, []);
 
+  // Recenter (without animating) if the viewport is resized, since card
+  // width is fluid below the desktop breakpoint.
   useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-
-    let raf = 0;
-    let settleTimer: ReturnType<typeof setTimeout>;
-
-    function closestExtended() {
-      const trackEl = trackRef.current;
-      if (!trackEl) return 1;
-      const center = trackEl.scrollLeft + trackEl.clientWidth / 2;
-      let closest = 1;
-      let closestDist = Infinity;
-      cardRefs.current.forEach((card, i) => {
-        if (!card) return;
-        const dist = Math.abs(card.offsetLeft + card.offsetWidth / 2 - center);
-        if (dist < closestDist) {
-          closestDist = dist;
-          closest = i;
-        }
-      });
-      return closest;
+    function onResize() {
+      setInstant(true);
+      setOffset(centerOffset(activeExtended));
     }
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [activeExtended]);
 
-    function onScroll() {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => setActiveExtended(closestExtended()));
+  // Drop the "instant" flag one frame after any instant reposition, so the
+  // next state change is animated again.
+  useEffect(() => {
+    if (!instant) return;
+    const frame = requestAnimationFrame(() => setInstant(false));
+    return () => cancelAnimationFrame(frame);
+  }, [instant, offset]);
 
-      clearTimeout(settleTimer);
-      settleTimer = setTimeout(() => {
-        const closest = closestExtended();
-        if (closest === 0) jumpTo(n, "auto");
-        else if (closest === n + 1) jumpTo(1, "auto");
-      }, 120);
+  function handleTransitionEnd(e: React.TransitionEvent) {
+    // Ignore bubbled transitions from the cards' own scale/opacity change —
+    // only react to the track's own translateX finishing.
+    if (e.target !== e.currentTarget || e.propertyName !== "transform") return;
+    if (activeExtended === 0) {
+      setInstant(true);
+      setActiveExtended(n);
+      setOffset(centerOffset(n));
+    } else if (activeExtended === n + 1) {
+      setInstant(true);
+      setActiveExtended(1);
+      setOffset(centerOffset(1));
     }
+  }
 
-    track.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      track.removeEventListener("scroll", onScroll);
-      cancelAnimationFrame(raf);
-      clearTimeout(settleTimer);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [n]);
+  function onPointerDown(e: React.PointerEvent) {
+    dragStartX.current = e.clientX;
+  }
+
+  function onPointerUp(e: React.PointerEvent) {
+    if (dragStartX.current === null) return;
+    const delta = e.clientX - dragStartX.current;
+    dragStartX.current = null;
+    if (delta > SWIPE_THRESHOLD) goTo(activeExtended - 1);
+    else if (delta < -SWIPE_THRESHOLD) goTo(activeExtended + 1);
+  }
 
   return (
     <section id="work" className={shared.container} data-reveal>
@@ -113,7 +121,7 @@ export function Work() {
             type="button"
             className="btn btn-secondary btn-icon"
             aria-label="Previous project"
-            onClick={() => jumpTo(activeExtended - 1, "smooth")}
+            onClick={() => goTo(activeExtended - 1)}
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
               <path d="M15 18l-6-6 6-6" />
@@ -123,7 +131,7 @@ export function Work() {
             type="button"
             className="btn btn-secondary btn-icon"
             aria-label="Next project"
-            onClick={() => jumpTo(activeExtended + 1, "smooth")}
+            onClick={() => goTo(activeExtended + 1)}
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
               <path d="M9 6l6 6-6 6" />
@@ -132,46 +140,67 @@ export function Work() {
         </div>
       </div>
 
-      <div
-        className={`${styles.track} ${ready ? styles.trackReady : ""}`}
-        ref={trackRef}
-      >
-        {extended.map((project, i) => (
-          <div
-            key={`${project.num}-${i}`}
-            ref={(el) => {
-              cardRefs.current[i] = el;
-            }}
-            className={`blueprint ${styles.card} ${i === activeExtended ? styles.cardActive : ""}`}
-          >
-            <Corners />
-            <div className={styles.thumbWrap}>
-              <ImagePlaceholder
-                label="Project screenshot"
-                aspect="16 / 10"
-                className={styles.thumb}
-              />
-              <span
-                className={`${styles.platform} ${
-                  project.platform === "Mobile" ? styles.platformMobile : ""
-                }`}
-              >
-                <PlatformIcon platform={project.platform} />
-                {project.platform}
-              </span>
-            </div>
-            <span className="card-kicker">{project.num} — case study</span>
-            <h3 className="card-title">{project.title}</h3>
-            <p className="card-body">{project.blurb}</p>
-            <div className={styles.tags}>
-              {project.tags.map((tag) => (
-                <span key={tag} className="tag tag-outline">
-                  {tag}
+      <div className={styles.viewport} ref={viewportRef}>
+        <div
+          className={`${styles.track} ${instant ? styles.instant : ""}`}
+          style={{ transform: `translateX(${-offset}px)` }}
+          onTransitionEnd={handleTransitionEnd}
+          onPointerDown={onPointerDown}
+          onPointerUp={onPointerUp}
+        >
+          {extended.map((project, i) => (
+            <div
+              key={`${project.num}-${i}`}
+              ref={(el) => {
+                cardRefs.current[i] = el;
+              }}
+              className={`blueprint ${styles.card} ${i === activeExtended ? styles.cardActive : ""}`}
+            >
+              <Corners />
+              <div className={styles.thumbWrap}>
+                {project.image ? (
+                  <div
+                    className={`blueprint ${styles.thumb}`}
+                    style={{ aspectRatio: "16 / 10", position: "relative" }}
+                  >
+                    <Corners />
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      sizes="(max-width: 760px) 84vw, 360px"
+                      style={{ objectFit: "cover" }}
+                    />
+                  </div>
+                ) : (
+                  <ImagePlaceholder
+                    label="Project screenshot"
+                    aspect="16 / 10"
+                    className={styles.thumb}
+                  />
+                )}
+                <span
+                  className={`${styles.platform} ${
+                    project.platform === "Mobile" ? styles.platformMobile : ""
+                  }`}
+                >
+                  <PlatformIcon platform={project.platform} />
+                  {project.platform}
                 </span>
-              ))}
+              </div>
+              <span className="card-kicker">{project.num} — case study</span>
+              <h3 className="card-title">{project.title}</h3>
+              <p className="card-body">{project.blurb}</p>
+              <div className={styles.tags}>
+                {project.tags.map((tag) => (
+                  <span key={tag} className="tag tag-outline">
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       <div className={styles.dots}>
@@ -181,7 +210,7 @@ export function Work() {
             type="button"
             className={`${styles.dot} ${i === activeReal ? styles.dotActive : ""}`}
             aria-label={`Go to ${project.title}`}
-            onClick={() => jumpTo(i + 1, "smooth")}
+            onClick={() => goTo(i + 1)}
           />
         ))}
       </div>

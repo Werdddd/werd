@@ -15,24 +15,25 @@
   flex-shrink: 0;
 }
 
+.viewport {
+  position: relative;
+  overflow: hidden;
+  margin-top: var(--space-6);
+  padding-bottom: var(--space-6);
+}
+
 .track {
   display: flex;
   gap: var(--space-4);
-  margin-top: var(--space-6);
-  padding: var(--space-2) calc(50vw - 180px) var(--space-6);
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  opacity: 0;
-  transition: opacity 0.25s ease;
+  position: relative;
+  width: max-content;
+  will-change: transform;
 }
-.trackReady {
-  opacity: 1;
+.track.instant {
+  transition: none;
 }
-.track::-webkit-scrollbar {
-  display: none;
+.track:not(.instant) {
+  transition: transform 0.45s ease;
 }
 
 .card {
@@ -43,7 +44,6 @@
   flex-direction: column;
   gap: var(--space-2);
   background: var(--color-surface);
-  scroll-snap-align: center;
   opacity: 0.5;
   transform: scale(0.94);
   transition:
@@ -137,10 +137,6 @@
     flex-direction: column;
     align-items: flex-start;
     gap: var(--space-3);
-  }
-
-  .track {
-    padding-inline: calc(50vw - 160px);
   }
 
   .card {
