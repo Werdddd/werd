@@ -1,0 +1,40 @@
+.group {
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  border: 1px solid var(--color-divider);
+  flex-shrink: 0;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+  cursor: pointer;
+}
+
+.button + .button {
+  border-left: 1px solid var(--color-divider);
+}
+
+.button svg {
+  width: 15px;
+  height: 15px;
+  display: block;
+}
+
+.button:hover {
+  color: var(--color-text);
+  background: color-mix(in srgb, var(--color-text) 7%, transparent);
+}
+
+.button[data-active] {
+  background: var(--color-accent-100);
+  color: var(--color-accent-800);
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { ThemeToggle } from "./ThemeToggle";
 import styles from "./Nav.module.css";
 
 const links = [
@@ -33,6 +34,7 @@ export function Nav() {
           </a>
         ))}
       </div>
+      <ThemeToggle />
       <a className={`btn btn-primary ${styles.contact}`} href="#contact">
         Contact
       </a>
