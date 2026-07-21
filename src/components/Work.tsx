@@ -188,7 +188,6 @@ export function Work() {
                   {project.platform}
                 </span>
               </div>
-              <span className="card-kicker">{project.num} — case study</span>
               <h3 className="card-title">{project.title}</h3>
               <p className="card-body">{project.blurb}</p>
               <div className={styles.tags}>

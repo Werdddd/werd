@@ -43,6 +43,7 @@ export function Hackathons() {
                     setExpanded(isOpen ? null : h.event);
                   }
                 }}
+                suppressHydrationWarning
               >
                 <Corners />
                 <PhotoCarousel

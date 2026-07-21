@@ -17,8 +17,10 @@
 
 .viewport {
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: visible;
   margin-top: var(--space-6);
+  padding-top: var(--space-3);
   padding-bottom: var(--space-6);
 }
 

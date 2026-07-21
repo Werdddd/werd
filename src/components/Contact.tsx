@@ -88,6 +88,7 @@ export function Contact() {
             type="text"
             placeholder="Your name"
             required
+            suppressHydrationWarning
           />
         </div>
         <div className="field">
@@ -99,6 +100,7 @@ export function Contact() {
             type="email"
             placeholder="you@company.com"
             required
+            suppressHydrationWarning
           />
         </div>
         <div className="field">
@@ -112,7 +114,12 @@ export function Contact() {
             required
           />
         </div>
-        <button className="btn btn-primary btn-block" type="submit" disabled={submitting}>
+        <button
+          className="btn btn-primary btn-block"
+          type="submit"
+          disabled={submitting}
+          suppressHydrationWarning
+        >
           {submitting ? "Sending…" : "Send message"}
         </button>
         {status === "success" && (

@@ -82,7 +82,7 @@ const portfolioData: PortfolioData = {
         "A community-powered air quality monitoring platform with a live AQI dashboard, interactive air quality maps, and crowdsourced reporting for real-time conditions nationwide.",
       tags: ["NextJS", "Supabase", "Vercel"],
       platform: "Web",
-      image: "/projects/simoytestbanner.png",
+      image: "/projects/simoy1.png",
     },
     {
       num: "02",
@@ -91,6 +91,7 @@ const portfolioData: PortfolioData = {
         "A crowdsourced fuel tracker that helps drivers find the cheapest nearby stations, with a live fuel map, trip cost estimator, and a gamified community system.",
       tags: ["NextJS", "Supabase", "Vercel"],
       platform: "Web",
+      image: "/projects/beep1.png",
     },
     {
       num: "03",
@@ -99,6 +100,7 @@ const portfolioData: PortfolioData = {
         "The official companion app for an international Scout jamboree with 25,000+ participants — QR-linked digital IDs, live event maps, announcements, and emergency access.",
       tags: ["React Native", "Supabase", "App Store"],
       platform: "Mobile",
+      image: "/projects/aprsj1.png",
     },
     {
       num: "04",
@@ -107,14 +109,16 @@ const portfolioData: PortfolioData = {
         "A centralized, algorithm-driven social and organization-management app for university student life, built to boost engagement across student orgs.",
       tags: ["React Native", "Firebase", "Mobile"],
       platform: "Mobile",
+      image: "/projects/ueconnect1.png",
     },
     {
       num: "05",
-      title: "GabAI",
+      title: "SynseAI",
       blurb:
-        "An AI-assisted study companion that generates personalized study guides adapted to each student's learning style, language, and dialect preferences.",
-      tags: ["React Native", "Firebase", "Gemini AI"],
-      platform: "Mobile",
+        "An AI-powered collaboration platform that helps BPI find the right partners and streamline document workflows, transforming partnerships into faster, smarter, and more seamless opportunities. Hashi Agent handles AI synergy scoring, while the Nagare System automates document handling.",
+      tags: ["Next.js", "MySQL", "OpenAI"],
+      platform: "Web",
+      image: "/projects/synseai1.png",
     },
   ],
   skills: [
