@@ -7,11 +7,11 @@ export function Skills() {
     <section id="skills" className={shared.container} data-reveal>
       <div className={shared.sectionHeader}>
         <div>
-          <h6 className={shared.eyebrow}>Skills &amp; tools</h6>
+          <h6 className={shared.eyebrow}>Stack</h6>
           <h2 className={shared.sectionHeading}>What I work with</h2>
         </div>
         <Link className={shared.viewAll} href="/tools">
-          View all tools →
+          View full stack →
         </Link>
       </div>
       <SkillsGrid />

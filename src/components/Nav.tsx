@@ -8,7 +8,7 @@ import styles from "./Nav.module.css";
 const links = [
   { href: "/works", label: "Work" },
   { href: "/#about", label: "About" },
-  { href: "/tools", label: "Tools" },
+  { href: "/tools", label: "Stack" },
   { href: "/experience", label: "Experience" },
   { href: "/testimonials", label: "Testimonials" },
   { href: "/hackathons", label: "Hackathons" },

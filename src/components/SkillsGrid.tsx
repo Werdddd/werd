@@ -20,9 +20,37 @@ import {
   siKotlin,
   siFlutter,
   siFigma,
+  siSwift,
+  siPhp,
+  siCplusplus,
+  siDart,
+  siTailwindcss,
+  siSvelte,
+  siRedux,
+  siExpress,
+  siDjango,
+  siFlask,
+  siGraphql,
+  siDotnet,
+  siSpring,
+  siPostgresql,
+  siMongodb,
+  siRedis,
+  siSqlite,
+  siExpo,
+  siGithubcopilot,
+  siGooglegemini,
+  siGit,
+  siGithub,
+  siDocker,
+  siVercel,
+  siPostman,
+  siJira,
+  siLinux,
+  siNginx,
   type SimpleIcon,
 } from "simple-icons";
-import portfolio from "@/lib/portfolio-data";
+import portfolio, { type SkillCategory } from "@/lib/portfolio-data";
 import styles from "./Skills.module.css";
 
 const ICONS: Record<string, SimpleIcon> = {
@@ -43,6 +71,34 @@ const ICONS: Record<string, SimpleIcon> = {
   Kotlin: siKotlin,
   Flutter: siFlutter,
   Figma: siFigma,
+  Swift: siSwift,
+  PHP: siPhp,
+  "C++": siCplusplus,
+  Dart: siDart,
+  "Tailwind CSS": siTailwindcss,
+  Svelte: siSvelte,
+  Redux: siRedux,
+  Express: siExpress,
+  Django: siDjango,
+  Flask: siFlask,
+  GraphQL: siGraphql,
+  ".NET": siDotnet,
+  "Spring Boot": siSpring,
+  PostgreSQL: siPostgresql,
+  MongoDB: siMongodb,
+  Redis: siRedis,
+  SQLite: siSqlite,
+  Expo: siExpo,
+  "GitHub Copilot": siGithubcopilot,
+  Gemini: siGooglegemini,
+  Git: siGit,
+  GitHub: siGithub,
+  Docker: siDocker,
+  Vercel: siVercel,
+  Postman: siPostman,
+  Jira: siJira,
+  Linux: siLinux,
+  Nginx: siNginx,
 };
 
 // A few tools in the stack don't have an entry in the icon set this site
@@ -53,7 +109,10 @@ const MONOGRAMS: Record<string, string> = {
   Canva: "C",
   "Adobe Illustrator": "Ai",
   "Adobe Premiere Pro": "Pr",
+  "Adobe Photoshop": "Ps",
   CapCut: "Cc",
+  OpenAI: "AI",
+  AWS: "AWS",
 };
 
 function IconPath({ icon }: { icon: SimpleIcon }) {
@@ -94,6 +153,17 @@ function SkillMark({ name }: { name: string }) {
 
 const STUMBLE_MS = 640;
 const RIPPLE_MAX_MS = 180;
+
+const CATEGORY_ORDER: SkillCategory[] = [
+  "Languages",
+  "Frontend",
+  "Backend",
+  "Databases & Services",
+  "Mobile",
+  "AI Tools",
+  "Design",
+  "DevOps & Tools",
+];
 
 type Offset = { x: number; y: number; rot: number; delay: number };
 
@@ -161,39 +231,53 @@ export function SkillsGrid() {
   }
 
   return (
-    <div className={styles.grid}>
-      {portfolio.skills.map((skill, i) => {
-        const offset = offsets?.[i];
-        const isTripped = trippedIndex === i;
+    <>
+      {CATEGORY_ORDER.map((category) => {
+        const entries = portfolio.skills
+          .map((skill, i) => ({ skill, i }))
+          .filter(({ skill }) => skill.category === category);
+        if (entries.length === 0) return null;
 
         return (
-          <button
-            key={skill.name}
-            type="button"
-            ref={(el) => {
-              chipRefs.current[i] = el;
-            }}
-            className={`${styles.chip} ${offset ? styles.messy : ""} ${
-              isTripped ? styles.tripped : ""
-            }`}
-            style={
-              offset
-                ? ({
-                    "--tx": `${offset.x}px`,
-                    "--ty": `${offset.y}px`,
-                    "--rot": `${offset.rot}deg`,
-                    animationDelay: `${offset.delay}ms`,
-                  } as React.CSSProperties)
-                : undefined
-            }
-            onClick={() => handleStumble(i)}
-            suppressHydrationWarning
-          >
-            <SkillMark name={skill.name} />
-            {skill.name}
-          </button>
+          <div key={category} className={styles.section}>
+            <h2 className={styles.sectionTitle}>{category}</h2>
+            <div className={styles.grid}>
+              {entries.map(({ skill, i }) => {
+                const offset = offsets?.[i];
+                const isTripped = trippedIndex === i;
+
+                return (
+                  <button
+                    key={skill.name}
+                    type="button"
+                    ref={(el) => {
+                      chipRefs.current[i] = el;
+                    }}
+                    className={`${styles.chip} ${offset ? styles.messy : ""} ${
+                      isTripped ? styles.tripped : ""
+                    }`}
+                    style={
+                      offset
+                        ? ({
+                            "--tx": `${offset.x}px`,
+                            "--ty": `${offset.y}px`,
+                            "--rot": `${offset.rot}deg`,
+                            animationDelay: `${offset.delay}ms`,
+                          } as React.CSSProperties)
+                        : undefined
+                    }
+                    onClick={() => handleStumble(i)}
+                    suppressHydrationWarning
+                  >
+                    <SkillMark name={skill.name} />
+                    {skill.name}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
         );
       })}
-    </div>
+    </>
   );
 }

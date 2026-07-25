@@ -12,8 +12,19 @@ export interface Project {
   image?: string;
 }
 
+export type SkillCategory =
+  | "Languages"
+  | "Frontend"
+  | "Backend"
+  | "Databases & Services"
+  | "Mobile"
+  | "AI Tools"
+  | "Design"
+  | "DevOps & Tools";
+
 export interface Skill {
   name: string;
+  category: SkillCategory;
 }
 
 export interface ExperienceItem {
@@ -122,29 +133,70 @@ const portfolioData: PortfolioData = {
     },
   ],
   skills: [
-    { name: "TypeScript" },
-    { name: "JavaScript" },
-    { name: "Python" },
-    { name: "Java" },
-    { name: "React" },
-    { name: "React Native" },
-    { name: "Vue" },
-    { name: "Angular" },
-    { name: "Next JS" },
-    { name: "Node.js" },
-    { name: "HTML/CSS" },
-    { name: "Claude Code" },
-    { name: "Cursor" },
-    { name: "MySQL" },
-    { name: "Firebase" },
-    { name: "Supabase" },
-    { name: "Kotlin" },
-    { name: "Flutter" },
-    { name: "Figma" },
-    { name: "Canva" },
-    { name: "Adobe Illustrator" },
-    { name: "Adobe Premiere Pro" },
-    { name: "CapCut" },
+    // Languages
+    { name: "TypeScript", category: "Languages" },
+    { name: "JavaScript", category: "Languages" },
+    { name: "Python", category: "Languages" },
+    { name: "Java", category: "Languages" },
+    { name: "Kotlin", category: "Languages" },
+    { name: "Swift", category: "Languages" },
+    { name: "PHP", category: "Languages" },
+    { name: "C++", category: "Languages" },
+    { name: "Dart", category: "Languages" },
+
+    // Frontend
+    { name: "React", category: "Frontend" },
+    { name: "Vue", category: "Frontend" },
+    { name: "Angular", category: "Frontend" },
+    { name: "Next JS", category: "Frontend" },
+    { name: "HTML/CSS", category: "Frontend" },
+    { name: "Tailwind CSS", category: "Frontend" },
+  
+
+    // Backend
+    { name: "Node.js", category: "Backend" },
+    { name: "Express", category: "Backend" },
+    { name: "Django", category: "Backend" },
+    { name: "Flask", category: "Backend" },
+    
+    
+
+    // Databases & Services
+    { name: "MySQL", category: "Databases & Services" },
+    { name: "PostgreSQL", category: "Databases & Services" },
+    { name: "MongoDB", category: "Databases & Services" },
+    { name: "Firebase", category: "Databases & Services" },
+    { name: "Supabase", category: "Databases & Services" },
+    
+    // Mobile
+    { name: "React Native", category: "Mobile" },
+    { name: "Flutter", category: "Mobile" },
+    { name: "Expo", category: "Mobile" },
+
+    // AI Tools
+    { name: "Claude Code", category: "AI Tools" },
+    { name: "Cursor", category: "AI Tools" },
+    { name: "GitHub Copilot", category: "AI Tools" },
+    { name: "OpenAI", category: "AI Tools" },
+    { name: "Gemini", category: "AI Tools" },
+
+    // Design
+    { name: "Figma", category: "Design" },
+    { name: "Canva", category: "Design" },
+    { name: "Adobe Illustrator", category: "Design" },
+    { name: "Adobe Premiere Pro", category: "Design" },
+    { name: "Adobe Photoshop", category: "Design" },
+    { name: "CapCut", category: "Design" },
+
+    // DevOps & Tools
+    { name: "Git", category: "DevOps & Tools" },
+    { name: "GitHub", category: "DevOps & Tools" },
+    { name: "Docker", category: "DevOps & Tools" },
+    { name: "Vercel", category: "DevOps & Tools" },
+    { name: "AWS", category: "DevOps & Tools" },
+    { name: "Postman", category: "DevOps & Tools" },
+    { name: "Jira", category: "DevOps & Tools" },
+    
   ],
   experience: [
     {
