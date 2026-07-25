@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import portfolio from "@/lib/portfolio-data";
 import { Corners } from "./Blueprint";
 import { PhotoCarousel } from "./PhotoCarousel";
@@ -19,8 +20,15 @@ export function Hackathons() {
 
   return (
     <section id="hackathons" className={shared.container} data-reveal>
-      <h6 className={shared.eyebrow}>Hackathons</h6>
-      <h2 className={shared.sectionHeading}>Podium finishes</h2>
+      <div className={shared.sectionHeader}>
+        <div>
+          <h6 className={shared.eyebrow}>Hackathons</h6>
+          <h2 className={shared.sectionHeading}>Podium finishes</h2>
+        </div>
+        <Link className={shared.viewAll} href="/hackathons">
+          View all hackathons →
+        </Link>
+      </div>
       <div className={styles.podium}>
         {portfolio.hackathons.map((h) => {
           const isOpen = expanded === h.event;

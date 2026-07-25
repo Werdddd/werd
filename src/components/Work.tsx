@@ -2,28 +2,13 @@
 
 import { useLayoutEffect, useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import portfolio from "@/lib/portfolio-data";
 import { Corners } from "./Blueprint";
 import { ImagePlaceholder } from "./ImagePlaceholder";
+import { PlatformIcon } from "./PlatformIcon";
 import styles from "./Work.module.css";
 import shared from "@/styles/shared.module.css";
-
-function PlatformIcon({ platform }: { platform: "Web" | "Mobile" }) {
-  if (platform === "Mobile") {
-    return (
-      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="6" y="2" width="12" height="20" rx="2" />
-        <line x1="11" y1="18" x2="13" y2="18" />
-      </svg>
-    );
-  }
-  return (
-    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="9" />
-      <path d="M3 12h18M12 3c2.5 2.6 4 6 4 9s-1.5 6.4-4 9c-2.5-2.6-4-6-4-9s1.5-6.4 4-9Z" />
-    </svg>
-  );
-}
 
 const SWIPE_THRESHOLD = 40;
 
@@ -117,11 +102,15 @@ export function Work() {
           <h2 className={styles.heading}>Projects, end to end</h2>
         </div>
         <div className={styles.controls}>
+          <Link className={shared.viewAll} href="/works">
+            View all projects →
+          </Link>
           <button
             type="button"
             className="btn btn-secondary btn-icon"
             aria-label="Previous project"
             onClick={() => goTo(activeExtended - 1)}
+            suppressHydrationWarning
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
               <path d="M15 18l-6-6 6-6" />
@@ -132,6 +121,7 @@ export function Work() {
             className="btn btn-secondary btn-icon"
             aria-label="Next project"
             onClick={() => goTo(activeExtended + 1)}
+            suppressHydrationWarning
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
               <path d="M9 6l6 6-6 6" />
@@ -210,6 +200,7 @@ export function Work() {
             className={`${styles.dot} ${i === activeReal ? styles.dotActive : ""}`}
             aria-label={`Go to ${project.title}`}
             onClick={() => goTo(i + 1)}
+            suppressHydrationWarning
           />
         ))}
       </div>

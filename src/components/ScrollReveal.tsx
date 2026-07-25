@@ -1,10 +1,19 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export function ScrollReveal() {
+  const pathname = usePathname();
+
   useEffect(() => {
-    const targets = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
+    // Root layout persists across client-side navigations, so this effect
+    // must re-run per route (keyed on pathname) to pick up the new page's
+    // [data-reveal] elements — otherwise they're never observed and stay
+    // invisible until a full page reload remounts everything.
+    const targets = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-reveal]:not([data-revealed])")
+    );
     if (targets.length === 0) return;
 
     if (typeof IntersectionObserver === "undefined") {
@@ -26,7 +35,7 @@ export function ScrollReveal() {
 
     targets.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, []);
+  }, [pathname]);
 
   return null;
 }

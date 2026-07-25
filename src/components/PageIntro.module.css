@@ -1,0 +1,19 @@
+/* header.intro (not just .intro): needs higher specificity than
+   shared.container's `padding` shorthand, which also sets padding-top
+   and otherwise wins or loses depending on chunk load order. Also
+   padding, not margin-top — margin collapses through body/html on
+   this first-of-page element and disappears instead of clearing the
+   fixed navbar. */
+header.intro {
+  padding-top: calc(var(--space-8) + 72px);
+}
+
+.heading {
+  max-width: 20ch;
+}
+
+@media (max-width: 760px) {
+  header.intro {
+    padding-top: calc(var(--space-6) + 64px);
+  }
+}

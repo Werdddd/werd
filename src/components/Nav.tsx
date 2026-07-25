@@ -1,15 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
 import styles from "./Nav.module.css";
 
 const links = [
-  { href: "#work", label: "Work" },
-  { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
-  { href: "#experience", label: "Experience" },
-  { href: "#hackathons", label: "Hackathons" },
+  { href: "/works", label: "Work" },
+  { href: "/#about", label: "About" },
+  { href: "/tools", label: "Tools" },
+  { href: "/experience", label: "Experience" },
+  { href: "/testimonials", label: "Testimonials" },
+  { href: "/hackathons", label: "Hackathons" },
 ];
 
 export function Nav() {
@@ -26,18 +28,20 @@ export function Nav() {
 
   return (
     <nav className={`nav ${styles.nav}`}>
-      <span className="nav-brand">Andrew Robles</span>
+      <Link className="nav-brand" href="/">
+        Andrew Robles
+      </Link>
       <div className={styles.links}>
         {links.map((link) => (
-          <a key={link.href} href={link.href}>
+          <Link key={link.href} href={link.href}>
             {link.label}
-          </a>
+          </Link>
         ))}
       </div>
       <ThemeToggle />
-      <a className={`btn btn-primary ${styles.contact}`} href="#contact">
+      <Link className={`btn btn-primary ${styles.contact}`} href="/#contact">
         Contact
-      </a>
+      </Link>
       <button
         type="button"
         className={styles.menuToggle}
@@ -50,13 +54,13 @@ export function Nav() {
       </button>
       <div id="mobile-menu" className={styles.mobileMenu} data-open={open || undefined}>
         {links.map((link) => (
-          <a key={link.href} href={link.href} onClick={() => setOpen(false)}>
+          <Link key={link.href} href={link.href} onClick={() => setOpen(false)}>
             {link.label}
-          </a>
+          </Link>
         ))}
-        <a className="btn btn-primary" href="#contact" onClick={() => setOpen(false)}>
+        <Link className="btn btn-primary" href="/#contact" onClick={() => setOpen(false)}>
           Contact
-        </a>
+        </Link>
       </div>
     </nav>
   );

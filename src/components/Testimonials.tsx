@@ -1,3 +1,4 @@
+import Link from "next/link";
 import portfolio from "@/lib/portfolio-data";
 import { Corners } from "./Blueprint";
 import styles from "./Testimonials.module.css";
@@ -8,8 +9,15 @@ export function Testimonials() {
 
   return (
     <section id="testimonials" className={shared.container} data-reveal>
-      <h6 className={shared.eyebrow}>Testimonials</h6>
-      <h2 className={shared.sectionHeading}>What people say</h2>
+      <div className={shared.sectionHeader}>
+        <div>
+          <h6 className={shared.eyebrow}>Testimonials</h6>
+          <h2 className={shared.sectionHeading}>What people say</h2>
+        </div>
+        <Link className={shared.viewAll} href="/testimonials">
+          View all testimonials →
+        </Link>
+      </div>
       <div className={styles.marquee}>
         <div className={styles.track}>
           {[...testimonials, ...testimonials].map((testimonial, i) => (
