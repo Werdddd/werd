@@ -178,6 +178,8 @@ const portfolioData: PortfolioData = {
     { name: "React Native", category: "Mobile" },
     { name: "Flutter", category: "Mobile" },
     { name: "Expo", category: "Mobile" },
+    { name: "Apple App Store", category: "Mobile" },
+    { name: "Google Play Store", category: "Mobile" },
 
     // AI Tools
     { name: "Claude Code", category: "AI Tools" },

@@ -48,6 +48,8 @@ import {
   siJira,
   siLinux,
   siNginx,
+  siAppstore,
+  siGoogleplay,
   type SimpleIcon,
 } from "simple-icons";
 import portfolio, { type SkillCategory } from "@/lib/portfolio-data";
@@ -99,6 +101,8 @@ const ICONS: Record<string, SimpleIcon> = {
   Jira: siJira,
   Linux: siLinux,
   Nginx: siNginx,
+  "Apple App Store": siAppstore,
+  "Google Play Store": siGoogleplay,
 };
 
 // A few tools in the stack don't have an entry in the icon set this site
@@ -165,9 +169,35 @@ const CATEGORY_ORDER: SkillCategory[] = [
   "DevOps & Tools",
 ];
 
+// A shorter, hand-picked highlight reel for the landing page — the full,
+// categorized stack lives on the /tools detail page.
+const LANDING_SKILL_NAMES = [
+  "Python",
+  "JavaScript",
+  "TypeScript",
+  "Java",
+  "React",
+  "React Native",
+  "Vue",
+  "Angular",
+  "HTML/CSS",
+  "MySQL",
+  "Firebase",
+  "Supabase",
+  "Kotlin",
+  "Flutter",
+  "Apple App Store",
+  "Google Play Store",
+  "Figma",
+  "Canva",
+  "Adobe Illustrator",
+  "Adobe Premiere Pro",
+  "CapCut",
+];
+
 type Offset = { x: number; y: number; rot: number; delay: number };
 
-export function SkillsGrid() {
+export function SkillsGrid({ categorized = true }: { categorized?: boolean }) {
   const [offsets, setOffsets] = useState<Offset[] | null>(null);
   const [trippedIndex, setTrippedIndex] = useState<number | null>(null);
   const chipRefs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -230,6 +260,52 @@ export function SkillsGrid() {
     }, STUMBLE_MS + RIPPLE_MAX_MS);
   }
 
+  function renderChip({ skill, i }: { skill: (typeof portfolio.skills)[number]; i: number }) {
+    const offset = offsets?.[i];
+    const isTripped = trippedIndex === i;
+
+    return (
+      <button
+        key={skill.name}
+        type="button"
+        ref={(el) => {
+          chipRefs.current[i] = el;
+        }}
+        className={`${styles.chip} ${offset ? styles.messy : ""} ${
+          isTripped ? styles.tripped : ""
+        }`}
+        style={
+          offset
+            ? ({
+                "--tx": `${offset.x}px`,
+                "--ty": `${offset.y}px`,
+                "--rot": `${offset.rot}deg`,
+                animationDelay: `${offset.delay}ms`,
+              } as React.CSSProperties)
+            : undefined
+        }
+        onClick={() => handleStumble(i)}
+        suppressHydrationWarning
+      >
+        <SkillMark name={skill.name} />
+        {skill.name}
+      </button>
+    );
+  }
+
+  if (!categorized) {
+    const indexByName = new Map(portfolio.skills.map((skill, i) => [skill.name, i]));
+    const entries = LANDING_SKILL_NAMES.flatMap((name) => {
+      const i = indexByName.get(name);
+      return i === undefined ? [] : [{ skill: portfolio.skills[i], i }];
+    });
+    return (
+      <div className={styles.section}>
+        <div className={styles.grid}>{entries.map(renderChip)}</div>
+      </div>
+    );
+  }
+
   return (
     <>
       {CATEGORY_ORDER.map((category) => {
@@ -241,40 +317,7 @@ export function SkillsGrid() {
         return (
           <div key={category} className={styles.section}>
             <h2 className={styles.sectionTitle}>{category}</h2>
-            <div className={styles.grid}>
-              {entries.map(({ skill, i }) => {
-                const offset = offsets?.[i];
-                const isTripped = trippedIndex === i;
-
-                return (
-                  <button
-                    key={skill.name}
-                    type="button"
-                    ref={(el) => {
-                      chipRefs.current[i] = el;
-                    }}
-                    className={`${styles.chip} ${offset ? styles.messy : ""} ${
-                      isTripped ? styles.tripped : ""
-                    }`}
-                    style={
-                      offset
-                        ? ({
-                            "--tx": `${offset.x}px`,
-                            "--ty": `${offset.y}px`,
-                            "--rot": `${offset.rot}deg`,
-                            animationDelay: `${offset.delay}ms`,
-                          } as React.CSSProperties)
-                        : undefined
-                    }
-                    onClick={() => handleStumble(i)}
-                    suppressHydrationWarning
-                  >
-                    <SkillMark name={skill.name} />
-                    {skill.name}
-                  </button>
-                );
-              })}
-            </div>
+            <div className={styles.grid}>{entries.map(renderChip)}</div>
           </div>
         );
       })}

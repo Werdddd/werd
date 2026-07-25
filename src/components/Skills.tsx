@@ -14,7 +14,7 @@ export function Skills() {
           View full stack →
         </Link>
       </div>
-      <SkillsGrid />
+      <SkillsGrid categorized={false} />
     </section>
   );
 }
