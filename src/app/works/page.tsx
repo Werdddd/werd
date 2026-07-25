@@ -11,7 +11,7 @@ import shared from "@/styles/shared.module.css";
 import styles from "./works.module.css";
 
 export const metadata: Metadata = {
-  title: `${portfolio.name} — Work`,
+  title: `${portfolio.name} — Projects`,
   description: `All ${portfolio.projects.length} projects by ${portfolio.name}, spanning web and mobile products built end to end.`,
 };
 
@@ -19,7 +19,7 @@ export default function WorksPage() {
   return (
     <>
       <Nav />
-      <PageIntro eyebrow="All work" heading="Projects, end to end" />
+      <PageIntro eyebrow="All projects" heading="Projects, end to end" />
       <section className={shared.container}>
         <div className={styles.grid}>
           {portfolio.projects.map((project) => (

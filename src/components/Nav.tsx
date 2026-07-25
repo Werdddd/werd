@@ -6,7 +6,7 @@ import { ThemeToggle } from "./ThemeToggle";
 import styles from "./Nav.module.css";
 
 const links = [
-  { href: "/works", label: "Work" },
+  { href: "/works", label: "Projects" },
   { href: "/#about", label: "About" },
   { href: "/tools", label: "Stack" },
   { href: "/experience", label: "Experience" },

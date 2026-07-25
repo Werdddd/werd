@@ -98,7 +98,7 @@ export function Work() {
     <section id="work" className={shared.container} data-reveal>
       <div className={styles.header}>
         <div>
-          <h6 className={shared.eyebrow}>Selected work</h6>
+          <h6 className={shared.eyebrow}>Projects</h6>
           <h2 className={styles.heading}>Projects, end to end</h2>
         </div>
         <div className={styles.controls}>
