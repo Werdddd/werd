@@ -30,9 +30,15 @@ export interface Skill {
 export interface ExperienceItem {
   role: string;
   org: string;
+  employmentType: string;
   location: string;
+  setup: "Onsite" | "Remote" | "Hybrid";
+  startDate: string;
+  endDate: string;
+  duration: string;
   period: string;
   blurb: string;
+  details: [string, string];
   logo: string;
 }
 
@@ -202,47 +208,110 @@ const portfolioData: PortfolioData = {
     {
       role: "Junior Developer",
       org: "Impulse 101 IT Solutions OPC — Bebe Live",
-      location: "Quezon City, Philippines",
-      period: "2025 — 2026",
+      employmentType: "Full-time",
+      location: "Quezon City, National Capital Region, Philippines",
+      setup: "Hybrid",
+      startDate: "Dec 2025",
+      endDate: "Jul 2026",
+      duration: "8 mos",
+      period: "Dec 2025 — Jul 2026",
       blurb:
         "Built interactive in-app games for Bebe Live, a livestreaming platform with 35,000+ users, including Bato Bato Pick and Minesweeper under Zenith Gaming.",
+      details: [
+        "Contributed to the development and continuous improvement of Bebe Live, a live-streaming platform serving more than 35,000 users. Worked as part of the development team to build, integrate, and refine interactive features designed to increase user engagement within the live-streaming environment.",
+        "Under the Zenith Gaming initiative, designed and implemented in-app games such as Bato Bato Pick and Minesweeper, developing their core game logic, user interactions, and integration with the broader application ecosystem. Collaborated with other developers and stakeholders to translate requirements into functional features, troubleshoot technical issues, and optimize the overall user experience.",
+      ],
       logo: "/impulse.png",
+    },
+    {
+      role: "Software Engineer",
+      org: "Pandas Freelancing Inc.",
+      employmentType: "Part-time",
+      location: "Taguig, National Capital Region, Philippines",
+      setup: "Hybrid",
+      startDate: "May 2024",
+      endDate: "Jun 2026",
+      duration: "2 yrs 2 mos",
+      period: "May 2024 — Jun 2026",
+      blurb:
+        "Delivered full-stack web and mobile projects for clients as an independent freelance software engineer.",
+      details: [
+        "Worked as a part-time independent software engineer through Pandas Freelancing Inc., delivering full-stack web and mobile applications for a diverse range of clients and projects.",
+        "Managed projects across the full software development lifecycle, from gathering and analyzing requirements and defining technical solutions to designing system architecture, developing frontend and backend features, integrating databases and third-party services, testing functionality, and deploying applications to production. Worked closely with clients and project stakeholders to understand business objectives, translate requirements into scalable technical solutions, and deliver products that balance functionality, usability, and performance.",
+      ],
+      logo: "/pandas.png",
     },
     {
       role: "Full-Stack Developer",
       org: "Boy Scouts of the Philippines",
-      location: "Manila, Philippines",
-      period: "2025",
+      employmentType: "Contract",
+      location: "Manila, National Capital Region, Philippines",
+      setup: "Hybrid",
+      startDate: "Sep 2025",
+      endDate: "Dec 2025",
+      duration: "4 mos",
+      period: "Sep 2025 — Dec 2025",
       blurb:
         "Designed and built the official mobile app and web-admin portal for the 33rd Asia-Pacific Regional Scout Jamboree, an event with 25,000+ participants — registration, role-based access, maps, and QR-based ID.",
+      details: [
+        "Designed and developed the official mobile application and web-based administrative portal for the 33rd Asia-Pacific Regional Scout Jamboree, an international event attended by more than 25,000 participants. Led the development of end-to-end digital solutions supporting participant registration, role-based access control, real-time announcements, event maps, schedules, QR code-based identification, and emergency access features.",
+        "Worked across both frontend and backend systems to create a cohesive platform capable of supporting the operational and communication needs of a large-scale international event. Collaborated with event stakeholders to translate complex operational requirements into accessible and reliable digital tools, ensuring that participants, staff, and administrators could efficiently access critical information throughout the jamboree.",
+      ],
       logo: "/bsp.png",
     },
     {
       role: "Software Developer Intern",
-      org: "Exakt IT Services",
-      location: "Pasig, Philippines",
-      period: "2025",
+      org: "Exakt, Inc.",
+      employmentType: "Internship",
+      location: "Pasig, National Capital Region, Philippines",
+      setup: "Onsite",
+      startDate: "Jun 2025",
+      endDate: "Jul 2025",
+      duration: "2 mos",
+      period: "Jun 2025 — Jul 2025",
       blurb:
         "Supported feature development and testing on the Frontline Services and Transactions System (FSTS) for the DENR, improving an internal system used to manage frontline transactions.",
+      details: [
+        "Worked on the Frontline Services and Transactions System (FSTS) developed for the Department of Environment and Natural Resources (DENR). Contributed to the development, testing, and optimization of features for a large-scale web-based information system designed to support the management of frontline services and government transactions. Participated in the software development lifecycle by assisting with feature implementation, debugging, quality assurance, and system improvements.",
+        "Collaborated with the development team to understand requirements, address technical issues, and ensure that new functionality integrated effectively with the existing system. Through this experience, gained practical exposure to developing enterprise-level software, working within an established development environment, and contributing to a system designed to improve the efficiency and reliability of internal government operations.",
+      ],
       logo: "/exakt.png",
     },
     {
       role: "UI/UX Designer",
-      org: "PB Visions LLC — TRAK",
-      location: "Pittsburg, California",
-      period: "2025",
+      org: "PB Vision",
+      employmentType: "Full-time",
+      location: "Pittsburg, California, United States",
+      setup: "Remote",
+      startDate: "Apr 2025",
+      endDate: "Sep 2025",
+      duration: "6 mos",
+      period: "Apr 2025 — Sep 2025",
       blurb:
         "Led end-to-end UI/UX for TRAK, a fitness-focused social startup app, from wireframes through interactive prototypes to final visual design.",
+      details: [
+        "Led the end-to-end UI/UX design process for TRAK, a startup fitness-focused social application, from initial product exploration and wireframing through to final high-fidelity visual designs and interactive prototypes. Translated product requirements and business objectives into intuitive user flows and engaging digital experiences designed around the needs of fitness-focused users. Created wireframes, information architectures, user flows, prototypes, and polished interface designs while maintaining consistency across the application's visual system.",
+        "Collaborated with the development and product teams to ensure that design decisions were practical, scalable, and aligned with the technical implementation. Focused on simplifying complex interactions, improving usability, and creating a cohesive experience that combined social engagement with fitness tracking and community-driven features.",
+      ],
       logo: "/pbvision.png",
     },
     {
       role: "Junior Frontend Developer",
       org: "Leaving Cert Plus",
-      location: "Dublin, Ireland",
-      period: "2024 — 2025",
-      logo: "/leavingcertplus.png",
+      employmentType: "Full-time",
+      location: "Dublin, County Dublin, Ireland",
+      setup: "Remote",
+      startDate: "Jan 2024",
+      endDate: "Dec 2025",
+      duration: "2 yrs",
+      period: "Jan 2024 — Dec 2025",
       blurb:
         "Built and refined user-facing features for an education platform, focused on responsiveness, performance, and accessible content delivery.",
+      details: [
+        "Over two years as a remote Junior Frontend Developer for Leaving Cert Plus, an Irish education platform, I built and refined user-facing features with a consistent focus on responsiveness, performance, and accessible content delivery for students studying for their Leaving Certificate exams.",
+        "Working fully remote across a significant time difference, I took ownership of frontend tasks independently, from implementing new study-content views to optimizing load times on content-heavy pages. The long tenure meant getting deeply familiar with the platform's frontend architecture and gradually taking on more complex features as trust with the team grew.",
+      ],
+      logo: "/leavingcertplus.png",
     },
   ],
   testimonials: [

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { PageIntro } from "@/components/PageIntro";
-import { ExperienceList } from "@/components/ExperienceList";
+import { ExperienceTimeline } from "@/components/ExperienceTimeline";
 import portfolio from "@/lib/portfolio-data";
 import shared from "@/styles/shared.module.css";
 
@@ -17,7 +17,7 @@ export default function ExperiencePage() {
       <Nav />
       <PageIntro eyebrow="Experience" heading="Where I've worked" />
       <section className={shared.container}>
-        <ExperienceList />
+        <ExperienceTimeline />
       </section>
       <Footer />
     </>
