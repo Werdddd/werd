@@ -135,10 +135,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* — ambient blueprint grid: faint graph-paper texture, kept to a couple
-   of soft patches (via mask) rather than tiled edge-to-edge, so the page
-   still reads as plain white. Sits behind in-flow content (z-index -1);
-   opaque sections (.card-style panels with --color-surface) cover it. */
+/* — ambient blueprint grid + blue radial glow: faint graph-paper texture
+   paired with a soft blue radial gradient, kept to several scattered
+   patches (via mask, positioned in % so they spread down the full page
+   regardless of content length) rather than tiled/painted edge-to-edge,
+   so the page still reads as mostly plain white. Sits behind in-flow
+   content (z-index -1); opaque sections (.card-style panels with
+   --color-surface) cover it. */
 body::before {
   content: "";
   position: absolute;
@@ -149,14 +152,30 @@ body::before {
     linear-gradient(color-mix(in srgb, var(--color-text) 5%, transparent) 1px, transparent 1px),
     linear-gradient(90deg, color-mix(in srgb, var(--color-text) 5%, transparent) 1px, transparent 1px),
     linear-gradient(color-mix(in srgb, var(--color-accent) 9%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in srgb, var(--color-accent) 9%, transparent) 1px, transparent 1px);
-  background-size: 24px 24px, 24px 24px, 120px 120px, 120px 120px;
+    linear-gradient(90deg, color-mix(in srgb, var(--color-accent) 9%, transparent) 1px, transparent 1px),
+    radial-gradient(420px circle at 92% 5%, color-mix(in srgb, var(--color-accent) 20%, transparent) 0%, transparent 70%),
+    radial-gradient(380px circle at 6% 20%, color-mix(in srgb, var(--color-accent) 18%, transparent) 0%, transparent 70%),
+    radial-gradient(440px circle at 88% 42%, color-mix(in srgb, var(--color-accent) 18%, transparent) 0%, transparent 70%),
+    radial-gradient(400px circle at 8% 62%, color-mix(in srgb, var(--color-accent) 20%, transparent) 0%, transparent 70%),
+    radial-gradient(420px circle at 90% 82%, color-mix(in srgb, var(--color-accent) 18%, transparent) 0%, transparent 70%),
+    radial-gradient(380px circle at 4% 97%, color-mix(in srgb, var(--color-accent) 20%, transparent) 0%, transparent 70%);
+  background-size:
+    24px 24px, 24px 24px, 120px 120px, 120px 120px,
+    auto, auto, auto, auto, auto, auto;
   mask-image:
-    radial-gradient(480px circle at 90% 80px, #000 0%, transparent 70%),
-    radial-gradient(420px circle at 2% calc(100% - 140px), #000 0%, transparent 70%);
+    radial-gradient(460px circle at 92% 5%, #000 0%, transparent 70%),
+    radial-gradient(420px circle at 6% 20%, #000 0%, transparent 70%),
+    radial-gradient(480px circle at 88% 42%, #000 0%, transparent 70%),
+    radial-gradient(440px circle at 8% 62%, #000 0%, transparent 70%),
+    radial-gradient(460px circle at 90% 82%, #000 0%, transparent 70%),
+    radial-gradient(420px circle at 4% 97%, #000 0%, transparent 70%);
   -webkit-mask-image:
-    radial-gradient(480px circle at 90% 80px, #000 0%, transparent 70%),
-    radial-gradient(420px circle at 2% calc(100% - 140px), #000 0%, transparent 70%);
+    radial-gradient(460px circle at 92% 5%, #000 0%, transparent 70%),
+    radial-gradient(420px circle at 6% 20%, #000 0%, transparent 70%),
+    radial-gradient(480px circle at 88% 42%, #000 0%, transparent 70%),
+    radial-gradient(440px circle at 8% 62%, #000 0%, transparent 70%),
+    radial-gradient(460px circle at 90% 82%, #000 0%, transparent 70%),
+    radial-gradient(420px circle at 4% 97%, #000 0%, transparent 70%);
 }
 
 h1, h2, h3, h4, h5, h6 {
