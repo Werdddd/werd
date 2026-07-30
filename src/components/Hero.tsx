@@ -1,5 +1,5 @@
 import portfolio from "@/lib/portfolio-data";
-import { HeroSlideshow } from "./HeroSlideshow";
+import { HeroPhoto } from "./HeroPhoto";
 import styles from "./Hero.module.css";
 import shared from "@/styles/shared.module.css";
 
@@ -20,7 +20,7 @@ export function Hero() {
           </a>
         </div>
       </div>
-      <HeroSlideshow className={styles.portrait} />
+      <HeroPhoto className={styles.portrait} />
     </header>
   );
 }

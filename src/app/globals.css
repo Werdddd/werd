@@ -122,9 +122,10 @@ html {
 }
 
 body {
+  position: relative;
   min-height: 100%;
   margin: 0;
-  background: var(--color-bg);
+  background-color: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-body), system-ui, sans-serif;
   font-size: 15px;
@@ -132,6 +133,30 @@ body {
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* — ambient blueprint grid: faint graph-paper texture, kept to a couple
+   of soft patches (via mask) rather than tiled edge-to-edge, so the page
+   still reads as plain white. Sits behind in-flow content (z-index -1);
+   opaque sections (.card-style panels with --color-surface) cover it. */
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--color-text) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-text) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(color-mix(in srgb, var(--color-accent) 9%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-accent) 9%, transparent) 1px, transparent 1px);
+  background-size: 24px 24px, 24px 24px, 120px 120px, 120px 120px;
+  mask-image:
+    radial-gradient(480px circle at 90% 80px, #000 0%, transparent 70%),
+    radial-gradient(420px circle at 2% calc(100% - 140px), #000 0%, transparent 70%);
+  -webkit-mask-image:
+    radial-gradient(480px circle at 90% 80px, #000 0%, transparent 70%),
+    radial-gradient(420px circle at 2% calc(100% - 140px), #000 0%, transparent 70%);
 }
 
 h1, h2, h3, h4, h5, h6 {

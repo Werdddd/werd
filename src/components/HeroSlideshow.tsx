@@ -9,7 +9,13 @@ import styles from "./HeroSlideshow.module.css";
 const images = ["/hero/heropic1.JPG", "/hero/heropic2.JPG", "/hero/heropic3.JPG"];
 const INTERVAL_MS = 5200;
 
-export function HeroSlideshow({ className }: { className?: string }) {
+export function HeroSlideshow({
+  className,
+  plain,
+}: {
+  className?: string;
+  plain?: boolean;
+}) {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -27,10 +33,10 @@ export function HeroSlideshow({ className }: { className?: string }) {
 
   return (
     <div
-      className={`blueprint ${styles.slideshow} ${className ?? ""}`}
-      style={{ aspectRatio: "4 / 5" }}
+      className={`${plain ? "" : "blueprint"} ${styles.slideshow} ${className ?? ""}`}
+      style={plain ? undefined : { aspectRatio: "4 / 5" }}
     >
-      <Corners />
+      {plain ? null : <Corners />}
       {images.map((src, i) => (
         <Image
           key={src}
