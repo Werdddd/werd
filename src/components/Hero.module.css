@@ -45,7 +45,7 @@
 @media (max-width: 900px) {
   .hero {
     grid-template-columns: 1fr;
-    padding: calc(var(--space-8) + 32px) var(--space-6) var(--space-8);
+    padding: calc(var(--space-8) + 60px) var(--space-6) var(--space-8);
   }
   .tagline {
     font-size: 44px;
@@ -61,7 +61,7 @@
 
 @media (max-width: 560px) {
   .hero {
-    padding: calc(var(--space-8) + 20px) var(--space-4) var(--space-6);
+    padding: calc(var(--space-8) + 44px) var(--space-4) var(--space-6);
     gap: 32px;
   }
   .tagline {
