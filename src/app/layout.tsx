@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Barlow, Barlow_Condensed } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import "./globals.css";
 
@@ -46,6 +47,7 @@ export default function RootLayout({
         </noscript>
         <ScrollReveal />
         {children}
+        <Analytics />
       </body>
     </html>
   );
