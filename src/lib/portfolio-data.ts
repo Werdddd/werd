@@ -10,6 +10,8 @@ export interface Project {
   tags: [string, string, string];
   platform: "Web" | "Mobile";
   image?: string;
+  /** Shown in the landing page carousel. All projects always show on /works. */
+  featured?: boolean;
 }
 
 export type SkillCategory =
@@ -100,6 +102,7 @@ const portfolioData: PortfolioData = {
       tags: ["NextJS", "Supabase", "Vercel"],
       platform: "Web",
       image: "/projects/simoy1.png",
+      featured: true,
     },
     {
       num: "02",
@@ -109,6 +112,7 @@ const portfolioData: PortfolioData = {
       tags: ["NextJS", "Supabase", "Vercel"],
       platform: "Web",
       image: "/projects/beep1.png",
+      featured: true,
     },
     {
       num: "03",
@@ -118,6 +122,7 @@ const portfolioData: PortfolioData = {
       tags: ["React Native", "Supabase", "App Store"],
       platform: "Mobile",
       image: "/projects/aprsj1.png",
+      featured: true,
     },
     {
       num: "04",
@@ -127,6 +132,7 @@ const portfolioData: PortfolioData = {
       tags: ["React Native", "Firebase", "Mobile"],
       platform: "Mobile",
       image: "/projects/ueconnect1.png",
+      featured: true,
     },
     {
       num: "05",
@@ -136,6 +142,187 @@ const portfolioData: PortfolioData = {
       tags: ["Next.js", "MySQL", "OpenAI"],
       platform: "Web",
       image: "/projects/synseai1.png",
+      featured: true,
+    },
+    {
+      num: "06",
+      title: "Agapay",
+      blurb:
+        "A community assistance platform connecting people in need with nearby help and resources in real time.",
+      tags: ["NextJS", "Supabase", "Vercel"],
+      platform: "Web",
+      image: "/projects/agapay1.png",
+    },
+    {
+      num: "07",
+      title: "GabAI",
+      blurb:
+        "An AI-assisted study companion that generates personalized study guides adapted to each student's learning style — champion at InnOlympics 2025.",
+      tags: ["React Native", "Firebase", "Gemini AI"],
+      platform: "Mobile",
+      image: "/projects/gabai1.png",
+    },
+    {
+      num: "08",
+      title: "GaBank",
+      blurb:
+        "A centralized, AI-powered fintech app that helps users manage multiple bank accounts, track finances, and achieve their financial goals — 1st Runner-Up at Hack-It 2025.",
+      tags: ["React Native", "Firebase", "AI"],
+      platform: "Mobile",
+      image: "/projects/gabank1.png",
+    },
+    {
+      num: "09",
+      title: "iNEast",
+      blurb:
+        "A platform connecting local businesses and communities in the region with tools for visibility and engagement.",
+      tags: ["NextJS", "Supabase", "Vercel"],
+      platform: "Web",
+      image: "/projects/ineast1.png",
+    },
+    {
+      num: "10",
+      title: "APRSJ Website",
+      blurb:
+        "The official web platform and admin portal for the 33rd Asia-Pacific Regional Scout Jamboree, supporting registration, announcements, and event information.",
+      tags: ["NextJS", "Supabase", "Vercel"],
+      platform: "Web",
+      image: "/projects/aprsjwebsite1.png",
+    },
+    {
+      num: "11",
+      title: "TOBSPA Website",
+      blurb:
+        "A booking and management platform designed to streamline appointments and service scheduling.",
+      tags: ["NextJS", "Supabase", "Vercel"],
+      platform: "Web",
+      image: "/projects/tobspa1.png",
+    },
+    {
+      num: "12",
+      title: "TRAK",
+      blurb:
+        "A fitness-focused social app combining workout tracking with community-driven engagement, designed end to end from wireframes to final UI.",
+      tags: ["React Native", "Firebase", "Mobile"],
+      platform: "Mobile",
+      image: "/projects/trak1.png",
+    },
+    {
+      num: "13",
+      title: "Ease Resume",
+      blurb:
+        "A resume builder that helps job seekers create polished, professional resumes quickly with guided templates.",
+      tags: ["NextJS", "Supabase", "Vercel"],
+      platform: "Web",
+      image: "/projects/easeresume1.png",
+    },
+    {
+      num: "14",
+      title: "Emotion Escape",
+      blurb:
+        "A wellness app designed to help users process and manage emotions through guided exercises and reflection tools.",
+      tags: ["React Native", "Firebase", "Mobile"],
+      platform: "Mobile",
+      image: "/projects/emotionescape1.png",
+    },
+    {
+      num: "15",
+      title: "Kamayan",
+      blurb:
+        "A food ordering and community app celebrating Filipino kamayan-style dining, connecting diners with local restaurants.",
+      tags: ["React Native", "Firebase", "Mobile"],
+      platform: "Mobile",
+      image: "/projects/kamayan1.png",
+    },
+    {
+      num: "16",
+      title: "Roadmap AI",
+      blurb:
+        "An AI-powered planning tool that helps teams generate and visualize project roadmaps from high-level goals.",
+      tags: ["NextJS", "OpenAI", "Vercel"],
+      platform: "Web",
+      image: "/projects/roadmapai1.png",
+    },
+    {
+      num: "17",
+      title: "Safelet",
+      blurb:
+        "A personal safety companion app that lets users quickly alert trusted contacts and share their location in an emergency.",
+      tags: ["React Native", "Firebase", "Mobile"],
+      platform: "Mobile",
+      image: "/projects/safelet1.png",
+    },
+    {
+      num: "18",
+      title: "Salad Navotenos Website",
+      blurb:
+        "A navigation and discovery app for finding healthy meal options and nearby salad or healthy-food spots.",
+      tags: ["React Native", "Firebase", "Mobile"],
+      platform: "Mobile",
+      image: "/projects/saladnav1.png",
+    },
+    {
+      num: "19",
+      title: "TaraPinas!",
+      blurb:
+        "A travel discovery app for exploring destinations, itineraries, and local experiences around the Philippines.",
+      tags: ["React Native", "Firebase", "Mobile"],
+      platform: "Mobile",
+      image: "/projects/tarapinas1.png",
+    },
+    {
+      num: "20",
+      title: "TechDer",
+      blurb:
+        "A platform showcasing and connecting tech talent with opportunities and projects.",
+      tags: ["NextJS", "Supabase", "Vercel"],
+      platform: "Web",
+      image: "/projects/techder1.png",
+    },
+    {
+      num: "21",
+      title: "BSP Navotas City Council Website",
+      blurb:
+        "An interactive wayfinding and navigation tool for Boy Scouts of the Philippines event venues, guiding participants to key locations.",
+      tags: ["NextJS", "Mapbox", "Vercel"],
+      platform: "Web",
+      image: "/projects/bspnav1.png",
+    },
+    {
+      num: "22",
+      title: "Creation Myth",
+      blurb:
+        "An interactive storytelling experience exploring creation myths from around the world through rich visuals and narrative design.",
+      tags: ["React", "Framer Motion", "Vercel"],
+      platform: "Web",
+      image: "/projects/creationmyth1.png",
+    },
+    {
+      num: "23",
+      title: "Fast Feed",
+      blurb:
+        "A fast, streamlined content feed app for browsing and staying up to date with the latest updates on the go.",
+      tags: ["React Native", "Firebase", "Mobile"],
+      platform: "Mobile",
+      image: "/projects/fastfeed1.png",
+    },
+    {
+      num: "24",
+      title: "Numwais",
+      blurb:
+        "A gamified math learning app that helps students build number sense and problem-solving skills.",
+      tags: ["React Native", "Firebase", "Mobile"],
+      platform: "Mobile",
+      image: "/projects/numwais1.png",
+    },
+    {
+      num: "25",
+      title: "Werd Sports",
+      blurb:
+        "A sports content and community platform for following teams, scores, and highlights.",
+      tags: ["NextJS", "Supabase", "Vercel"],
+      platform: "Web",
+      image: "/projects/werdsports1.png",
     },
   ],
   skills: [

@@ -20,7 +20,7 @@ export function Work() {
   const [instant, setInstant] = useState(true);
   const dragStartX = useRef<number | null>(null);
 
-  const projects = portfolio.projects;
+  const projects = portfolio.projects.filter((project) => project.featured);
   const n = projects.length;
   // Clone the last project before the first, and the first after the last,
   // so the track can slide one step past either end and silently reset to
