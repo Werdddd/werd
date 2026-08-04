@@ -135,6 +135,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.page-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 /* — ambient blueprint grid + blue radial glow: faint graph-paper texture
    paired with a soft blue radial gradient, kept to several scattered
    patches (via mask, positioned in % so they spread down the full page

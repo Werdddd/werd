@@ -48,7 +48,7 @@ export default function RootLayout({
         </noscript>
         <ScrollReveal />
         <CursorGlow />
-        {children}
+        <div className="page-shell">{children}</div>
         <Analytics />
       </body>
     </html>

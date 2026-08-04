@@ -1,11 +1,7 @@
 .footer {
+  width: 100%;
   max-width: 1180px;
-  margin: 0 auto;
+  margin: auto auto 0;
   padding: var(--space-6);
   border-top: 1px solid var(--color-divider);
-}
-
-.note {
-  font-size: 13px;
-  margin-left: auto;
 }

@@ -1,0 +1,21 @@
+.social {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-left: auto;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+  transition: color 150ms ease, background 150ms ease;
+}
+
+.link:hover {
+  color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-text) 7%, transparent);
+}
