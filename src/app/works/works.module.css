@@ -20,6 +20,10 @@
   border-color: var(--color-accent);
 }
 
+.cardLink {
+  cursor: pointer;
+}
+
 .thumbWrap {
   position: relative;
 }

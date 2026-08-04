@@ -14,7 +14,7 @@ const SWIPE_THRESHOLD = 40;
 
 export function Work() {
   const viewportRef = useRef<HTMLDivElement>(null);
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const cardRefs = useRef<(HTMLElement | null)[]>([]);
   const [activeExtended, setActiveExtended] = useState(1);
   const [offset, setOffset] = useState(0);
   const [instant, setInstant] = useState(true);
@@ -138,57 +138,84 @@ export function Work() {
           onPointerDown={onPointerDown}
           onPointerUp={onPointerUp}
         >
-          {extended.map((project, i) => (
-            <div
-              key={`${project.num}-${i}`}
-              ref={(el) => {
-                cardRefs.current[i] = el;
-              }}
-              className={`blueprint ${styles.card} ${i === activeExtended ? styles.cardActive : ""}`}
-            >
-              <Corners />
-              <div className={styles.thumbWrap}>
-                {project.image ? (
-                  <div
-                    className={`blueprint ${styles.thumb}`}
-                    style={{ aspectRatio: "16 / 10", position: "relative" }}
-                  >
-                    <Corners />
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      sizes="(max-width: 760px) 84vw, 360px"
-                      style={{ objectFit: "cover" }}
+          {extended.map((project, i) => {
+            const cardClassName = `blueprint ${styles.card} ${
+              i === activeExtended ? styles.cardActive : ""
+            } ${project.link ? styles.cardLink : ""}`;
+            const cardBody = (
+              <>
+                <Corners />
+                <div className={styles.thumbWrap}>
+                  {project.image ? (
+                    <div
+                      className={`blueprint ${styles.thumb}`}
+                      style={{ aspectRatio: "16 / 10", position: "relative" }}
+                    >
+                      <Corners />
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        sizes="(max-width: 760px) 84vw, 360px"
+                        style={{ objectFit: "cover" }}
+                      />
+                    </div>
+                  ) : (
+                    <ImagePlaceholder
+                      label="Project screenshot"
+                      aspect="16 / 10"
+                      className={styles.thumb}
                     />
-                  </div>
-                ) : (
-                  <ImagePlaceholder
-                    label="Project screenshot"
-                    aspect="16 / 10"
-                    className={styles.thumb}
-                  />
-                )}
-                <span
-                  className={`${styles.platform} ${
-                    project.platform === "Mobile" ? styles.platformMobile : ""
-                  }`}
-                >
-                  <PlatformIcon platform={project.platform} />
-                  {project.platform}
-                </span>
-              </div>
-              <h3 className="card-title">{project.title}</h3>
-              <p className="card-body">{project.blurb}</p>
-              <div className={styles.tags}>
-                {project.tags.map((tag) => (
-                  <span key={tag} className="tag tag-outline">
-                    {tag}
+                  )}
+                  <span
+                    className={`${styles.platform} ${
+                      project.platform === "Mobile" ? styles.platformMobile : ""
+                    }`}
+                  >
+                    <PlatformIcon platform={project.platform} />
+                    {project.platform}
                   </span>
-                ))}
+                </div>
+                <h3 className="card-title">{project.title}</h3>
+                <p className="card-body">{project.blurb}</p>
+                <div className={styles.tags}>
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="tag tag-outline">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                {project.link && (
+                  <span className={shared.viewAll}>Visit ↗</span>
+                )}
+              </>
+            );
+
+            return project.link ? (
+              <a
+                key={`${project.num}-${i}`}
+                ref={(el) => {
+                  cardRefs.current[i] = el;
+                }}
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cardClassName}
+              >
+                {cardBody}
+              </a>
+            ) : (
+              <div
+                key={`${project.num}-${i}`}
+                ref={(el) => {
+                  cardRefs.current[i] = el;
+                }}
+                className={cardClassName}
+              >
+                {cardBody}
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 

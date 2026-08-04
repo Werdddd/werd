@@ -22,52 +22,73 @@ export default function WorksPage() {
       <PageIntro eyebrow="All projects" heading="Projects, end to end" />
       <section className={shared.container}>
         <div className={styles.grid}>
-          {portfolio.projects.map((project) => (
-            <article key={project.num} className={`blueprint ${styles.card}`}>
-              <Corners />
-              <div className={styles.thumbWrap}>
-                {project.image ? (
-                  <div
-                    className={`blueprint ${styles.thumb}`}
-                    style={{ aspectRatio: "16 / 10", position: "relative" }}
-                  >
-                    <Corners />
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      sizes="(max-width: 760px) 90vw, 420px"
-                      style={{ objectFit: "cover" }}
+          {portfolio.projects.map((project) => {
+            const cardBody = (
+              <>
+                <Corners />
+                <div className={styles.thumbWrap}>
+                  {project.image ? (
+                    <div
+                      className={`blueprint ${styles.thumb}`}
+                      style={{ aspectRatio: "16 / 10", position: "relative" }}
+                    >
+                      <Corners />
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        sizes="(max-width: 760px) 90vw, 420px"
+                        style={{ objectFit: "cover" }}
+                      />
+                    </div>
+                  ) : (
+                    <ImagePlaceholder
+                      label="Project screenshot"
+                      aspect="16 / 10"
+                      className={styles.thumb}
                     />
-                  </div>
-                ) : (
-                  <ImagePlaceholder
-                    label="Project screenshot"
-                    aspect="16 / 10"
-                    className={styles.thumb}
-                  />
-                )}
-                <span
-                  className={`${styles.platform} ${
-                    project.platform === "Mobile" ? styles.platformMobile : ""
-                  }`}
-                >
-                  <PlatformIcon platform={project.platform} />
-                  {project.platform}
-                </span>
-              </div>
-              <span className="card-kicker">{project.num}</span>
-              <h3 className="card-title">{project.title}</h3>
-              <p className="card-body">{project.blurb}</p>
-              <div className={styles.tags}>
-                {project.tags.map((tag) => (
-                  <span key={tag} className="tag tag-outline">
-                    {tag}
+                  )}
+                  <span
+                    className={`${styles.platform} ${
+                      project.platform === "Mobile" ? styles.platformMobile : ""
+                    }`}
+                  >
+                    <PlatformIcon platform={project.platform} />
+                    {project.platform}
                   </span>
-                ))}
-              </div>
-            </article>
-          ))}
+                </div>
+                <span className="card-kicker">{project.num}</span>
+                <h3 className="card-title">{project.title}</h3>
+                <p className="card-body">{project.blurb}</p>
+                <div className={styles.tags}>
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="tag tag-outline">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                {project.link && (
+                  <span className={shared.viewAll}>Visit ↗</span>
+                )}
+              </>
+            );
+
+            return project.link ? (
+              <a
+                key={project.num}
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`blueprint ${styles.card} ${styles.cardLink}`}
+              >
+                {cardBody}
+              </a>
+            ) : (
+              <article key={project.num} className={`blueprint ${styles.card}`}>
+                {cardBody}
+              </article>
+            );
+          })}
         </div>
       </section>
       <Footer />

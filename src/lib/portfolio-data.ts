@@ -12,6 +12,8 @@ export interface Project {
   image?: string;
   /** Shown in the landing page carousel. All projects always show on /works. */
   featured?: boolean;
+  /** Live URL (site or app store listing), if the project is deployed. */
+  link?: string;
 }
 
 export type SkillCategory =
@@ -103,6 +105,7 @@ const portfolioData: PortfolioData = {
       platform: "Web",
       image: "/projects/simoy1.png",
       featured: true,
+      link: "https://simoy.xyz",
     },
     {
       num: "02",
@@ -113,6 +116,7 @@ const portfolioData: PortfolioData = {
       platform: "Web",
       image: "/projects/beep1.png",
       featured: true,
+      link: "https://beep-fuel.xyz",
     },
     {
       num: "03",
@@ -123,6 +127,7 @@ const portfolioData: PortfolioData = {
       platform: "Mobile",
       image: "/projects/aprsj1.png",
       featured: true,
+      link: "https://apps.apple.com/ph/app/33rd-apr-scout-jamboree-app/id6756312226",
     },
     {
       num: "04",
@@ -136,6 +141,16 @@ const portfolioData: PortfolioData = {
     },
     {
       num: "05",
+      title: "TOBSPA Website",
+      blurb:
+        "The official web platform of the Ten Outstanding Boy Scouts of the Philippines Associations, showcasing the awardees and initiatives.",
+      tags: ["NextJS", "Supabase", "Vercel"],
+      platform: "Web",
+      image: "/projects/tobspa1.png",
+      link: "https://tobspa.org.ph",
+    },
+    {
+      num: "06",
       title: "SynseAI",
       blurb:
         "An AI-powered collaboration platform that helps BPI find the right partners and streamline document workflows, transforming partnerships into faster, smarter, and more seamless opportunities. Hashi Agent handles AI synergy scoring, while the Nagare System automates document handling.",
@@ -145,7 +160,7 @@ const portfolioData: PortfolioData = {
       featured: true,
     },
     {
-      num: "06",
+      num: "07",
       title: "Agapay",
       blurb:
         "A community assistance platform connecting people in need with nearby help and resources in real time.",
@@ -154,7 +169,7 @@ const portfolioData: PortfolioData = {
       image: "/projects/agapay1.png",
     },
     {
-      num: "07",
+      num: "08",
       title: "GabAI",
       blurb:
         "An AI-assisted study companion that generates personalized study guides adapted to each student's learning style — champion at InnOlympics 2025.",
@@ -163,7 +178,7 @@ const portfolioData: PortfolioData = {
       image: "/projects/gabai1.png",
     },
     {
-      num: "08",
+      num: "09",
       title: "GaBank",
       blurb:
         "A centralized, AI-powered fintech app that helps users manage multiple bank accounts, track finances, and achieve their financial goals — 1st Runner-Up at Hack-It 2025.",
@@ -172,31 +187,22 @@ const portfolioData: PortfolioData = {
       image: "/projects/gabank1.png",
     },
     {
-      num: "09",
+      num: "10",
       title: "iNEast",
       blurb:
-        "A platform connecting local businesses and communities in the region with tools for visibility and engagement.",
+        "A mobile app designed for UE Caloocan students, specifically aimed at helping freshmen navigate the campus with ease. It features an interactive map that allows users to locate all campus buildings and key facilities.",
       tags: ["NextJS", "Supabase", "Vercel"],
       platform: "Web",
       image: "/projects/ineast1.png",
     },
     {
-      num: "10",
+      num: "11",
       title: "APRSJ Website",
       blurb:
         "The official web platform and admin portal for the 33rd Asia-Pacific Regional Scout Jamboree, supporting registration, announcements, and event information.",
       tags: ["NextJS", "Supabase", "Vercel"],
       platform: "Web",
       image: "/projects/aprsjwebsite1.png",
-    },
-    {
-      num: "11",
-      title: "TOBSPA Website",
-      blurb:
-        "A booking and management platform designed to streamline appointments and service scheduling.",
-      tags: ["NextJS", "Supabase", "Vercel"],
-      platform: "Web",
-      image: "/projects/tobspa1.png",
     },
     {
       num: "12",
@@ -211,7 +217,7 @@ const portfolioData: PortfolioData = {
       num: "13",
       title: "Ease Resume",
       blurb:
-        "A resume builder that helps job seekers create polished, professional resumes quickly with guided templates.",
+        "A resume builder that helps students and job seekers create polished, professional resumes quickly with guided templates.",
       tags: ["NextJS", "Supabase", "Vercel"],
       platform: "Web",
       image: "/projects/easeresume1.png",
@@ -220,25 +226,25 @@ const portfolioData: PortfolioData = {
       num: "14",
       title: "Emotion Escape",
       blurb:
-        "A wellness app designed to help users process and manage emotions through guided exercises and reflection tools.",
-      tags: ["React Native", "Firebase", "Mobile"],
-      platform: "Mobile",
+        "A 3D puzzle game exploring human emotions. Players navigate a maze with four rooms, each representing Sadness, Anger, Joy, and Fear.",
+      tags: ["Unity", "WebGL", "3D"],
+      platform: "Web",
       image: "/projects/emotionescape1.png",
     },
     {
       num: "15",
       title: "Kamayan",
       blurb:
-        "A food ordering and community app celebrating Filipino kamayan-style dining, connecting diners with local restaurants.",
-      tags: ["React Native", "Firebase", "Mobile"],
-      platform: "Mobile",
+        "An online marketplace promoting sustainable consumption, production, and community collaboration. It enables individuals to buy, sell, and swap goods, emphasizing responsible consumption and the circular economy.",
+      tags: ["React", "MySQL", "Python"],
+      platform: "Web",
       image: "/projects/kamayan1.png",
     },
     {
       num: "16",
       title: "Roadmap AI",
       blurb:
-        "An AI-powered planning tool that helps teams generate and visualize project roadmaps from high-level goals.",
+        "An AI-powered planning tool that helps user generate and visualize learning roadmaps specifically for programming/software development high-level goals.",
       tags: ["NextJS", "OpenAI", "Vercel"],
       platform: "Web",
       image: "/projects/roadmapai1.png",
@@ -256,9 +262,9 @@ const portfolioData: PortfolioData = {
       num: "18",
       title: "Salad Navotenos Website",
       blurb:
-        "A navigation and discovery app for finding healthy meal options and nearby salad or healthy-food spots.",
-      tags: ["React Native", "Firebase", "Mobile"],
-      platform: "Mobile",
+        "The offical website of SALAD Navotenos, a scout-led fund-raising project supporting Navoteño families, using lettuce from the GGC-BSP vertical urban farm.",
+      tags: ["HTML", "CSS", "Bootstrap"],
+      platform: "Web",
       image: "/projects/saladnav1.png",
     },
     {
@@ -266,25 +272,25 @@ const portfolioData: PortfolioData = {
       title: "TaraPinas!",
       blurb:
         "A travel discovery app for exploring destinations, itineraries, and local experiences around the Philippines.",
-      tags: ["React Native", "Firebase", "Mobile"],
-      platform: "Mobile",
+      tags: ["Angular", "TypeScript", "Tailwind"],
+      platform: "Web",
       image: "/projects/tarapinas1.png",
     },
     {
       num: "20",
       title: "TechDer",
       blurb:
-        "A platform showcasing and connecting tech talent with opportunities and projects.",
-      tags: ["NextJS", "Supabase", "Vercel"],
-      platform: "Web",
+        "A Fun, swipe-based learning app for programming languages built using Flutter.",
+      tags: ["Flutter", "Supabase", "Dart"],
+      platform: "Mobile",
       image: "/projects/techder1.png",
     },
     {
       num: "21",
       title: "BSP Navotas City Council Website",
       blurb:
-        "An interactive wayfinding and navigation tool for Boy Scouts of the Philippines event venues, guiding participants to key locations.",
-      tags: ["NextJS", "Mapbox", "Vercel"],
+        "The offical website of the BSP Navotas City Council Website, which goal is to equip young people with skills and values for a fulfilling life.",
+      tags: ["HTML", "CSS", "Bootstrap"],
       platform: "Web",
       image: "/projects/bspnav1.png",
     },
@@ -302,8 +308,8 @@ const portfolioData: PortfolioData = {
       title: "Fast Feed",
       blurb:
         "A fast, streamlined content feed app for browsing and staying up to date with the latest updates on the go.",
-      tags: ["React Native", "Firebase", "Mobile"],
-      platform: "Mobile",
+      tags: ["React", "Framer Motion", "Web"],
+      platform: "Web",
       image: "/projects/fastfeed1.png",
     },
     {
@@ -311,8 +317,8 @@ const portfolioData: PortfolioData = {
       title: "Numwais",
       blurb:
         "A gamified math learning app that helps students build number sense and problem-solving skills.",
-      tags: ["React Native", "Firebase", "Mobile"],
-      platform: "Mobile",
+      tags: ["React", "Firebase", "Web"],
+      platform: "Web",
       image: "/projects/numwais1.png",
     },
     {
@@ -320,7 +326,7 @@ const portfolioData: PortfolioData = {
       title: "Werd Sports",
       blurb:
         "A sports content and community platform for following teams, scores, and highlights.",
-      tags: ["NextJS", "Supabase", "Vercel"],
+      tags: ["Vue", "CSS", "Tailwind"],
       platform: "Web",
       image: "/projects/werdsports1.png",
     },
