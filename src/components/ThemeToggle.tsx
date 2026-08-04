@@ -135,6 +135,7 @@ export function ThemeToggle() {
           className={styles.button}
           data-active={mode === m || undefined}
           onClick={(event) => selectMode(m, event)}
+          suppressHydrationWarning
         >
           {m === "system" && <SystemIcon />}
           {m === "light" && <SunIcon />}

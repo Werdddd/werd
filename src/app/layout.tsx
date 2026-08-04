@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Barlow, Barlow_Condensed } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { CursorGlow } from "@/components/CursorGlow";
 import "./globals.css";
 
 const barlow = Barlow({
@@ -46,6 +47,7 @@ export default function RootLayout({
           <style>{`[data-reveal]{opacity:1!important;transform:none!important}`}</style>
         </noscript>
         <ScrollReveal />
+        <CursorGlow />
         {children}
         <Analytics />
       </body>

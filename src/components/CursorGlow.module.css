@@ -1,0 +1,29 @@
+/* — cursor flashlight: a brighter copy of the ambient blueprint grid
+   (see globals.css body::before), masked to a soft circle that tracks
+   the pointer via --cursor-x/--cursor-y, so the grid appears to light up
+   under the cursor like a light passing over a blueprint. */
+.glow {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 400ms ease;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--color-text) 16%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-text) 16%, transparent) 1px, transparent 1px),
+    linear-gradient(color-mix(in srgb, var(--color-accent) 32%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-accent) 32%, transparent) 1px, transparent 1px),
+    radial-gradient(160px circle at var(--cursor-x, 50%) var(--cursor-y, 50%), color-mix(in srgb, var(--color-accent) 22%, transparent) 0%, transparent 70%);
+  background-size: 24px 24px, 24px 24px, 120px 120px, 120px 120px, auto;
+  mask-image: radial-gradient(150px circle at var(--cursor-x, 50%) var(--cursor-y, 50%), #000 0%, transparent 78%);
+  -webkit-mask-image: radial-gradient(150px circle at var(--cursor-x, 50%) var(--cursor-y, 50%), #000 0%, transparent 78%);
+}
+.glow[data-active="true"] {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce), (hover: none) {
+  .glow {
+    display: none;
+  }
+}
