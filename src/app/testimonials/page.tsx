@@ -7,9 +7,11 @@ import portfolio from "@/lib/portfolio-data";
 import shared from "@/styles/shared.module.css";
 import styles from "./testimonials.module.css";
 
+const allTestimonials = [...portfolio.testimonials, ...portfolio.fillerTestimonials];
+
 export const metadata: Metadata = {
   title: `${portfolio.name} — Testimonials`,
-  description: `What ${portfolio.testimonials.length} collaborators say about working with ${portfolio.name}.`,
+  description: `What ${allTestimonials.length} collaborators say about working with ${portfolio.name}.`,
 };
 
 export default function TestimonialsPage() {
@@ -19,7 +21,7 @@ export default function TestimonialsPage() {
       <PageIntro eyebrow="Testimonials" heading="What people say" />
       <section className={shared.container}>
         <div className={styles.grid}>
-          {portfolio.testimonials.map((testimonial) => (
+          {allTestimonials.map((testimonial) => (
             <div key={testimonial.name} className={`blueprint ${styles.card}`}>
               <Corners />
               <p className={styles.quote}>&quot;{testimonial.quote}&quot;</p>

@@ -74,6 +74,7 @@ export interface PortfolioData {
   skills: Skill[];
   experience: ExperienceItem[];
   testimonials: Testimonial[];
+  fillerTestimonials: Testimonial[];
   hackathons: Hackathon[];
 }
 
@@ -512,6 +513,37 @@ const portfolioData: PortfolioData = {
   testimonials: [
     {
       quote:
+        "Andrew's work as the developer of the 33rd APRSJ App is a remarkable example of a Scout giving back to the Scouting community. As an Eagle Scout and TOBS Awardee himself, he used his technical expertise, and dedication to create a platform that enhanced the experience of our Scouts.",
+      name: "Atty. Emilio B. Aquino",
+      role: "National President, Boy Scouts of the Philippines",
+    },
+    {
+      quote:
+        "Mr. Robles demonstrates excellent oral communication skills and expresses ideas clearly and confidently. He has a strong leadership potential and can be relied upon to lead a team effectively while fostering collaboration. Technically knowledgeable and well-equipped with relevant skills and competencies, Mr. Robles consistently performs tasks with professionalism and competence.",
+      name: "Prof. Kathleen Martin-Dimaano",
+      role: "Department Chair, Department of Computer Studies and Systems - UE Caloocan",
+    },
+    {
+      quote: "Andrew is the type of person that breathes life into apps. A value-bringer and a great communicator",
+      name: "Zyldjan Lanticse",
+      role: "AI Engineer, Cadre Crew",
+    },
+    {
+      quote:
+        "What truly sets him apart is his commitment to building solutions with purpose. He's reliable, incredibly detail-oriented, and never settles for \"good enough\"—he's always learning, improving, and pushing himself to do more. I have complete confidence in his work and would wholeheartedly recommend him to anyone looking for a developer they can truly trust.",
+      name: "Hazel Miranda",
+      role: "My Love ♥️",
+    },
+    {
+      quote:
+        "He is an exceptionally talented computer science graduate whose technical skill shines through in his software development. For the 33rd APR Scout Jamboree, he engineered a highly reliable, responsive, and polished mobile application from scratch. His professionalism, attention to detail, and ability to deliver a top-tier digital product make him a valuable asset to any engineering team.",
+      name: "Mark Leo Sales",
+      role: "National Executive Board Member, Boy Scouts of the Philippines",
+    },
+  ],
+  fillerTestimonials: [
+    {
+      quote:
         "Andrew is the rare engineer who designs and the rare designer who ships. Our system got measurably more consistent within a quarter of him joining.",
       name: "Priya Nathan",
       role: "VP Engineering, Northwind Labs",
@@ -540,12 +572,7 @@ const portfolioData: PortfolioData = {
       name: "Renee Okafor",
       role: "Founder, Loop & Co.",
     },
-    {
-      quote:
-        "Calm under deadline pressure, and his instincts for what to cut versus keep are consistently right.",
-      name: "Sam Whitfield",
-      role: "CTO, Anchor Point",
-    },
+    
   ],
   hackathons: [
     {
