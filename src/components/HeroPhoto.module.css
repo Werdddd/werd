@@ -74,14 +74,14 @@
 }
 
 .badgeAvailable {
-  top: -16px;
+  top: 12px;
   right: -18px;
   background: var(--color-bg);
   color: var(--color-text);
 }
 
 .badgeRole {
-  bottom: -16px;
+  bottom: 12px;
   left: -18px;
   background: var(--color-text);
   color: var(--color-bg);
@@ -156,11 +156,11 @@
     font-size: 11px;
   }
   .badgeAvailable {
-    top: -10px;
+    top: 8px;
     right: -10px;
   }
   .badgeRole {
-    bottom: -10px;
+    bottom: 8px;
     left: -10px;
   }
   .dot {

@@ -40,12 +40,12 @@ export function HeroPhoto({ className }: { className?: string }) {
         <div className={styles.cardFrame}>
           <HeroSlideshow className={styles.slideshow} plain />
         </div>
+        <span className={`${styles.badge} ${styles.badgeAvailable}`}>
+          <i className={styles.dot} aria-hidden />
+          Available for hire
+        </span>
+        <span className={`${styles.badge} ${styles.badgeRole}`}>UI/UX &middot; Full-Stack</span>
       </div>
-      <span className={`${styles.badge} ${styles.badgeAvailable}`}>
-        <i className={styles.dot} aria-hidden />
-        Available for hire
-      </span>
-      <span className={`${styles.badge} ${styles.badgeRole}`}>UI/UX &middot; Full-Stack</span>
     </div>
   );
 }
