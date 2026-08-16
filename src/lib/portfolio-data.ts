@@ -53,7 +53,7 @@ export interface Testimonial {
 }
 
 export interface Hackathon {
-  rank: 1 | 2;
+  rank: number;
   place: string;
   project: string;
   event: string;
@@ -65,7 +65,7 @@ export interface Hackathon {
 
 export interface PortfolioData {
   name: string;
-  role: string;
+  
   tagline: string;
   subhead: string;
   bio: string;
@@ -80,11 +80,11 @@ export interface PortfolioData {
 
 const portfolioData: PortfolioData = {
   name: "Andrew Emmanuel Robles",
-  role: "Full-Stack Engineer & UI/UX Designer",
+  
   tagline: "Andrew Robles",
   subhead:
-    "I build creative interfaces and the systems underneath them.",
-  bio: "I'm a full-stack engineer and UI/UX designer who moves fluidly between code and interface. I design and build modern websites and mobile apps end to end. I'm driven by solving real problems and building things that push a little past the obvious.",
+    "Designing what people see. Engineering what they don't.",
+  bio: "I design intuitive experiences and engineer the systems that power them—from concept to deployment.",
   facts: [
     { k: "Based in", v: "Navotas City, Metro Manila, Philippines" },
     {
@@ -630,6 +630,66 @@ const portfolioData: PortfolioData = {
         "/hackathons/hackit5.JPG",
         "/hackathons/hackit6.JPG",
       ],
+    },
+    {
+      rank: 2,
+      place: "Top 10 Finalist",
+      project: "GDream",
+      event: "GCash AI Week — PartyRock Student Hackathon",
+      organizer: "GCash",
+      date: "2025",
+      description:
+        "An AI-powered concept built with Amazon PartyRock during GCash's AI Week student hackathon, exploring generative AI tools for everyday Filipino users.",
+      photos: [
+        "/hackathons/gcashhackathon.jpg",
+        "/hackathons/gcashhackathon2.jpg",
+        "/hackathons/gcashhackathon3.jpg",
+        "/hackathons/gcashhackathon4.jpg",
+      ],
+    },
+    {
+      rank: 2,
+      place: "Finalist",
+      project: "Safelet",
+      event: "AppCon 2024",
+      organizer: "OTIS Japan Inc.",
+      date: "2024",
+      description:
+        "An IoT wearable for safety and location tracking paired with a mobile app, built for AppCon 2024's theme on AI and IoT solutions for social issues in the Philippines.",
+      photos: ["/hackathons/appcon.jpg"],
+    },
+    {
+      rank: 2,
+      place: "Participant",
+      project: "UnRavel",
+      event: "Game Jam Manila 2025",
+      organizer: "Devcon Manila Chapter",
+      date: "Aug 2025",
+      description:
+        "A short game about looping through emotions, built during Devcon Manila's Game Jam Manila 2025.",
+      photos: ["/hackathons/gamejam.jpg"],
+    },
+    {
+      rank: 2,
+      place: "Participant",
+      project: "Agapay",
+      event: "DDB Hackathon — Design the DDB Mobile App Challenge",
+      organizer: "Dangerous Drugs Board, Office of the President",
+      date: "2026",
+      description:
+        "A mobile app concept built for the Dangerous Drugs Board's hackathon around IDADAIT 2026, supporting drug abuse prevention and awareness.",
+      photos: ["/hackathons/ddbhackathon.jpg"],
+    },
+    {
+      rank: 2,
+      place: "Participant",
+      project: "Drip Gemini",
+      event: "Gemini API Hackathon",
+      organizer: "Google Cloud",
+      date: "2025",
+      description:
+        "A project built with the Gemini API during Google Cloud's Gemini Hackathon, exploring generative AI use cases.",
+      photos: ["/hackathons/googlehackathon.png"],
     },
   ],
 };
