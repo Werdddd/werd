@@ -2,7 +2,9 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { motion } from "motion/react";
 import { ThemeToggle } from "./ThemeToggle";
+import { dropIn } from "@/lib/motion";
 import styles from "./Nav.module.css";
 
 const links = [
@@ -27,7 +29,12 @@ export function Nav() {
   }, [open]);
 
   return (
-    <nav className={`nav ${styles.nav}`}>
+    <motion.nav
+      className={`nav ${styles.nav} reveal`}
+      variants={dropIn}
+      initial="hidden"
+      animate="visible"
+    >
       <Link className="nav-brand" href="/">
         Andrew Robles
       </Link>
@@ -62,6 +69,6 @@ export function Nav() {
           Contact
         </Link>
       </div>
-    </nav>
+    </motion.nav>
   );
 }

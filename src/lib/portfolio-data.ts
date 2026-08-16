@@ -54,6 +54,7 @@ export interface Testimonial {
 
 export interface Hackathon {
   rank: number;
+  podium: boolean;
   place: string;
   project: string;
   event: string;
@@ -577,6 +578,7 @@ const portfolioData: PortfolioData = {
   hackathons: [
     {
       rank: 2,
+      podium: true,
       place: "1st Runner-Up",
       project: "SynseAI",
       event: "BPI DATA Wave Hackathon 2025 — Track 5",
@@ -596,6 +598,7 @@ const portfolioData: PortfolioData = {
     },
     {
       rank: 1,
+      podium: true,
       place: "Champion",
       project: "GabAI",
       event: "InnOlympics 2025 — GDSC PLM Hackathon",
@@ -615,6 +618,7 @@ const portfolioData: PortfolioData = {
     },
     {
       rank: 2,
+      podium: true,
       place: "1st Runner-Up",
       project: "GaBank",
       event: "Hack-It: The New Era of Banking",
@@ -633,6 +637,7 @@ const portfolioData: PortfolioData = {
     },
     {
       rank: 2,
+      podium: false,
       place: "Top 10 Finalist",
       project: "GDream",
       event: "GCash AI Week — PartyRock Student Hackathon",
@@ -649,6 +654,7 @@ const portfolioData: PortfolioData = {
     },
     {
       rank: 2,
+      podium: false,
       place: "Finalist",
       project: "Safelet",
       event: "AppCon 2024",
@@ -660,6 +666,7 @@ const portfolioData: PortfolioData = {
     },
     {
       rank: 2,
+      podium: false,
       place: "Participant",
       project: "UnRavel",
       event: "Game Jam Manila 2025",
@@ -671,6 +678,7 @@ const portfolioData: PortfolioData = {
     },
     {
       rank: 2,
+      podium: false,
       place: "Participant",
       project: "Agapay",
       event: "DDB Hackathon — Design the DDB Mobile App Challenge",
@@ -682,6 +690,7 @@ const portfolioData: PortfolioData = {
     },
     {
       rank: 2,
+      podium: false,
       place: "Participant",
       project: "Drip Gemini",
       event: "Gemini API Hackathon",

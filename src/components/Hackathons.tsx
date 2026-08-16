@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { motion } from "motion/react";
 import portfolio from "@/lib/portfolio-data";
 import { Corners } from "./Blueprint";
 import { PhotoCarousel } from "./PhotoCarousel";
+import { fadeUp, staggerContainer, revealViewport } from "@/lib/motion";
 import styles from "./Hackathons.module.css";
 import shared from "@/styles/shared.module.css";
 
@@ -19,8 +21,15 @@ export function Hackathons() {
   }, []);
 
   return (
-    <section id="hackathons" className={shared.container} data-reveal>
-      <div className={shared.sectionHeader}>
+    <motion.section
+      id="hackathons"
+      className={`${shared.container} reveal`}
+      variants={staggerContainer()}
+      initial="hidden"
+      whileInView="visible"
+      viewport={revealViewport}
+    >
+      <motion.div variants={fadeUp} className={shared.sectionHeader}>
         <div>
           <h6 className={shared.eyebrow}>Hackathons</h6>
           <h2 className={shared.sectionHeading}>Podium finishes</h2>
@@ -28,13 +37,14 @@ export function Hackathons() {
         <Link className={shared.viewAll} href="/hackathons">
           View all hackathons →
         </Link>
-      </div>
-      <div className={styles.podium}>
-        {portfolio.hackathons.map((h) => {
+      </motion.div>
+      <motion.div variants={staggerContainer(0.1)} className={styles.podium}>
+        {portfolio.hackathons.filter((h) => h.podium).map((h) => {
           const isOpen = expanded === h.event;
           return (
-            <div
+            <motion.div
               key={h.event}
+              variants={fadeUp}
               className={`${styles.step} ${
                 h.rank === 1 ? styles.stepFirst : styles.stepSecond
               }`}
@@ -83,11 +93,11 @@ export function Hackathons() {
               <div className={styles.riser}>
                 <span className={styles.rank}>{h.rank === 1 ? "1st" : "2nd"}</span>
               </div>
-            </div>
+            </motion.div>
           );
         })}
-      </div>
-      <div className={styles.githubHeader}>
+      </motion.div>
+      <motion.div variants={fadeUp} className={styles.githubHeader}>
         <div>
           <h6 className={shared.eyebrow}>GitHub Activity</h6>
           <h2 className={shared.sectionHeading}>Commit history</h2>
@@ -100,8 +110,8 @@ export function Hackathons() {
         >
           @Werdddd on GitHub →
         </a>
-      </div>
-      <div className={styles.githubChartWrap}>
+      </motion.div>
+      <motion.div variants={fadeUp} className={styles.githubChartWrap}>
         {/* eslint-disable-next-line @next/next/no-img-element -- dynamically generated SVG chart */}
         <img
           src="/api/github-chart"
@@ -109,7 +119,7 @@ export function Hackathons() {
           className={styles.githubChart}
           loading="lazy"
         />
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }

@@ -1,6 +1,10 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "motion/react";
 import portfolio from "@/lib/portfolio-data";
 import { Corners } from "./Blueprint";
+import { fadeUp, staggerContainer, revealViewport } from "@/lib/motion";
 import styles from "./Testimonials.module.css";
 import shared from "@/styles/shared.module.css";
 
@@ -8,8 +12,15 @@ export function Testimonials() {
   const testimonials = portfolio.testimonials;
 
   return (
-    <section id="testimonials" className={shared.container} data-reveal>
-      <div className={shared.sectionHeader}>
+    <motion.section
+      id="testimonials"
+      className={`${shared.container} reveal`}
+      variants={staggerContainer()}
+      initial="hidden"
+      whileInView="visible"
+      viewport={revealViewport}
+    >
+      <motion.div variants={fadeUp} className={shared.sectionHeader}>
         <div>
           <h6 className={shared.eyebrow}>Testimonials</h6>
           <h2 className={shared.sectionHeading}>What people say</h2>
@@ -17,8 +28,8 @@ export function Testimonials() {
         <Link className={shared.viewAll} href="/testimonials">
           View all testimonials →
         </Link>
-      </div>
-      <div className={styles.marquee}>
+      </motion.div>
+      <motion.div variants={fadeUp} className={styles.marquee}>
         <div className={styles.track}>
           {[...testimonials, ...testimonials].map((testimonial, i) => (
             <div
@@ -35,7 +46,7 @@ export function Testimonials() {
             </div>
           ))}
         </div>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }

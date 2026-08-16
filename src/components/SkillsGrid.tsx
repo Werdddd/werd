@@ -1,6 +1,8 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { motion } from "motion/react";
+import { fadeUp, revealViewport } from "@/lib/motion";
 import {
   siTypescript,
   siJavascript,
@@ -315,10 +317,17 @@ export function SkillsGrid({ categorized = true }: { categorized?: boolean }) {
         if (entries.length === 0) return null;
 
         return (
-          <div key={category} className={styles.section}>
+          <motion.div
+            key={category}
+            className={`${styles.section} reveal`}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={revealViewport}
+          >
             <h2 className={styles.sectionTitle}>{category}</h2>
             <div className={styles.grid}>{entries.map(renderChip)}</div>
-          </div>
+          </motion.div>
         );
       })}
     </>

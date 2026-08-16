@@ -1,13 +1,23 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "motion/react";
 import portfolio from "@/lib/portfolio-data";
 import { Corners } from "./Blueprint";
+import { fadeUp, staggerContainer, revealViewport } from "@/lib/motion";
 import styles from "./ExperienceTimeline.module.css";
 
 export function ExperienceTimeline() {
   return (
-    <ol className={styles.timeline}>
+    <motion.ol
+      className={`${styles.timeline} reveal`}
+      variants={staggerContainer(0.1)}
+      initial="hidden"
+      whileInView="visible"
+      viewport={revealViewport}
+    >
       {portfolio.experience.map((job) => (
-        <li key={`${job.org}-${job.period}`} className={styles.item}>
+        <motion.li key={`${job.org}-${job.period}`} variants={fadeUp} className={styles.item}>
           <div className={styles.rail}>
             <div className={`blueprint ${styles.node}`}>
               <Image
@@ -47,8 +57,8 @@ export function ExperienceTimeline() {
               </p>
             ))}
           </div>
-        </li>
+        </motion.li>
       ))}
-    </ol>
+    </motion.ol>
   );
 }

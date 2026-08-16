@@ -3,10 +3,12 @@
 import { useLayoutEffect, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "motion/react";
 import portfolio from "@/lib/portfolio-data";
 import { Corners } from "./Blueprint";
 import { ImagePlaceholder } from "./ImagePlaceholder";
 import { PlatformIcon } from "./PlatformIcon";
+import { fadeUp, staggerContainer, revealViewport } from "@/lib/motion";
 import styles from "./Work.module.css";
 import shared from "@/styles/shared.module.css";
 
@@ -95,8 +97,15 @@ export function Work() {
   }
 
   return (
-    <section id="work" className={shared.container} data-reveal>
-      <div className={styles.header}>
+    <motion.section
+      id="work"
+      className={`${shared.container} reveal`}
+      variants={staggerContainer()}
+      initial="hidden"
+      whileInView="visible"
+      viewport={revealViewport}
+    >
+      <motion.div variants={fadeUp} className={styles.header}>
         <div>
           <h6 className={shared.eyebrow}>Projects</h6>
           <h2 className={styles.heading}>Projects, end to end</h2>
@@ -128,9 +137,9 @@ export function Work() {
             </svg>
           </button>
         </div>
-      </div>
+      </motion.div>
 
-      <div className={styles.viewport} ref={viewportRef}>
+      <motion.div variants={fadeUp} className={styles.viewport} ref={viewportRef}>
         <div
           className={`${styles.track} ${instant ? styles.instant : ""}`}
           style={{ transform: `translateX(${-offset}px)` }}
@@ -217,9 +226,9 @@ export function Work() {
             );
           })}
         </div>
-      </div>
+      </motion.div>
 
-      <div className={styles.dots}>
+      <motion.div variants={fadeUp} className={styles.dots}>
         {projects.map((project, i) => (
           <button
             key={project.num}
@@ -230,7 +239,7 @@ export function Work() {
             suppressHydrationWarning
           />
         ))}
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }

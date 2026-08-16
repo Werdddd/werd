@@ -1,7 +1,9 @@
 "use client";
 
 import { useCallback, useRef, useState } from "react";
+import { motion } from "motion/react";
 import { HeroSlideshow } from "./HeroSlideshow";
+import { fadeUp } from "@/lib/motion";
 import styles from "./HeroPhoto.module.css";
 
 const MAX_TILT_DEG = 16;
@@ -27,7 +29,7 @@ export function HeroPhoto({ className }: { className?: string }) {
   }, []);
 
   return (
-    <div className={`${styles.stage} ${className ?? ""}`}>
+    <motion.div variants={fadeUp} className={`${styles.stage} ${className ?? ""}`}>
       <div className={styles.dashedCircle} aria-hidden />
       <div
         ref={cardRef}
@@ -46,6 +48,6 @@ export function HeroPhoto({ className }: { className?: string }) {
         </span>
         <span className={`${styles.badge} ${styles.badgeRole}`}>UI/UX &middot; Full-Stack</span>
       </div>
-    </div>
+    </motion.div>
   );
 }

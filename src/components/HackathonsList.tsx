@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { motion } from "motion/react";
 import portfolio from "@/lib/portfolio-data";
 import { Corners } from "./Blueprint";
 import { PhotoCarousel } from "./PhotoCarousel";
+import { fadeUp, staggerContainer, revealViewport } from "@/lib/motion";
 import styles from "./HackathonsList.module.css";
 
 export function HackathonsList() {
@@ -16,9 +18,15 @@ export function HackathonsList() {
   }, []);
 
   return (
-    <div className={styles.grid}>
+    <motion.div
+      className={`${styles.grid} reveal`}
+      variants={staggerContainer(0.06)}
+      initial="hidden"
+      whileInView="visible"
+      viewport={revealViewport}
+    >
       {portfolio.hackathons.map((h) => (
-        <article key={h.event} className={`blueprint ${styles.card}`}>
+        <motion.article key={h.event} variants={fadeUp} className={`blueprint ${styles.card}`}>
           <Corners />
           <PhotoCarousel
             photos={h.photos}
@@ -38,8 +46,8 @@ export function HackathonsList() {
             </p>
             <p className="card-body">{h.description}</p>
           </div>
-        </article>
+        </motion.article>
       ))}
-    </div>
+    </motion.div>
   );
 }

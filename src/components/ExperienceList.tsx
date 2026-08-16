@@ -1,13 +1,27 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "motion/react";
 import portfolio from "@/lib/portfolio-data";
 import { Corners } from "./Blueprint";
+import { fadeUp, staggerContainer, revealViewport } from "@/lib/motion";
 import styles from "./Experience.module.css";
 
 export function ExperienceList() {
   return (
-    <div className={styles.list}>
+    <motion.div
+      className={`${styles.list} reveal`}
+      variants={staggerContainer(0.08)}
+      initial="hidden"
+      whileInView="visible"
+      viewport={revealViewport}
+    >
       {portfolio.experience.map((job) => (
-        <div key={`${job.org}-${job.period}`} className={`blueprint ${styles.row}`}>
+        <motion.div
+          key={`${job.org}-${job.period}`}
+          variants={fadeUp}
+          className={`blueprint ${styles.row}`}
+        >
           <Corners />
           <div className={styles.meta}>
             <span className="text-muted" style={{ fontSize: 13 }}>
@@ -33,8 +47,8 @@ export function ExperienceList() {
               <p className="card-body">{job.blurb}</p>
             </div>
           </div>
-        </div>
+        </motion.div>
       ))}
-    </div>
+    </motion.div>
   );
 }

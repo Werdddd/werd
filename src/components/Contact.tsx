@@ -1,7 +1,9 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { motion } from "motion/react";
 import { Corners } from "./Blueprint";
+import { fadeUp, staggerContainer, revealViewport } from "@/lib/motion";
 import styles from "./Contact.module.css";
 import shared from "@/styles/shared.module.css";
 
@@ -46,8 +48,15 @@ export function Contact() {
   const submitting = status === "submitting";
 
   return (
-    <section id="contact" className={`${shared.container} ${styles.contact}`} data-reveal>
-      <div>
+    <motion.section
+      id="contact"
+      className={`${shared.container} ${styles.contact} reveal`}
+      variants={staggerContainer(0.14)}
+      initial="hidden"
+      whileInView="visible"
+      viewport={revealViewport}
+    >
+      <motion.div variants={fadeUp}>
         <h6 className={shared.eyebrow}>Get in touch</h6>
         <h2>Open to full-time and freelance work</h2>
         <p className={styles.copy}>
@@ -75,8 +84,8 @@ export function Contact() {
             GitHub
           </a>
         </div>
-      </div>
-      <form className={`blueprint ${styles.form}`} onSubmit={handleSubmit}>
+      </motion.div>
+      <motion.form variants={fadeUp} className={`blueprint ${styles.form}`} onSubmit={handleSubmit}>
         <Corners />
         <h3>Send a message</h3>
         <div className="field">
@@ -130,7 +139,7 @@ export function Contact() {
         {status === "error" && (
           <p className={`${styles.status} ${styles.statusError}`}>{errorMessage}</p>
         )}
-      </form>
-    </section>
+      </motion.form>
+    </motion.section>
   );
 }
