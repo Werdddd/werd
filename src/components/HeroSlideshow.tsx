@@ -41,7 +41,7 @@ export function HeroSlideshow({
         <Image
           key={src}
           src={src}
-          alt={`${portfolio.name} — ${portfolio.role}`}
+          alt={`${portfolio.name}`}
           fill
           sizes="(max-width: 900px) 420px, 40vw"
           preload={i === 0}

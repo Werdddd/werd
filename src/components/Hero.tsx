@@ -16,9 +16,7 @@ export function Hero() {
       animate="visible"
     >
       <div>
-        <motion.h6 variants={fadeUp} className={shared.eyebrow}>
-          {portfolio.role}
-        </motion.h6>
+        
         <motion.h1 variants={fadeUp} className={styles.tagline}>
           {portfolio.tagline}
         </motion.h1>
