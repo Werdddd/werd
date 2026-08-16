@@ -1,4 +1,5 @@
 .hero {
+  width: 100%;
   max-width: 1180px;
   margin: 0 auto;
   padding: calc(var(--space-8) + 48px) var(--space-6) var(--space-8);

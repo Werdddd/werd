@@ -9,8 +9,10 @@ export function Footer() {
       <span className="text-muted" style={{ fontSize: 13 }}>
         © {year} Andrew Emmanuel Robles
       </span>
-      <LiveViewers />
-      <SocialLinks />
+      <div className={styles.right}>
+        <LiveViewers />
+        <SocialLinks />
+      </div>
     </footer>
   );
 }
