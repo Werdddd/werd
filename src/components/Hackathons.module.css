@@ -160,3 +160,103 @@
     margin-bottom: 0;
   }
 }
+
+/* Small mobile: swap the stacked podium for a swipeable carousel, matching
+   the projects section's carousel treatment. */
+.mobileCarousel {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .podiumDesktop {
+    display: none;
+  }
+
+  .mobileCarousel {
+    display: block;
+  }
+}
+
+.mobileControls {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.viewport {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: visible;
+  padding-top: var(--space-1);
+  padding-bottom: var(--space-4);
+}
+
+.track {
+  display: flex;
+  gap: var(--space-4);
+  position: relative;
+  width: max-content;
+  will-change: transform;
+}
+.track.instant {
+  transition: none;
+}
+.track:not(.instant) {
+  transition: transform 0.45s ease;
+}
+
+.mobileCard {
+  flex: 0 0 auto;
+  width: min(84vw, 320px);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  background: var(--color-surface);
+  opacity: 0.5;
+  transform: scale(0.94);
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.mobileCardActive {
+  opacity: 1;
+  transform: scale(1);
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-md);
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 1px solid var(--color-divider);
+  border-radius: 0;
+  background: transparent;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    width 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.dot:hover {
+  border-color: var(--color-accent);
+}
+
+.dotActive {
+  width: 22px;
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
