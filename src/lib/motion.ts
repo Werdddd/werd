@@ -33,10 +33,15 @@ export function staggerContainer(stagger = 0.09, delayChildren = 0): Variants {
   };
 }
 
-// Once-only scroll trigger: fires a bit before a section's bottom edge
-// clears the viewport, matching the old IntersectionObserver's rootMargin.
+// Once-only scroll trigger: fires as soon as any part of a section enters
+// the viewport (amount: 0 = any pixel), matching the old IntersectionObserver's
+// rootMargin. A higher `amount` requires that fraction of the *element's own*
+// height to be visible at once — for tall single-column lists (e.g. Works/
+// Hackathons grids on mobile, which can run several screen-heights tall),
+// that fraction is never reachable in one viewport, so the reveal never
+// fires and the section stays invisible forever.
 export const revealViewport = {
   once: true,
-  amount: 0.2,
+  amount: 0,
   margin: "0px 0px -8% 0px",
 } as const;
