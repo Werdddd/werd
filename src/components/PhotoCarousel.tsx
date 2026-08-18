@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Corners } from "./Blueprint";
 import styles from "./PhotoCarousel.module.css";
@@ -15,24 +16,32 @@ export function PhotoCarousel({
   aspect: string;
   className?: string;
 }) {
+  const [mounted, setMounted] = useState(() => new Set([activeIndex]));
+
+  useEffect(() => {
+    setMounted((prev) => (prev.has(activeIndex) ? prev : new Set(prev).add(activeIndex)));
+  }, [activeIndex]);
+
   return (
     <div
       className={`blueprint ${styles.carousel} ${className ?? ""}`}
       style={{ aspectRatio: aspect }}
     >
       <Corners />
-      {photos.map((src, i) => (
-        <Image
-          key={src}
-          src={src}
-          alt={`${label} photo ${i + 1}`}
-          fill
-          sizes="(max-width: 700px) 90vw, 340px"
-          className={styles.photo}
-          style={{ opacity: i === activeIndex ? 1 : 0 }}
-          priority={i === 0}
-        />
-      ))}
+      {photos.map((src, i) =>
+        mounted.has(i) ? (
+          <Image
+            key={src}
+            src={src}
+            alt={`${label} photo ${i + 1}`}
+            fill
+            sizes="(max-width: 700px) 90vw, 340px"
+            className={styles.photo}
+            style={{ opacity: i === activeIndex ? 1 : 0 }}
+            priority={i === 0}
+          />
+        ) : null
+      )}
     </div>
   );
 }

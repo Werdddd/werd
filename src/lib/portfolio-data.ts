@@ -105,7 +105,7 @@ const portfolioData: PortfolioData = {
         "A community-powered air quality monitoring platform with a live AQI dashboard, interactive air quality maps, and crowdsourced reporting for real-time conditions nationwide.",
       tags: ["NextJS", "Supabase", "Vercel"],
       platform: "Web",
-      image: "/projects/simoy1.png",
+      image: "/projects/simoy1.webp",
       featured: true,
       link: "https://simoy.xyz",
     },
@@ -116,7 +116,7 @@ const portfolioData: PortfolioData = {
         "A crowdsourced fuel tracker that helps drivers find the cheapest nearby stations, with a live fuel map, trip cost estimator, and a gamified community system.",
       tags: ["NextJS", "Supabase", "Vercel"],
       platform: "Web",
-      image: "/projects/beep1.png",
+      image: "/projects/beep1.webp",
       featured: true,
       link: "https://beep-fuel.xyz",
     },
@@ -127,7 +127,7 @@ const portfolioData: PortfolioData = {
         "The official companion app for an international Scout jamboree with 25,000+ participants — QR-linked digital IDs, live event maps, announcements, and emergency access.",
       tags: ["React Native", "Supabase", "App Store"],
       platform: "Mobile",
-      image: "/projects/aprsj1.png",
+      image: "/projects/aprsj1.webp",
       featured: true,
       link: "https://apps.apple.com/ph/app/33rd-apr-scout-jamboree-app/id6756312226",
     },
@@ -138,7 +138,7 @@ const portfolioData: PortfolioData = {
         "A centralized, algorithm-driven social and organization-management app for university student life, built to boost engagement across student orgs.",
       tags: ["React Native", "Firebase", "Mobile"],
       platform: "Mobile",
-      image: "/projects/ueconnect1.png",
+      image: "/projects/ueconnect1.webp",
       featured: true,
     },
     {
@@ -148,7 +148,7 @@ const portfolioData: PortfolioData = {
         "The official web platform of the Ten Outstanding Boy Scouts of the Philippines Associations, showcasing the awardees and initiatives.",
       tags: ["NextJS", "Supabase", "Vercel"],
       platform: "Web",
-      image: "/projects/tobspa1.png",
+      image: "/projects/tobspa1.webp",
       link: "https://tobspa.org.ph",
     },
     {
@@ -158,7 +158,7 @@ const portfolioData: PortfolioData = {
         "An AI-powered collaboration platform that helps BPI find the right partners and streamline document workflows, transforming partnerships into faster, smarter, and more seamless opportunities. Hashi Agent handles AI synergy scoring, while the Nagare System automates document handling.",
       tags: ["Next.js", "MySQL", "OpenAI"],
       platform: "Web",
-      image: "/projects/synseai1.png",
+      image: "/projects/synseai1.webp",
       featured: true,
     },
     {
@@ -168,7 +168,7 @@ const portfolioData: PortfolioData = {
         "A community assistance platform connecting people in need with nearby help and resources in real time.",
       tags: ["NextJS", "Supabase", "Vercel"],
       platform: "Web",
-      image: "/projects/agapay1.png",
+      image: "/projects/agapay1.webp",
     },
     {
       num: "08",
@@ -177,7 +177,7 @@ const portfolioData: PortfolioData = {
         "An AI-assisted study companion that generates personalized study guides adapted to each student's learning style — champion at InnOlympics 2025.",
       tags: ["React Native", "Firebase", "Gemini AI"],
       platform: "Mobile",
-      image: "/projects/gabai1.png",
+      image: "/projects/gabai1.webp",
     },
     {
       num: "09",
@@ -186,7 +186,7 @@ const portfolioData: PortfolioData = {
         "A centralized, AI-powered fintech app that helps users manage multiple bank accounts, track finances, and achieve their financial goals — 1st Runner-Up at Hack-It 2025.",
       tags: ["React Native", "Firebase", "AI"],
       platform: "Mobile",
-      image: "/projects/gabank1.png",
+      image: "/projects/gabank1.webp",
     },
     {
       num: "10",
@@ -195,7 +195,7 @@ const portfolioData: PortfolioData = {
         "A mobile app designed for UE Caloocan students, specifically aimed at helping freshmen navigate the campus with ease. It features an interactive map that allows users to locate all campus buildings and key facilities.",
       tags: ["NextJS", "Supabase", "Vercel"],
       platform: "Web",
-      image: "/projects/ineast1.png",
+      image: "/projects/ineast1.webp",
     },
     {
       num: "11",
@@ -204,7 +204,7 @@ const portfolioData: PortfolioData = {
         "The official web platform and admin portal for the 33rd Asia-Pacific Regional Scout Jamboree, supporting registration, announcements, and event information.",
       tags: ["NextJS", "Supabase", "Vercel"],
       platform: "Web",
-      image: "/projects/aprsjwebsite1.png",
+      image: "/projects/aprsjwebsite1.webp",
     },
     {
       num: "12",
@@ -213,7 +213,7 @@ const portfolioData: PortfolioData = {
         "A fitness-focused social app combining workout tracking with community-driven engagement, designed end to end from wireframes to final UI.",
       tags: ["React Native", "Firebase", "Mobile"],
       platform: "Mobile",
-      image: "/projects/trak1.png",
+      image: "/projects/trak1.webp",
     },
     {
       num: "13",
@@ -222,7 +222,7 @@ const portfolioData: PortfolioData = {
         "A resume builder that helps students and job seekers create polished, professional resumes quickly with guided templates.",
       tags: ["NextJS", "Supabase", "Vercel"],
       platform: "Web",
-      image: "/projects/easeresume1.png",
+      image: "/projects/easeresume1.webp",
     },
     {
       num: "14",
@@ -231,7 +231,7 @@ const portfolioData: PortfolioData = {
         "A 3D puzzle game exploring human emotions. Players navigate a maze with four rooms, each representing Sadness, Anger, Joy, and Fear.",
       tags: ["Unity", "WebGL", "3D"],
       platform: "Web",
-      image: "/projects/emotionescape1.png",
+      image: "/projects/emotionescape1.webp",
     },
     {
       num: "15",
@@ -240,7 +240,7 @@ const portfolioData: PortfolioData = {
         "An online marketplace promoting sustainable consumption, production, and community collaboration. It enables individuals to buy, sell, and swap goods, emphasizing responsible consumption and the circular economy.",
       tags: ["React", "MySQL", "Python"],
       platform: "Web",
-      image: "/projects/kamayan1.png",
+      image: "/projects/kamayan1.webp",
     },
     {
       num: "16",
@@ -249,7 +249,7 @@ const portfolioData: PortfolioData = {
         "An AI-powered planning tool that helps user generate and visualize learning roadmaps specifically for programming/software development high-level goals.",
       tags: ["NextJS", "OpenAI", "Vercel"],
       platform: "Web",
-      image: "/projects/roadmapai1.png",
+      image: "/projects/roadmapai1.webp",
     },
     {
       num: "17",
@@ -258,7 +258,7 @@ const portfolioData: PortfolioData = {
         "A personal safety companion app that lets users quickly alert trusted contacts and share their location in an emergency.",
       tags: ["React Native", "Firebase", "Mobile"],
       platform: "Mobile",
-      image: "/projects/safelet1.png",
+      image: "/projects/safelet1.webp",
     },
     {
       num: "18",
@@ -267,7 +267,7 @@ const portfolioData: PortfolioData = {
         "The offical website of SALAD Navotenos, a scout-led fund-raising project supporting Navoteño families, using lettuce from the GGC-BSP vertical urban farm.",
       tags: ["HTML", "CSS", "Bootstrap"],
       platform: "Web",
-      image: "/projects/saladnav1.png",
+      image: "/projects/saladnav1.webp",
     },
     {
       num: "19",
@@ -276,7 +276,7 @@ const portfolioData: PortfolioData = {
         "A travel discovery app for exploring destinations, itineraries, and local experiences around the Philippines.",
       tags: ["Angular", "TypeScript", "Tailwind"],
       platform: "Web",
-      image: "/projects/tarapinas1.png",
+      image: "/projects/tarapinas1.webp",
     },
     {
       num: "20",
@@ -285,7 +285,7 @@ const portfolioData: PortfolioData = {
         "A Fun, swipe-based learning app for programming languages built using Flutter.",
       tags: ["Flutter", "Supabase", "Dart"],
       platform: "Mobile",
-      image: "/projects/techder1.png",
+      image: "/projects/techder1.webp",
     },
     {
       num: "21",
@@ -294,7 +294,7 @@ const portfolioData: PortfolioData = {
         "The offical website of the BSP Navotas City Council Website, which goal is to equip young people with skills and values for a fulfilling life.",
       tags: ["HTML", "CSS", "Bootstrap"],
       platform: "Web",
-      image: "/projects/bspnav1.png",
+      image: "/projects/bspnav1.webp",
     },
     {
       num: "22",
@@ -303,7 +303,7 @@ const portfolioData: PortfolioData = {
         "An interactive storytelling experience exploring creation myths from around the world through rich visuals and narrative design.",
       tags: ["React", "Framer Motion", "Vercel"],
       platform: "Web",
-      image: "/projects/creationmyth1.png",
+      image: "/projects/creationmyth1.webp",
     },
     {
       num: "23",
@@ -312,7 +312,7 @@ const portfolioData: PortfolioData = {
         "A fast, streamlined content feed app for browsing and staying up to date with the latest updates on the go.",
       tags: ["React", "Framer Motion", "Web"],
       platform: "Web",
-      image: "/projects/fastfeed1.png",
+      image: "/projects/fastfeed1.webp",
     },
     {
       num: "24",
@@ -321,7 +321,7 @@ const portfolioData: PortfolioData = {
         "A gamified math learning app that helps students build number sense and problem-solving skills.",
       tags: ["React", "Firebase", "Web"],
       platform: "Web",
-      image: "/projects/numwais1.png",
+      image: "/projects/numwais1.webp",
     },
     {
       num: "25",
@@ -330,7 +330,7 @@ const portfolioData: PortfolioData = {
         "A sports content and community platform for following teams, scores, and highlights.",
       tags: ["Vue", "CSS", "Tailwind"],
       platform: "Web",
-      image: "/projects/werdsports1.png",
+      image: "/projects/werdsports1.webp",
     },
   ],
   skills: [
