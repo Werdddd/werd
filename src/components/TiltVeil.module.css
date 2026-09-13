@@ -1,0 +1,40 @@
+.veil {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  pointer-events: none;
+}
+
+.shadow,
+.sheen {
+  position: absolute;
+  inset: 0;
+}
+
+/* Vignette whose clear center shifts opposite the tilt, so the far edge
+   sinks into shadow — like a surface angling away from a fixed light. */
+.shadow {
+  background: radial-gradient(
+    150% 150% at calc(50% - var(--tilt-x) * 42%) calc(50% - var(--tilt-y) * 42%),
+    transparent 30%,
+    color-mix(in srgb, #000 34%, transparent) 100%
+  );
+  mix-blend-mode: multiply;
+}
+
+/* Specular hotspot that chases the tilt direction, like light glancing
+   off glass as the surface turns toward it. */
+.sheen {
+  background: radial-gradient(
+    120% 120% at calc(50% + var(--tilt-x) * 46%) calc(50% + var(--tilt-y) * 46%),
+    color-mix(in srgb, #fff 26%, transparent) 0%,
+    transparent 55%
+  );
+  mix-blend-mode: soft-light;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .veil {
+    display: none;
+  }
+}

@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { MotionRoot } from "@/components/MotionRoot";
 import { CursorGlow } from "@/components/CursorGlow";
 import { AmbientTilt } from "@/components/AmbientTilt";
+import { TiltVeil } from "@/components/TiltVeil";
 import "./globals.css";
 
 const barlow = Barlow({
@@ -49,6 +50,7 @@ export default function RootLayout({
         </noscript>
         <CursorGlow />
         <AmbientTilt />
+        <TiltVeil />
         <MotionRoot>
           <div className="page-shell">{children}</div>
         </MotionRoot>

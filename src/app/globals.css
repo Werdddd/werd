@@ -162,7 +162,7 @@ body::before {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  transform: translate3d(calc(var(--tilt-x) * 16px), calc(var(--tilt-y) * 16px), 0);
+  transform: translate3d(calc(var(--tilt-x) * 34px), calc(var(--tilt-y) * 34px), 0);
   will-change: transform;
   background-image:
     linear-gradient(color-mix(in srgb, var(--color-text) 5%, transparent) 1px, transparent 1px),
@@ -311,8 +311,12 @@ textarea.input { min-height: 90px; resize: vertical; }
 
 /* — cards — */
 .card {
+  position: relative;
   display: flex; flex-direction: column; gap: var(--space-2);
   padding: var(--space-3); border-radius: var(--radius-md); background: var(--color-surface);
+  box-shadow:
+    calc(var(--tilt-x) * -12px) calc(4px + var(--tilt-y) * -12px) 26px
+    color-mix(in srgb, #000 22%, transparent);
 }
 .card-kicker { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent); }
 .card-title {
@@ -328,6 +332,32 @@ textarea.input { min-height: 90px; resize: vertical; }
 .elev-sm { box-shadow: var(--shadow-sm); }
 .elev-md { box-shadow: var(--shadow-md); }
 .elev-lg { box-shadow: var(--shadow-lg); }
+
+/* — tilt sheen: a specular highlight on every card/blueprint surface that
+   chases the tilt direction, layered under any real children (Corners'
+   tick marks, card text) so it reads as light on the surface rather than
+   a film over the content. Shares --tilt-x/--tilt-y with TiltVeil.tsx and
+   the ambient background above — one input driving every surface. */
+.card::before,
+.blueprint::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.55;
+  mix-blend-mode: soft-light;
+  background: radial-gradient(
+    140% 140% at calc(50% + var(--tilt-x) * 65%) calc(50% + var(--tilt-y) * 65%),
+    color-mix(in srgb, #fff 60%, transparent) 0%,
+    transparent 55%
+  );
+}
+
+.blueprint {
+  box-shadow:
+    calc(var(--tilt-x) * -8px) calc(3px + var(--tilt-y) * -8px) 18px
+    color-mix(in srgb, #000 16%, transparent);
+}
 
 /* — tags — */
 .tag {
@@ -345,6 +375,12 @@ textarea.input { min-height: 90px; resize: vertical; }
   display: flex; align-items: center; gap: var(--space-4);
   padding: var(--space-3) var(--space-4);
   border-bottom: none;
+  /* Nav sits closest to the viewer (fixed, on top of every page) so it
+     gets the biggest shadow throw of any surface — the foreground plane
+     in the tilt's implied depth stack. */
+  box-shadow:
+    calc(var(--tilt-x) * -18px) calc(6px + var(--tilt-y) * -12px) 32px
+    color-mix(in srgb, #000 22%, transparent);
 }
 .nav-brand {
   font-family: var(--font-heading), system-ui, sans-serif;
