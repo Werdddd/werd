@@ -3,18 +3,86 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion } from "motion/react";
-import portfolio from "@/lib/portfolio-data";
+import portfolio, { type Hackathon } from "@/lib/portfolio-data";
 import { Corners } from "./Blueprint";
 import { PhotoCarousel } from "./PhotoCarousel";
 import { fadeUp, staggerContainer, revealViewport } from "@/lib/motion";
+import { useTiltParallax } from "@/lib/tilt";
 import styles from "./Hackathons.module.css";
 import shared from "@/styles/shared.module.css";
 
 const SWIPE_THRESHOLD = 40;
 
+// Pulled out so useTiltParallax (a hook) has a proper per-item component
+// to live in — calling hooks inside the podiumHackathons.map() below would
+// violate the rules of hooks.
+function PodiumStep({
+  h,
+  isOpen,
+  frame,
+  onToggle,
+}: {
+  h: Hackathon;
+  isOpen: boolean;
+  frame: number;
+  onToggle: () => void;
+}) {
+  // fadeUp owns y/opacity on this element, so only x/rotate are used here.
+  const { x, rotateX, rotateY } = useTiltParallax(16, 3);
+
+  return (
+    <motion.div
+      variants={fadeUp}
+      className={`${styles.step} ${h.rank === 1 ? styles.stepFirst : styles.stepSecond}`}
+      style={{ x, rotateX, rotateY, transformPerspective: 700 }}
+    >
+      <div
+        role="button"
+        tabIndex={0}
+        aria-expanded={isOpen}
+        className={`blueprint ${styles.card} ${isOpen ? styles.cardOpen : ""}`}
+        onClick={onToggle}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            onToggle();
+          }
+        }}
+        suppressHydrationWarning
+      >
+        <Corners />
+        <PhotoCarousel
+          photos={h.photos}
+          activeIndex={frame % h.photos.length}
+          label={h.event}
+          aspect="4 / 3"
+          className={styles.thumb}
+        />
+        <div className={styles.body}>
+          <span className="card-kicker">{h.place}</span>
+          <h4 className={styles.project}>{h.project}</h4>
+          <p className="card-body">{h.event}</p>
+          <p className={`text-muted ${styles.meta}`}>
+            {h.organizer} — {h.date}
+          </p>
+          <p className={`card-body ${styles.description} ${isOpen ? styles.descriptionOpen : ""}`}>
+            {h.description}
+          </p>
+          <span className={styles.toggle}>{isOpen ? "Show less" : "Show more"}</span>
+        </div>
+      </div>
+      <div className={styles.riser}>
+        <span className={styles.rank}>{h.rank === 1 ? "1st" : "2nd"}</span>
+      </div>
+    </motion.div>
+  );
+}
+
 export function Hackathons() {
   const [expanded, setExpanded] = useState<string | null>(null);
   const [frame, setFrame] = useState(0);
+  // staggerContainer has no y/opacity of its own — x and y both free here.
+  const { x: sectionX, y: sectionY } = useTiltParallax(6);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -106,6 +174,7 @@ export function Hackathons() {
       initial="hidden"
       whileInView="visible"
       viewport={revealViewport}
+      style={{ x: sectionX, y: sectionY }}
     >
       <motion.div variants={fadeUp} className={shared.sectionHeader}>
         <div>
@@ -117,63 +186,15 @@ export function Hackathons() {
         </Link>
       </motion.div>
       <motion.div variants={staggerContainer(0.1)} className={`${styles.podium} ${styles.podiumDesktop}`}>
-        {podiumHackathons.map((h) => {
-          const isOpen = expanded === h.event;
-          return (
-            <motion.div
-              key={h.event}
-              variants={fadeUp}
-              className={`${styles.step} ${
-                h.rank === 1 ? styles.stepFirst : styles.stepSecond
-              }`}
-            >
-              <div
-                role="button"
-                tabIndex={0}
-                aria-expanded={isOpen}
-                className={`blueprint ${styles.card} ${isOpen ? styles.cardOpen : ""}`}
-                onClick={() => setExpanded(isOpen ? null : h.event)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    setExpanded(isOpen ? null : h.event);
-                  }
-                }}
-                suppressHydrationWarning
-              >
-                <Corners />
-                <PhotoCarousel
-                  photos={h.photos}
-                  activeIndex={frame % h.photos.length}
-                  label={h.event}
-                  aspect="4 / 3"
-                  className={styles.thumb}
-                />
-                <div className={styles.body}>
-                  <span className="card-kicker">{h.place}</span>
-                  <h4 className={styles.project}>{h.project}</h4>
-                  <p className="card-body">{h.event}</p>
-                  <p className={`text-muted ${styles.meta}`}>
-                    {h.organizer} — {h.date}
-                  </p>
-                  <p
-                    className={`card-body ${styles.description} ${
-                      isOpen ? styles.descriptionOpen : ""
-                    }`}
-                  >
-                    {h.description}
-                  </p>
-                  <span className={styles.toggle}>
-                    {isOpen ? "Show less" : "Show more"}
-                  </span>
-                </div>
-              </div>
-              <div className={styles.riser}>
-                <span className={styles.rank}>{h.rank === 1 ? "1st" : "2nd"}</span>
-              </div>
-            </motion.div>
-          );
-        })}
+        {podiumHackathons.map((h) => (
+          <PodiumStep
+            key={h.event}
+            h={h}
+            isOpen={expanded === h.event}
+            frame={frame}
+            onToggle={() => setExpanded(expanded === h.event ? null : h.event)}
+          />
+        ))}
       </motion.div>
 
       <div className={styles.mobileCarousel}>

@@ -5,11 +5,16 @@ import { motion } from "motion/react";
 import portfolio from "@/lib/portfolio-data";
 import { Corners } from "./Blueprint";
 import { fadeUp, staggerContainer, revealViewport } from "@/lib/motion";
+import { useTiltParallax } from "@/lib/tilt";
 import styles from "./Testimonials.module.css";
 import shared from "@/styles/shared.module.css";
 
 export function Testimonials() {
   const testimonials = portfolio.testimonials;
+  // staggerContainer has no y/opacity of its own — x and y both free here.
+  // The marquee cards inside are plain (non-Motion) elements, so they
+  // already move on their own via the global .blueprint/.card CSS rule.
+  const { x, y } = useTiltParallax(6);
 
   return (
     <motion.section
@@ -19,6 +24,7 @@ export function Testimonials() {
       initial="hidden"
       whileInView="visible"
       viewport={revealViewport}
+      style={{ x, y }}
     >
       <motion.div variants={fadeUp} className={shared.sectionHeader}>
         <div>

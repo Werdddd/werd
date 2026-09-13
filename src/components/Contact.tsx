@@ -4,6 +4,7 @@ import { useState, type FormEvent } from "react";
 import { motion } from "motion/react";
 import { Corners } from "./Blueprint";
 import { fadeUp, staggerContainer, revealViewport } from "@/lib/motion";
+import { useTiltParallax } from "@/lib/tilt";
 import styles from "./Contact.module.css";
 import shared from "@/styles/shared.module.css";
 
@@ -12,6 +13,8 @@ type Status = "idle" | "submitting" | "success" | "error";
 export function Contact() {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  // staggerContainer has no y/opacity of its own — x and y both free here.
+  const { x, y } = useTiltParallax(6);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -55,6 +58,7 @@ export function Contact() {
       initial="hidden"
       whileInView="visible"
       viewport={revealViewport}
+      style={{ x, y }}
     >
       <motion.div variants={fadeUp}>
         <h6 className={shared.eyebrow}>Get in touch</h6>

@@ -9,12 +9,17 @@ import { Corners } from "./Blueprint";
 import { ImagePlaceholder } from "./ImagePlaceholder";
 import { PlatformIcon } from "./PlatformIcon";
 import { fadeUp, staggerContainer, revealViewport } from "@/lib/motion";
+import { useTiltParallax } from "@/lib/tilt";
 import styles from "./Work.module.css";
 import shared from "@/styles/shared.module.css";
 
 const SWIPE_THRESHOLD = 40;
 
 export function Work() {
+  // staggerContainer has no y/opacity of its own — x and y both free here.
+  // The carousel cards inside are plain (non-Motion) elements, so they
+  // already move on their own via the global .blueprint/.card CSS rule.
+  const { x, y } = useTiltParallax(8);
   const viewportRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLElement | null)[]>([]);
   const [activeExtended, setActiveExtended] = useState(1);
@@ -104,6 +109,7 @@ export function Work() {
       initial="hidden"
       whileInView="visible"
       viewport={revealViewport}
+      style={{ x, y }}
     >
       <motion.div variants={fadeUp} className={styles.header}>
         <div>

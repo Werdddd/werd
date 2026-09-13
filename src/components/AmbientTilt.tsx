@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { tiltX, tiltY } from "@/lib/tilt";
 import styles from "./AmbientTilt.module.css";
 
 // Damped-spring + low-pass constants tuned softer than the hero mockup's —
@@ -49,6 +50,11 @@ export function AmbientTilt() {
     const applyToRoot = (x: number, y: number) => {
       root.style.setProperty("--tilt-x", x.toFixed(3));
       root.style.setProperty("--tilt-y", y.toFixed(3));
+      // Same smoothed values, fed to every motion.*-based element's own
+      // per-item parallax (see @/lib/tilt) — one spring driving both the
+      // CSS-var consumers and the Motion-value consumers.
+      tiltX.set(x);
+      tiltY.set(y);
     };
 
     const tick = () => {

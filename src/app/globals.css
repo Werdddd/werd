@@ -317,6 +317,13 @@ textarea.input { min-height: 90px; resize: vertical; }
   box-shadow:
     calc(var(--tilt-x) * -12px) calc(4px + var(--tilt-y) * -12px) 26px
     color-mix(in srgb, #000 22%, transparent);
+  /* Real positional parallax, not just shading — a no-op on instances
+     Motion already drives via variants (its inline transform wins over
+     this rule regardless of specificity); those get the same shift via
+     useTiltParallax in their own component instead. Elsewhere (plain,
+     non-Motion cards — carousel items, marquee cards) this is the only
+     source of movement, so it's the one that actually moves them. */
+  transform: translate3d(calc(var(--tilt-x) * 12px), calc(var(--tilt-y) * 12px), 0);
 }
 .card-kicker { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent); }
 .card-title {
@@ -357,6 +364,10 @@ textarea.input { min-height: 90px; resize: vertical; }
   box-shadow:
     calc(var(--tilt-x) * -8px) calc(3px + var(--tilt-y) * -8px) 18px
     color-mix(in srgb, #000 16%, transparent);
+  /* See .card above — free movement on plain instances (thumbnails, the
+     experience-row logo box), a no-op wherever Motion already owns this
+     element's transform. */
+  transform: translate3d(calc(var(--tilt-x) * 10px), calc(var(--tilt-y) * 10px), 0);
 }
 
 /* — tags — */
@@ -381,6 +392,12 @@ textarea.input { min-height: 90px; resize: vertical; }
   box-shadow:
     calc(var(--tilt-x) * -18px) calc(6px + var(--tilt-y) * -12px) 32px
     color-mix(in srgb, #000 22%, transparent);
+  /* No-op on the real <Nav> (Motion owns its transform — see Nav.tsx's
+     own useTiltParallax call); this is what actually moves <Footer>,
+     which reuses this class but isn't Motion-controlled. Drifts opposite
+     Nav's own motion so the foreground (nav) and background (footer)
+     planes read as separated in depth. */
+  transform: translate3d(calc(var(--tilt-x) * -8px), calc(var(--tilt-y) * -8px), 0);
 }
 .nav-brand {
   font-family: var(--font-heading), system-ui, sans-serif;

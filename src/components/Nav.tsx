@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { ThemeToggle } from "./ThemeToggle";
 import { dropIn } from "@/lib/motion";
+import { useTiltParallax } from "@/lib/tilt";
 import styles from "./Nav.module.css";
 
 const links = [
@@ -17,6 +18,10 @@ const links = [
 
 export function Nav() {
   const [open, setOpen] = useState(false);
+  // dropIn's own variant already animates y/opacity on this element, so
+  // only the x channel (untouched by that variant) is spread below —
+  // adding y here would fight the mount animation for the same channel.
+  const { x } = useTiltParallax(10);
 
   useEffect(() => {
     if (!open) return;
@@ -33,6 +38,7 @@ export function Nav() {
       variants={dropIn}
       initial="hidden"
       animate="visible"
+      style={{ x }}
     >
       <Link className="nav-brand" href="/">
         Andrew Robles

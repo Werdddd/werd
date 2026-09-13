@@ -4,9 +4,13 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { ExperienceList } from "./ExperienceList";
 import { fadeUp, staggerContainer, revealViewport } from "@/lib/motion";
+import { useTiltParallax } from "@/lib/tilt";
 import shared from "@/styles/shared.module.css";
 
 export function Experience() {
+  // staggerContainer has no y/opacity of its own — x and y both free here.
+  const { x, y } = useTiltParallax(6);
+
   return (
     <motion.section
       id="experience"
@@ -15,6 +19,7 @@ export function Experience() {
       initial="hidden"
       whileInView="visible"
       viewport={revealViewport}
+      style={{ x, y }}
     >
       <motion.div variants={fadeUp} className={shared.sectionHeader}>
         <div>

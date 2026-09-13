@@ -4,16 +4,22 @@ import { motion } from "motion/react";
 import portfolio from "@/lib/portfolio-data";
 import { HeroPhoto } from "./HeroPhoto";
 import { fadeUp, staggerContainer } from "@/lib/motion";
+import { useTiltParallax } from "@/lib/tilt";
 import styles from "./Hero.module.css";
 import shared from "@/styles/shared.module.css";
 
 export function Hero() {
+  // staggerContainer's own variant only orchestrates timing (no y/opacity
+  // of its own), so both x and y are free to use here.
+  const { x, y } = useTiltParallax(8);
+
   return (
     <motion.header
       className={`${styles.hero} reveal`}
       variants={staggerContainer(0.12, 0.15)}
       initial="hidden"
       animate="visible"
+      style={{ x, y }}
     >
       <div>
         
