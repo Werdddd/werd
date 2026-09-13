@@ -60,6 +60,13 @@
   --shadow-sm: 0 1px 2px color-mix(in srgb, #2b2b2d 14%, transparent);
   --shadow-md: 0 3px 10px color-mix(in srgb, #2b2b2d 16%, transparent);
   --shadow-lg: 0 12px 32px color-mix(in srgb, #2b2b2d 22%, transparent);
+
+  /* Site-wide tilt input — set imperatively by AmbientTilt.tsx from the
+     device gyroscope (mobile) or window-relative mouse position (desktop),
+     unitless -1..1 on each axis. Consumers (the ambient background below,
+     HeroPhoto's mobile layer transforms) scale it to their own px range. */
+  --tilt-x: 0;
+  --tilt-y: 0;
 }
 
 /* — dark theme — same tokens, ramps reversed on the same lightness scale
@@ -119,6 +126,7 @@ html {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  body::before { transform: none; }
 }
 
 body {
@@ -154,6 +162,8 @@ body::before {
   inset: 0;
   z-index: -1;
   pointer-events: none;
+  transform: translate3d(calc(var(--tilt-x) * 16px), calc(var(--tilt-y) * 16px), 0);
+  will-change: transform;
   background-image:
     linear-gradient(color-mix(in srgb, var(--color-text) 5%, transparent) 1px, transparent 1px),
     linear-gradient(90deg, color-mix(in srgb, var(--color-text) 5%, transparent) 1px, transparent 1px),

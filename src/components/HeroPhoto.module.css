@@ -25,7 +25,7 @@
   height: 420px;
   max-width: 100%;
   transform-style: preserve-3d;
-  transition: transform 0.25s ease-out;
+  will-change: transform;
 }
 
 .cardGlow {
@@ -41,6 +41,7 @@
   );
   filter: blur(24px);
   opacity: 0.6;
+  will-change: transform;
 }
 
 .cardFrame {
@@ -50,6 +51,7 @@
   border-radius: 18px;
   overflow: hidden;
   box-shadow: 0 24px 60px -12px color-mix(in srgb, var(--color-accent) 45%, transparent);
+  will-change: transform;
 }
 
 .slideshow {
@@ -57,12 +59,26 @@
   height: 100%;
 }
 
+.gloss {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: 18px;
+  overflow: hidden;
+  background: radial-gradient(
+    circle at 30% 20%,
+    rgba(255, 255, 255, 0.65),
+    rgba(255, 255, 255, 0) 60%
+  );
+  mix-blend-mode: overlay;
+  opacity: 0.22;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
 .badge {
   position: absolute;
-  z-index: 2;
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
+  z-index: 3;
   padding: var(--space-2) var(--space-3);
   border-radius: 999px;
   font-family: var(--font-heading), system-ui, sans-serif;
@@ -70,6 +86,16 @@
   font-size: 13px;
   white-space: nowrap;
   box-shadow: 0 10px 24px -8px color-mix(in srgb, var(--color-accent) 40%, transparent);
+}
+
+/* The idle bob lives on this inner element, not .badge itself: a CSS
+   animation on `transform` wins over the JS-driven parallax transform set
+   on the same property, so the two motions are split across nested
+   elements and combine additively instead of fighting for the property. */
+.badgeBob {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
   animation: hero-bob 5.5s ease-in-out infinite;
 }
 
@@ -85,6 +111,9 @@
   left: -18px;
   background: var(--color-text);
   color: var(--color-bg);
+}
+
+.badgeRole .badgeBob {
   animation-name: hero-bob;
   animation-duration: 6s;
   animation-delay: -3s;
@@ -170,11 +199,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .card {
-    transition: none;
-  }
   .dashedCircle,
-  .badge {
+  .badgeBob {
     animation: none;
   }
 }
