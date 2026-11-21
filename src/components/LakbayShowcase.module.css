@@ -1,0 +1,291 @@
+/* — Lakbay boarding pass — */
+
+.liveDot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: #2f9e52;
+  vertical-align: 1px;
+  box-shadow: 0 0 0 0 color-mix(in srgb, #2f9e52 55%, transparent);
+  animation: live-pulse 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes live-pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, #2f9e52 55%, transparent);
+  }
+  75%,
+  100% {
+    box-shadow: 0 0 0 7px color-mix(in srgb, #2f9e52 0%, transparent);
+  }
+}
+
+.pass {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) 0 minmax(0, 1fr);
+  background: var(--color-surface);
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.pass:hover {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-md);
+}
+
+/* Stretches to the full height of the pass (set by the details column);
+   the screenshot covers it, clipping the sides as needed. */
+.visual {
+  position: relative;
+  display: block;
+  align-self: stretch;
+  min-height: 280px;
+  overflow: hidden;
+  background: var(--color-accent-100);
+}
+
+.visualImage {
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pass:hover .visualImage {
+  transform: scale(1.03);
+}
+
+/* Tear line between stub and pass, with ticket notches top and bottom. */
+.perforation {
+  position: relative;
+  border-left: 1px dashed var(--color-divider);
+}
+
+.perforation::before,
+.perforation::after {
+  content: "";
+  position: absolute;
+  left: -9px;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: var(--color-bg);
+  border: 1px solid var(--color-divider);
+}
+
+.perforation::before {
+  top: -9px;
+}
+
+.perforation::after {
+  bottom: -9px;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  min-width: 0;
+}
+
+.passTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.flightNo {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-weight: var(--font-heading-weight);
+  color: var(--color-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+/* — Route: MNL ——✈—— iOS — */
+.route {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: end;
+  gap: var(--space-2);
+}
+
+.stop {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.stopEnd {
+  text-align: right;
+}
+
+.code {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-weight: var(--font-heading-weight);
+  font-size: 30px;
+  letter-spacing: 0.02em;
+}
+
+.city {
+  margin-top: 4px;
+  font-size: 11px;
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
+
+.flight {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  margin-bottom: 6px;
+}
+
+.routeGhost {
+  fill: none;
+  stroke: var(--color-divider);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 6;
+  vector-effect: non-scaling-stroke;
+}
+
+.routeLine {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.node {
+  fill: var(--color-surface);
+  stroke: var(--color-accent);
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.plane {
+  fill: var(--color-accent);
+}
+
+/* — Pass fields — */
+.fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3) var(--space-4);
+  margin: 0;
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--color-divider);
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.fields dt {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
+
+.fields dd {
+  margin: 2px 0 0;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #2f9e52;
+}
+
+.statusDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.copy {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+  opacity: 0.85;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.barcode {
+  height: 34px;
+  margin-top: auto;
+  opacity: 0.55;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--color-text) 0 2px,
+    transparent 2px 4px,
+    var(--color-text) 4px 5px,
+    transparent 5px 8px,
+    var(--color-text) 8px 11px,
+    transparent 11px 13px,
+    var(--color-text) 13px 14px,
+    transparent 14px 17px
+  );
+}
+
+@media (max-width: 900px) {
+  .pass {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Stacked: the image gets its own row, sized to its natural ratio. */
+  .visual {
+    min-height: 0;
+    aspect-ratio: 1600 / 1018;
+  }
+
+  .perforation {
+    border-left: 0;
+    border-top: 1px dashed var(--color-divider);
+  }
+
+  .perforation::before,
+  .perforation::after {
+    top: -9px;
+    bottom: auto;
+  }
+
+  .perforation::before {
+    left: -9px;
+  }
+
+  .perforation::after {
+    left: auto;
+    right: -9px;
+  }
+}
+
+@media (max-width: 760px) {
+  .details {
+    padding: var(--space-4);
+  }
+
+  .code {
+    font-size: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .liveDot {
+    animation: none;
+  }
+
+  .pass:hover .visualImage {
+    transform: none;
+  }
+}

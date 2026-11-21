@@ -100,6 +100,17 @@ const portfolioData: PortfolioData = {
   projects: [
     {
       num: "01",
+      title: "Lakbay",
+      blurb:
+        "A travel companion app for planning trips, organizing itineraries, and saving the photos and memories from every journey, now live on the App Store.",
+      tags: ["React Native", "Supabase", "App Store"],
+      platform: "Mobile",
+      image: "/projects/lakbay1.webp",
+      featured: true,
+      link: "https://apps.apple.com/eg/app/lakbay-travel-companion/id6819170936",
+    },
+    {
+      num: "02",
       title: "Simoy",
       blurb:
         "A community-powered air quality monitoring platform with a live AQI dashboard, interactive air quality maps, and crowdsourced reporting for real-time conditions nationwide.",
@@ -110,7 +121,7 @@ const portfolioData: PortfolioData = {
       link: "https://simoy.xyz",
     },
     {
-      num: "02",
+      num: "03",
       title: "Beep",
       blurb:
         "A crowdsourced fuel tracker that helps drivers find the cheapest nearby stations, with a live fuel map, trip cost estimator, and a gamified community system.",
@@ -121,7 +132,7 @@ const portfolioData: PortfolioData = {
       link: "https://beep-fuel.xyz",
     },
     {
-      num: "03",
+      num: "04",
       title: "33rd Asia-Pacific Regional Scout Jamboree App",
       blurb:
         "The official companion app for an international Scout jamboree with 25,000+ participants — QR-linked digital IDs, live event maps, announcements, and emergency access.",
@@ -132,7 +143,7 @@ const portfolioData: PortfolioData = {
       link: "https://apps.apple.com/ph/app/33rd-apr-scout-jamboree-app/id6756312226",
     },
     {
-      num: "04",
+      num: "05",
       title: "UE Connect",
       blurb:
         "A centralized, algorithm-driven social and organization-management app for university student life, built to boost engagement across student orgs.",
@@ -142,7 +153,7 @@ const portfolioData: PortfolioData = {
       featured: true,
     },
     {
-      num: "05",
+      num: "06",
       title: "TOBSPA Website",
       blurb:
         "The official web platform of the Ten Outstanding Boy Scouts of the Philippines Associations, showcasing the awardees and initiatives.",
@@ -152,7 +163,7 @@ const portfolioData: PortfolioData = {
       link: "https://tobspa.org.ph",
     },
     {
-      num: "06",
+      num: "07",
       title: "SynseAI",
       blurb:
         "An AI-powered collaboration platform that helps BPI find the right partners and streamline document workflows, transforming partnerships into faster, smarter, and more seamless opportunities. Hashi Agent handles AI synergy scoring, while the Nagare System automates document handling.",
@@ -162,7 +173,7 @@ const portfolioData: PortfolioData = {
       featured: true,
     },
     {
-      num: "07",
+      num: "08",
       title: "Agapay",
       blurb:
         "A community assistance platform connecting people in need with nearby help and resources in real time.",
@@ -171,7 +182,7 @@ const portfolioData: PortfolioData = {
       image: "/projects/agapay1.webp",
     },
     {
-      num: "08",
+      num: "09",
       title: "GabAI",
       blurb:
         "An AI-assisted study companion that generates personalized study guides adapted to each student's learning style — champion at InnOlympics 2025.",
@@ -180,7 +191,7 @@ const portfolioData: PortfolioData = {
       image: "/projects/gabai1.webp",
     },
     {
-      num: "09",
+      num: "10",
       title: "GaBank",
       blurb:
         "A centralized, AI-powered fintech app that helps users manage multiple bank accounts, track finances, and achieve their financial goals — 1st Runner-Up at Hack-It 2025.",
@@ -189,7 +200,7 @@ const portfolioData: PortfolioData = {
       image: "/projects/gabank1.webp",
     },
     {
-      num: "10",
+      num: "11",
       title: "iNEast",
       blurb:
         "A mobile app designed for UE Caloocan students, specifically aimed at helping freshmen navigate the campus with ease. It features an interactive map that allows users to locate all campus buildings and key facilities.",
@@ -198,7 +209,7 @@ const portfolioData: PortfolioData = {
       image: "/projects/ineast1.webp",
     },
     {
-      num: "11",
+      num: "12",
       title: "APRSJ Website",
       blurb:
         "The official web platform and admin portal for the 33rd Asia-Pacific Regional Scout Jamboree, supporting registration, announcements, and event information.",
@@ -207,7 +218,7 @@ const portfolioData: PortfolioData = {
       image: "/projects/aprsjwebsite1.webp",
     },
     {
-      num: "12",
+      num: "13",
       title: "TRAK",
       blurb:
         "A fitness-focused social app combining workout tracking with community-driven engagement, designed end to end from wireframes to final UI.",
@@ -216,7 +227,7 @@ const portfolioData: PortfolioData = {
       image: "/projects/trak1.webp",
     },
     {
-      num: "13",
+      num: "14",
       title: "Ease Resume",
       blurb:
         "A resume builder that helps students and job seekers create polished, professional resumes quickly with guided templates.",
@@ -225,7 +236,7 @@ const portfolioData: PortfolioData = {
       image: "/projects/easeresume1.webp",
     },
     {
-      num: "14",
+      num: "15",
       title: "Emotion Escape",
       blurb:
         "A 3D puzzle game exploring human emotions. Players navigate a maze with four rooms, each representing Sadness, Anger, Joy, and Fear.",
@@ -234,7 +245,7 @@ const portfolioData: PortfolioData = {
       image: "/projects/emotionescape1.webp",
     },
     {
-      num: "15",
+      num: "16",
       title: "Kamayan",
       blurb:
         "An online marketplace promoting sustainable consumption, production, and community collaboration. It enables individuals to buy, sell, and swap goods, emphasizing responsible consumption and the circular economy.",
@@ -243,7 +254,7 @@ const portfolioData: PortfolioData = {
       image: "/projects/kamayan1.webp",
     },
     {
-      num: "16",
+      num: "17",
       title: "Roadmap AI",
       blurb:
         "An AI-powered planning tool that helps user generate and visualize learning roadmaps specifically for programming/software development high-level goals.",
@@ -252,7 +263,7 @@ const portfolioData: PortfolioData = {
       image: "/projects/roadmapai1.webp",
     },
     {
-      num: "17",
+      num: "18",
       title: "Safelet",
       blurb:
         "A personal safety companion app that lets users quickly alert trusted contacts and share their location in an emergency.",
@@ -261,7 +272,7 @@ const portfolioData: PortfolioData = {
       image: "/projects/safelet1.webp",
     },
     {
-      num: "18",
+      num: "19",
       title: "Salad Navotenos Website",
       blurb:
         "The offical website of SALAD Navotenos, a scout-led fund-raising project supporting Navoteño families, using lettuce from the GGC-BSP vertical urban farm.",
@@ -270,7 +281,7 @@ const portfolioData: PortfolioData = {
       image: "/projects/saladnav1.webp",
     },
     {
-      num: "19",
+      num: "20",
       title: "TaraPinas!",
       blurb:
         "A travel discovery app for exploring destinations, itineraries, and local experiences around the Philippines.",
@@ -279,7 +290,7 @@ const portfolioData: PortfolioData = {
       image: "/projects/tarapinas1.webp",
     },
     {
-      num: "20",
+      num: "21",
       title: "TechDer",
       blurb:
         "A Fun, swipe-based learning app for programming languages built using Flutter.",
@@ -288,7 +299,7 @@ const portfolioData: PortfolioData = {
       image: "/projects/techder1.webp",
     },
     {
-      num: "21",
+      num: "22",
       title: "BSP Navotas City Council Website",
       blurb:
         "The offical website of the BSP Navotas City Council Website, which goal is to equip young people with skills and values for a fulfilling life.",
@@ -297,7 +308,7 @@ const portfolioData: PortfolioData = {
       image: "/projects/bspnav1.webp",
     },
     {
-      num: "22",
+      num: "23",
       title: "Creation Myth",
       blurb:
         "An interactive storytelling experience exploring creation myths from around the world through rich visuals and narrative design.",
@@ -306,7 +317,7 @@ const portfolioData: PortfolioData = {
       image: "/projects/creationmyth1.webp",
     },
     {
-      num: "23",
+      num: "24",
       title: "Fast Feed",
       blurb:
         "A fast, streamlined content feed app for browsing and staying up to date with the latest updates on the go.",
@@ -315,7 +326,7 @@ const portfolioData: PortfolioData = {
       image: "/projects/fastfeed1.webp",
     },
     {
-      num: "24",
+      num: "25",
       title: "Numwais",
       blurb:
         "A gamified math learning app that helps students build number sense and problem-solving skills.",
@@ -324,7 +335,7 @@ const portfolioData: PortfolioData = {
       image: "/projects/numwais1.webp",
     },
     {
-      num: "25",
+      num: "26",
       title: "Werd Sports",
       blurb:
         "A sports content and community platform for following teams, scores, and highlights.",

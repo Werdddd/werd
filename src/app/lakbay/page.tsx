@@ -55,8 +55,7 @@ export default function LakbayPage() {
         </p>
 
         <div className={styles.actions}>
-          {/* TODO: replace "#" with the App Store listing URL once the app is live. */}
-          <a className="btn btn-primary" href="#">
+          <a className="btn btn-primary" href="/lakbay/download">
             Download on the App Store
           </a>
           {/* TODO: replace "#" with the Google Play listing URL once the app is live. */}

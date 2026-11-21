@@ -1,5 +1,6 @@
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
+import { LakbayShowcase } from "@/components/LakbayShowcase";
 import { About } from "@/components/About";
 import { Work } from "@/components/Work";
 import { Skills } from "@/components/Skills";
@@ -14,7 +15,7 @@ export default function Home() {
     <>
       <Nav />
       <Hero />
-      <About />
+      <LakbayShowcase />      <About />
       <Work />
       <Skills />
       <Experience />
