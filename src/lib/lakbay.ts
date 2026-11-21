@@ -3,6 +3,8 @@ export const lakbay = {
   origin: "https://andrew-robles.com",
   contactEmail: "roblesandrewemmanuel@gmail.com",
   developer: "Andrew Robles",
+  /** Credited on the app page. Legal pages still name `developer`. */
+  developers: ["Andrew Robles", "Hazel Miranda"],
   lastUpdated: "October 20, 2026",
   logo: "/projects/lakbay-logo.png",
 };

@@ -1,3 +1,4 @@
+/* — Shared by the legal pages (privacy policy, terms) — */
 .wrap {
   width: 100%;
   max-width: 760px;
@@ -5,61 +6,12 @@
   padding: 0 var(--space-6) var(--space-8);
 }
 
-.logo {
-  position: relative;
-  width: min(100%, 420px);
-  aspect-ratio: 5 / 2;
-  margin-bottom: var(--space-4);
-}
-
-.logo img {
-  object-fit: cover;
-}
-
-.tagline {
-  font-size: 19px;
-  max-width: 44ch;
-  margin-bottom: var(--space-4);
-}
-
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3);
-  margin: var(--space-4) 0 var(--space-6);
-}
-
-.features {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-4);
-  margin: var(--space-4) 0 var(--space-8);
-  padding: 0;
-  list-style: none;
-}
-
-.features li {
-  padding: var(--space-4);
-  border: 1px solid var(--color-divider);
-  background: var(--color-surface);
-}
-
-.features h3 {
-  font-size: 19px;
-}
-
-.features p {
-  margin: 0;
-  font-size: 14px;
-  opacity: 0.85;
-}
-
 .callout {
   padding: var(--space-4) var(--space-6);
   border: 1px solid var(--color-divider);
   border-left: 3px solid var(--color-accent);
   background: var(--color-surface);
-  margin: var(--space-4) 0 var(--space-8);
+  margin: var(--space-4) 0 0;
 }
 
 .prose {
@@ -87,7 +39,8 @@
 }
 
 .prose a,
-.callout a {
+.callout a,
+.info a {
   text-decoration: underline;
 }
 
@@ -95,16 +48,488 @@
   margin-bottom: var(--space-6);
 }
 
+/* — App page — */
+.page {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 96px var(--space-6) var(--space-8);
+}
+
+.eyebrow {
+  color: var(--color-accent-700);
+  display: flex;
+  align-items: center;
+}
+
+.liveDot {
+  width: 7px;
+  height: 7px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: #2f9e52;
+  animation: live-pulse 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes live-pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, #2f9e52 55%, transparent);
+  }
+  75%,
+  100% {
+    box-shadow: 0 0 0 7px transparent;
+  }
+}
+
+/* Hero */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 48px;
+  padding-bottom: 72px;
+}
+
+.heroCopy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.logo {
+  position: relative;
+  width: min(100%, 380px);
+  aspect-ratio: 5 / 2;
+  margin-bottom: var(--space-4);
+  margin-left: -12px;
+}
+
+.logo img {
+  object-fit: cover;
+}
+
+.title {
+  font-size: clamp(38px, 5vw, 58px);
+  line-height: 1.02;
+  margin: var(--space-2) 0 var(--space-4);
+}
+
+.lead {
+  font-size: 18px;
+  line-height: 1.55;
+  max-width: 46ch;
+  opacity: 0.88;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin: var(--space-4) 0 var(--space-6);
+}
+
+.credit {
+  margin: 0;
+  font-size: 13px;
+  color: color-mix(in srgb, var(--color-text) 60%, transparent);
+}
+
+.heroVisual {
+  position: relative;
+  aspect-ratio: 1 / 0.98;
+  width: 100%;
+  max-width: 560px;
+  justify-self: center;
+}
+
+.heroVisual::before {
+  content: "";
+  position: absolute;
+  inset: 14% 4% 4%;
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    color-mix(in srgb, var(--color-accent-400) 34%, transparent),
+    transparent
+  );
+  filter: blur(10px);
+}
+
+.route {
+  position: absolute;
+  inset: 0 0 auto;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  z-index: 1;
+}
+
+.routeLine {
+  fill: none;
+  stroke: color-mix(in srgb, var(--color-accent) 45%, transparent);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 7;
+  vector-effect: non-scaling-stroke;
+}
+
+.plane {
+  fill: var(--color-accent);
+}
+
+.planeStatic {
+  display: none;
+}
+
+.phone {
+  position: absolute;
+  aspect-ratio: 1312 / 2312;
+  filter: drop-shadow(0 18px 28px color-mix(in srgb, #05295b 22%, transparent));
+  animation: phone-bob 6s ease-in-out infinite;
+}
+
+.phone img {
+  object-fit: contain;
+}
+
+.phoneCenter {
+  width: 47%;
+  left: 26.5%;
+  top: 8%;
+  z-index: 3;
+}
+
+.phoneLeft {
+  width: 38%;
+  left: 0;
+  top: 22%;
+  rotate: -8deg;
+  z-index: 2;
+  animation-delay: -2s;
+}
+
+.phoneRight {
+  width: 38%;
+  right: 0;
+  top: 22%;
+  rotate: 8deg;
+  z-index: 2;
+  animation-delay: -4s;
+}
+
+@keyframes phone-bob {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -10px;
+  }
+}
+
+/* Sections */
+.section {
+  padding: 56px 0;
+  border-top: 1px solid var(--color-divider);
+}
+
+.sectionHeading {
+  margin-bottom: var(--space-6);
+}
+
+/* Feature cards */
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-sm);
+  border-color: var(--color-accent);
+}
+
+.media {
+  position: relative;
+  aspect-ratio: 1 / 0.92;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      120% 90% at 50% 0%,
+      color-mix(in srgb, var(--color-accent-300) 55%, transparent),
+      transparent 70%
+    ),
+    var(--color-accent-100);
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.mediaPhone {
+  position: absolute;
+  left: 50%;
+  top: 9%;
+  width: 56%;
+  aspect-ratio: 1312 / 2312;
+  translate: -50% 0;
+  filter: drop-shadow(0 12px 18px color-mix(in srgb, #05295b 20%, transparent));
+  transition: translate 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mediaPhone img {
+  object-fit: contain;
+}
+
+.card:hover .mediaPhone {
+  translate: -50% -5%;
+}
+
+.duoA,
+.duoB {
+  width: 46%;
+}
+
+.duoA {
+  left: 28%;
+  top: 7%;
+  z-index: 2;
+}
+
+.duoB {
+  left: 72%;
+  top: 17%;
+}
+
+/* CSS-drawn group vote (no screenshot for this feature) */
+.poll {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  width: 72%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  border-radius: 16px;
+  background: var(--color-surface);
+  box-shadow: 0 12px 28px color-mix(in srgb, #05295b 16%, transparent);
+  font-size: 13px;
+}
+
+.pollKicker {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.pollTitle {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-weight: var(--font-heading-weight);
+  font-size: 18px;
+  margin-bottom: 2px;
+}
+
+.pollOption {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.pollRow {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+}
+
+.pollBar {
+  height: 7px;
+  border-radius: 99px;
+  background: var(--color-neutral-200);
+  overflow: hidden;
+}
+
+.pollBar > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--color-accent-400);
+  transform-origin: left;
+  animation: bar-grow 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.pollLead .pollBar > span {
+  background: var(--color-accent);
+}
+
+@keyframes bar-grow {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-6) var(--space-6);
+}
+
+.emoji {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.cardBody h3 {
+  font-size: 19px;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.cardBody p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+  opacity: 0.82;
+}
+
+/* Team */
+.team {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  max-width: 760px;
+}
+
+.member {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-6);
+  background: var(--color-surface);
+}
+
+.initials {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-accent-100);
+  color: var(--color-accent-800);
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-weight: var(--font-heading-weight);
+  font-size: 17px;
+}
+
+.memberName {
+  display: block;
+  font-weight: 600;
+}
+
+.memberRole {
+  display: block;
+  font-size: 13px;
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
+
+.memberLink {
+  margin-left: auto;
+  font-size: 13px;
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-weight: var(--font-heading-weight);
+  white-space: nowrap;
+}
+
+/* Data, legal, contact */
+.info {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: 48px;
+}
+
+.infoHeading {
+  font-size: 24px;
+}
+
+@media (max-width: 960px) {
+  .features {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .heroVisual {
+    max-width: 460px;
+  }
+
+  .info {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-6);
+  }
+}
+
 @media (max-width: 760px) {
   .wrap {
     padding: 0 var(--space-4) var(--space-6);
   }
 
-  .features {
-    grid-template-columns: 1fr;
+  .page {
+    padding: 80px var(--space-4) var(--space-6);
   }
 
   .prose {
     font-size: 15px;
+  }
+
+  .team {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .features {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cardBody {
+    padding: var(--space-4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .liveDot,
+  .phone,
+  .pollBar > span {
+    animation: none;
+  }
+
+  .planeMoving {
+    display: none;
+  }
+
+  .planeStatic {
+    display: inline;
+  }
+
+  .card:hover,
+  .card:hover .mediaPhone {
+    transform: none;
+    translate: -50% 0;
   }
 }
